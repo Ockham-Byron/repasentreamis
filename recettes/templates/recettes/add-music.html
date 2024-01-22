@@ -1,0 +1,37 @@
+{% extends "dashboard/base.html" %}
+{% load avatar i18n static %}
+{% block title %}{% trans 'Add Comment' %}{% endblock title %}
+{% block content %}
+
+
+<!-- New Form -->
+<div class="d-flex align-items-center justify-content-center">
+  <form class="kform" method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+    {% if form.errors %}
+      <div class="alert alert-danger alert-dismissible" role="alert">
+          <div id="form_errors">
+              {% for key, value in form.errors.items %}
+              <strong>{{ value }}</strong>
+              {% endfor %}
+          </div>
+          <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+          </button>
+      </div>
+    {% endif %}
+    <p class="title">{% trans 'Add Music' %}</p>
+    
+        {{form.title}}
+        {{form.artist}}
+      
+      <button class="submit" type="submit ">{% trans 'Submit' %}</button>
+      <div class="text-center">
+        <a href="{% url 'all-recipes' %}" class="mid-color">{% trans 'Cancel' %}</a>
+        
+      </div>
+  </form>
+</div>
+
+
+{% endblock content %}
