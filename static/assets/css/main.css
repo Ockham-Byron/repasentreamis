@@ -2,13 +2,13 @@
 
 /* Colors */   
 :root {
-    --brand-color: #832232;
-    --darkest-color: #313e50;
-    --dark-color: #4c061d;
-    --mid-color:  #f3752b;
-    --light-color:#f8b042 ;
+    --brand-color: #a8c900;
+    --darkest-color: #0b1a48;
+    --dark-color: #502247;
+    --mid-color:  #c94036;
+    --light-color:#eee0c8 ;
     --joy-color: #f6ce4b;
-    --lightest-color: #f0eae0;
+    --lightest-color: #fffbdb;
       }
 
 
@@ -37,6 +37,7 @@
 
 body {
   font-family: 'Poppins';
+  background-color: var(--lightest-color);
 }
 
 .container-fluid {

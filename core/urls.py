@@ -27,6 +27,7 @@ urlpatterns = i18n_patterns(
     path('', include('users.urls')),
     path('recipes/', include('recettes.urls')),
     path('dashboard/', include('dashboard.urls')),
+    path('groups/', include('groups.urls')),
     path('pages/', include('pages.urls')),
 ) + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 

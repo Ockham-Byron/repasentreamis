@@ -50,6 +50,7 @@ INSTALLED_APPS = [
     'dashboard',
     'pages',
     'recettes',
+    'groups',
     
     
 ]

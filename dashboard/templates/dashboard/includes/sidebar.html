@@ -33,6 +33,16 @@
           </li>
 
           <li class="dropdown">
+              <a href="#" class="nav-link dropdown-toggle px-sm-0 px-2 lightest-color" id="dropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                  <i class="fa-solid fa-user-group"></i><span class="ms-1 d-none d-sm-inline">{% trans 'Groups' %}</span>
+              </a>
+              <ul class="dropdown-menu dropdown-menu-dark text-small shadow" aria-labelledby="dropdown">
+                  <li><a class="dropdown-item lightest-color" href="{% url 'add-group' %}"><i class="fa-solid fa-plus pe-1"></i>{% trans 'Add group' %}</a></li>
+                  <li><a class="dropdown-item lightest-color" href="{% url 'all-groups' %}">{% trans 'My groups' %}</a></li>
+              </ul>
+          </li>
+
+          <li class="dropdown">
             <a href="#" class="nav-link dropdown-toggle px-sm-0 px-2 lightest-color" id="dropdown" data-bs-toggle="dropdown" aria-expanded="false">
               <i class="fa-solid fa-utensils"></i><span class="ms-1 d-none d-sm-inline">{% trans 'Meals' %}</span>
             </a>

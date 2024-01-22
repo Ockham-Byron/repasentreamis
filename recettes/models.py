@@ -7,6 +7,7 @@ from django.utils.text import slugify
 from PIL import Image
 from django.db import models
 from django.core.validators import MinValueValidator, MaxValueValidator
+from groups.models import CustomGroup
 
 User=get_user_model()
 
@@ -86,6 +87,7 @@ class Menu(models.Model):
     created_at=models.DateTimeField(auto_now_add=True)
     updated_at=models.DateTimeField(auto_now=True)
     slug = models.SlugField(max_length=255, unique= True, default=None, null=True)
+    group = models.ForeignKey(CustomGroup, on_delete=models.CASCADE, related_name="menus")
 
     def __str__(self):
         return str(self.created_at)
