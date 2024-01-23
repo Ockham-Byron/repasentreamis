@@ -26,7 +26,7 @@ class UpdateGroupForm(forms.ModelForm):
     name = forms.CharField(max_length=100, 
                                 required=True,
                                 widget=forms.TextInput(attrs={'placeholder': _("Group's Name"),
-                                                            'class': 'form-control'
+                                                            
                                     }))
     group_pic = forms.ImageField(widget=forms.FileInput(attrs={'class': 'form-control-file'}))
 

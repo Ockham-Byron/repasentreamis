@@ -2,64 +2,56 @@
 {% load i18n %}
 {% block title %}{% trans 'Update' %} {{object.name}}{% endblock title %}
 {% block content %}
-<div class="container mt-5 pb-2">
-    <div class="abstract-form mt-2">
-     {% if circle_form.errors %}
-        <div class="alert alert-danger alert-dismissible" role="alert">
-            <div id="form_errors">
-                {% for key, value in circle_form.errors.items %}
-                <strong>{{ value }}</strong>
-                {% endfor %}
-            </div>
-            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-            </button>
-        </div>
-        {% endif %}
-    <h1 class="text-center">{% trans 'Update' %} {{object.name}} </h1>
-    <div class="row justify-content-center">
-        
-       
-        <div class="form-content">
-            <form method="post" enctype="multipart/form-data">
-                {% csrf_token %}
-                <div class="form-row justify-content-center mt-5">
-                    
-                        <div class="form-group text-center">
-                            <label>{%trans 'Name of the Circle' %}</label>
-                            {{ form.name }}
+
+  <div class="d-flex justify-content-center align-items-center">
+    <form method="post" enctype="multipart/form-data" class="kform">
+    {% csrf_token %}
+      <p class="title">{% trans 'Update' %} {{object.name}}</p>
+                        
+      <label>{% trans 'Name of the Group' %}</label>
+      {{ form.name }}
 
                         
-                       <label class="text-center">{% trans 'Upload New Picture of the Circle' %}</label>
-                       <input
-  type="file"
-  id="fileElem"
-  multiple
-  accept="image/*"
-  name="group_pic"
-  style="display:none" 
-  />
-<a href="#" id="fileSelect" class="abstract-btn-upload-update" style="background: url('{{object.group_pic.url}}') rgba(255, 255, 255, 0.8); background-size: contain; background-blend-mode: multiply; line-height:10; display:grid;">{% trans 'Upload Picture of the Circle' %}</a>
-<div id="fileList" class="mt-3 color-light">
-  <p>{% trans 'No files selected!' %}</p>
-</div>
+      <label class="text-center">{% trans 'Upload New Picture of the Circle' %}</label>
+      
+      <input
+        type="file"
+        id="fileElem"
+        multiple
+        accept="image/*"
+        name="group_pic"
+        style="display:none" 
+        />
+        <div class="group-pic-wrapper text-center mx-auto">
+        {% if object.group_pic%}
+            <a href="#" id="fileSelect">
+              <img id="change-image" class="" src="{{object.group_pic.url}}" />
+              
+            </a>
+        {% else %}
+
+        {% endif %}
+        </div>    
+        <div id="fileList" class="mt-3 color-light">
+          <p></p>
+        </div>
                         
-                    </div>
-                </div>
-                <div class="row justify-content-center">
-                <div class="form-group text-center kselect">
+                   
+               
+                
+                <div class=" text-center kselect">
                 <label>{% trans 'Admin of the Circle' %}</label>
                 </br>
                     {{form.leader}}
                 </div>
-                </div>
+               
               
                 <div class="row justify-content-center">
-                <button type="submit" class="btn btn-kdark btn-rounded">{% trans 'Save' %}</button>
+                <button type="submit" class="submit">{% trans 'Save' %}</button>
                 </div>
                 <div class="row justify-content-center">
 
-                <a href="{% url 'circle_detail' object.uuid object.slug %}" class="color-brand text-uppercase mt-2">{% trans 'Cancel' %}</a>
+                <a href="{% url 'group-detail' object.slug %}" class="color-brand text-uppercase mt-2">{% trans 'Cancel' %}</a>
                 </div>
             </form>
         </div>
@@ -69,7 +61,7 @@
 
 <div>
 
-</div>
+
 {% endblock content %}
 
 {% block extrajs %}
@@ -102,16 +94,17 @@ function handleFiles() {
       const li = document.createElement("li");
       list.appendChild(li);
 
-      const img = document.createElement("img");
+      //if updating a previous group pic
+      const img = document.getElementById("change-image");
+      if (img) {
       img.src = URL.createObjectURL(this.files[i]);
-      img.height = 60;
+      img.height = auto;
+      img.width = 300;
+      img.className = "mx-auto";
       img.onload = () => {
         URL.revokeObjectURL(img.src);
       };
-      li.appendChild(img);
-      const info = document.createElement("span");
-      info.innerHTML = `${this.files[i].name}: ${this.files[i].size} bytes`;
-      li.appendChild(info);
+      }
     }
   }
 }

@@ -293,7 +293,7 @@ ul.form-errors li, ul.errorlist li {
   display: block !important;
 }
 
-.kform .submit {
+.kform .submit, #copy-btn {
   border: none;
   outline: none;
   background-color: var(--brand-color);
@@ -304,7 +304,7 @@ ul.form-errors li, ul.errorlist li {
   transform: .3s ease;
 }
 
-.kform .submit:hover {
+.kform .submit:hover, #copy-btn:hover {
   background-color:var(--darkest-color);
   cursor: pointer;
 }

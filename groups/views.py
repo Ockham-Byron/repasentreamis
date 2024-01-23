@@ -76,8 +76,6 @@ def join_group_view(request):
 @login_required
 def all_groups(request):
     groups = CustomGroup.objects.filter(members__id__contains=request.user.id)
-    
-    
     context = {
         'groups': groups,
         
@@ -89,7 +87,6 @@ class GroupDetailView(LoginRequiredMixin, DetailView):
     model = CustomGroup
     template_name = 'groups/group_detail.html'
     slug_url_kwarg = 'slug'
-    pk_url_kwarg = 'uuid'
     
 
     

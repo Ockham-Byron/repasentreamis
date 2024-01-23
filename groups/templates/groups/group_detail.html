@@ -4,29 +4,22 @@
 
 {% block content %}
 {% if object.group_pic %}
-<section class="hero-wrap"
-style="background: linear-gradient(rgb(148,163,184,0.8), rgb(51,65,85,0.8)), url({{object.group_pic.url}});" 
+<section class="hero-wrap d-flex flex-column justify-content-end"
+style="background: linear-gradient(rgb(148,163,184,0.8), rgb(51,65,85,0.8)), url({{object.group_pic.url}}); background-size: cover;" 
     >
 {% else %}
-<section class="hero-wrap"
-    style="background:url('{% static 'assets/img/default_group.jpg' %}') rgba(255, 255, 255, 0.8) ; background-blend-mode: multiply;">
+<section class="hero-wrap d-flex flex-column justify-content-end"
+    style="background:url('{% static 'assets/img/default_group.jpg' %}') rgba(255, 255, 255, 0.8) ; background-blend-mode: multiply; background-size:contain;">
 {% endif %}
     <div class="overlay"></div>
     <div class="container">
-        <div class="row no-gutters slider-text align-items-center">
-            <div class="col-md-8 ftco-animate d-flex align-items-end fadeInUp ftco-animated">
-                <div class="text w-100">
-                    <h1 class="mb-4">{{object.name}}</h1>
-                    {% if object.description %}
-                    <p class="mb-4">{{object.description}}</p>
-                    {% endif %}
-                    {% if object.leader == request.user %}
-                    <a href="{% url 'update-group' object.uuid object.slug %}"><i class="fa fa-cog fa-5x"></i></a>
-                    {% endif %}
-
-                </div>
-            </div>
-        </div>
+        <h1 class="mb-2">{{object.name}}</h1>
+        {% if object.description %}
+            <p class="mb-4">{{object.description}}</p>
+        {% endif %}
+        {% if object.leader == request.user %}
+            <a href="{% url 'update-group' object.uuid object.slug %}"><i class="fa fa-cog fa-5x"></i></a>
+        {% endif %}
     </div>
 </section>
 
@@ -59,10 +52,10 @@ style="background: linear-gradient(rgb(148,163,184,0.8), rgb(51,65,85,0.8)), url
                         <div class="icon d-flex align-items-center justify-content-center">
                             <div class="row">
                                 <div class="col-md-12">
-                                    <i class="fas fa-shapes"></i>
+                                    <i class="fa-solid fa-utensils"></i>
                                 </div>
                                 <div class="col-md-12">
-                                    <p class="nb_count">{{nb_of_products}}</p>
+                                    <p class="nb_count">{{nb_of_meals}}</p>
                                 </div>
                             </div>
 
@@ -79,7 +72,7 @@ style="background: linear-gradient(rgb(148,163,184,0.8), rgb(51,65,85,0.8)), url
 <!-- Members container -->
 
 <div class="container">
-    <h2 class="text-center mb-5 title-members">{% trans "Members" %}</h2>
+    <h2 class="text-center mb-5">{% trans "Members" %}</h2>
     {% if nb_of_users  == 1 %} 
     <div class="d-flex flex-wrap justify-content-center">
         
@@ -142,98 +135,28 @@ style="background: linear-gradient(rgb(148,163,184,0.8), rgb(51,65,85,0.8)), url
     {% endif %}  
 </div> <!-- Members container end -->
 
-<!-- Items container start -->
-
-<div class="pb-5">
-<h2 class="text-center mt-5 mb-2 mb-md-5">{% trans 'Objects' %}</h2>
-
 <div class="d-flex p-2 justify-content-center flex-wrap">
-{% if products %}
-    {% for i in products %}
-    
+{% if nb_of_meals == 0 %}
+   
 
-    <div class="wsk-cp-product m-2">
-          <div class="wsk-cp-img">
-            {% if i.product_images %}
-            <img src="{{i.product_images.first.images.url}}" alt="object_image" class="img-responsive" />
-            {% else %}
-            <img src="{% static 'assets/img/default_picture.png' %}" alt="no_image" class="img-responsive" />
-            {% endif %}
-          </div>
-          <div class="wsk-cp-text">
-            
-                {% if i.owner == request.user %}
-                <a href="{% url 'product_detail'  i.slug %}">
-                <div class="category">
-                
-                <span>{% trans 'Manage' %}</span>
-                
-                {% else %}
-                    {% if i.is_available %}
-                    <a href="{% url 'product_reservation' i.slug %}">
-                    <div class="category">
-                    
-                    <span>{% trans 'Borrow' %}</span>
-               
-                    {% else %}
-                     <a  href="{% url 'product_reservation' i.slug %}">
-                    <div class="category">
-                   
-                    <span>{% trans 'Reserve' %}</span>
-                    {% endif %}
-
-                {% endif %}
-               
-              
-            </div>
-             </a>
-            <div class="title-product">
-              <h3>{{i.name}}</h3>
-            </div>
-            <div class="description-prod">
-              <p>{{i.description|slice:":100"}}</p>
-              
-            </div>
-            <div class="detail-link text-center pb-2 pb-md-3">
-            <a href="{% url 'product_detail'  i.slug %}" class="btn-klight mt-5">{% trans "See more" %}</a>
-            </div>
-            <div class="card-footer">
-              <div class="wcf-left"><a href="{% url 'user_profile' i.owner i.owner.profile.uuid %}"><span class="">{{i.owner}}</span></a></div>
-              <div class="wcf-right">
-                {% if request.user in i.favorite_by.all %}
-                        <a href="{% url 'not_favorite' i.uuid %}">
-                        <i class="fa fa-fw fa-heart"></i>
-                        </a>
-                        {% else %}
-                        <a href="{% url 'favorite' i.uuid %}">
-                        <i class="far fa-heart"></i>
-                        </a>
-                        {% endif %}
-              </div>
-            </div>
-          </div>
-        </div>
-    
-    {% endfor %}
-{% else %}
     <a class="btn" href="{% url 'add-menu' %}">
         <div class="sketch-box">
             <div class="card-cta border-0 sketch-box">
                 <img class="card-icon mx-auto" src="{% static 'assets/img/icons/add-100.png' %}" alt="Card image cap" width="100px" >
                 <div class="card-body">
-                {% trans 'ADD FIRST MEAL TO THIS CIRCLE' %}
+                {% trans 'ADD FIRST MEAL TO THIS GROUP' %}
                 </div>
             </div>
         </div>
     </a>
 {% endif %}
 </div>
-</div>
-<!-- Items container end -->
+
+
 
 <!-- Floating button -->
 <a href="{% url 'add-menu' %}">
-<div class="kfloat" data-toggle="tooltip" title="{% trans 'Add object' %}">
+<div class="kfloat" data-toggle="tooltip" title="{% trans 'Add Meal' %}">
 <div class="my-float">+</div>
 </div>
 </a>
@@ -273,7 +196,7 @@ style="background: linear-gradient(rgb(148,163,184,0.8), rgb(51,65,85,0.8)), url
     
     const code= copyBtn.getAttribute('data')
     
-    invitation = "I suggest you to join the circle I have created on \n"
+    invitation = "I suggest you to join the group I have created on \n"
     line = "\n ********************* \n" 
     code_invit = "\n The code to join the group is:\n " + code
     navigator.clipboard.writeText(invitation + url + line + code_invit)

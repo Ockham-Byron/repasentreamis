@@ -41,7 +41,7 @@ class CustomGroup(Group):
         super(CustomGroup, self).save(*args, **kwargs)
 
     def get_absolute_url(self):
-        return reverse('group_detail', args=[self.slug])
+        return reverse('group-detail', args=[self.slug])
 
     def __str__(self):
         return self.name
