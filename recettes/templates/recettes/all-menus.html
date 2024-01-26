@@ -5,8 +5,16 @@
 
 {% block content %}
 
-<h1 class="mt-2 mb-5 text-center">{% trans "Meals" %}</h1>
 
+<h1 class=" mb-5 text-center">
+{% if nb_of_groups != 1 %}
+{% trans "All Meals" %}
+{% else %}
+{% trans "Meals of " %}{{group.name}}
+{% endif %}
+</h1>
+
+{% if menus %}
 <div class="d-flex mt-5 pt-5 justify-content-center flex-wrap ">
   {% for menu in menus %}
     <div class="card card-recipe shadow mx-2">
@@ -16,7 +24,7 @@
             {% if menu.picture %}
               <img src="{{ menu.picture.url }}">
             {% else %}
-
+              <img src="{% static 'assets/img/illustrations/meal_default.jpeg' %}" alt="Meal picture"  >
             {% endif %}
           </div>
         </div>
@@ -26,7 +34,7 @@
         
         <div class="text-center">
           <h3>
-            {{menu.created_at|date:"d M Y"}}
+            {{menu.eaten_at|date:"d M Y"}}
           </h3>
           <a href="{% url 'add-recipe-to-menu' menu.slug%}" class="card-recipe-btn-small">{% trans 'Dishes' %} <i class="fa-solid fa-plus fa-xs"></i></a>
           {% for recipe in menu.recipes.all %}
@@ -41,7 +49,9 @@
                 <p class="my-auto">{{recipe.name}}</p>
               </div>
               <div>
+              {% if recipe.averagereview != None %}
                 {{recipe.averagereview}}
+              {% endif %}
               </div>
             </div>
           </a>
@@ -78,7 +88,27 @@
     </div>
   {% endfor %}
 </div>
-    
+{% else %}
+<div class="d-flex p-2 justify-content-center flex-wrap">
+<a class="btn" href="{% url 'add-menu' %}">
+        <div class="sketch-box">
+            <div class="card-cta border-0 sketch-box">
+                <img class="card-icon mx-auto" src="{% static 'assets/img/icons/add-100.png' %}" alt="Card image cap" width="100px" >
+                <div class="card-body">
+                {% trans 'ADD FIRST MEAL' %}
+                </div>
+            </div>
+        </div>
+</a>
+</div>
+{% endif %}
+
+<!-- Floating button -->
+<a href="{% url 'add-menu' %}">
+<div class="kfloat" data-bs-toggle="tooltip" title="{% trans 'Add Meal' %}">
+<div class="my-float">+</div>
+</div>
+</a>
  
 
 {% endblock %}

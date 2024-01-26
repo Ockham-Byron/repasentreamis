@@ -2,13 +2,13 @@
 <div id="sidebar" class="col-12 col-sm-3 col-xl-2 px-sm-2 px-0 bg-dark d-flex sticky-top">
   <div  class="d-flex flex-sm-column flex-row flex-grow-1 align-items-center align-items-sm-start px-3 py-2 text-white order-1">
       <a href="/" class="d-flex align-items-center pb-sm-3 mb-md-0 me-md-auto text-white text-decoration-none">
-          <img id="sidebar-logo" src="{% static 'assets/img/logo.png' %}" />
+          <img id="sidebar-logo" src="{% static 'assets/img/logo-blanc.png' %}" />
       </a>
       <!-- User menu - Start -->
       <div class="dropdown py-sm-4  ms-auto ms-sm-0 flex-shrink-1 order-3 order-md-2">
           <a href="#" class="d-flex align-items-center text-white text-decoration-none dropdown-toggle" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
               {% if request.user.profile_pic %}
-                <span class="user-img"><img class="rounded-circle" src="{{ request.user.profile_pic.url }} "width="45" alt="profile_pic"></span>
+                <span class="user-img"><img class="rounded-circle" src="{{ request.user.profile_pic.url }} "width="45" height="45" alt="profile_pic"></span>
               {% else %}
                   <span class="user-img">{{ request.user|avatar }}</span> 
               {% endif %} 

@@ -253,24 +253,27 @@ color:var(--light-color) !important;
 .btn-wide {
   width: 90%;
   padding:8px 20px;
+  border-radius:10px;
 }
 
 .btn-brand-color {
   background-color: var(--brand-color);
+  color:white;
 }
 
 .btn-brand-color:hover {
-  color:black;
-  background-color: var(--mid-color);
+  
+  background-color: var(--dark-color);
 }
 
 .btn-mid-color {
   background-color: var(--mid-color);
+  color:white;
 }
 
 .btn-mid-color:hover {
-  color:black;
-  background-color: var(--brand-color);
+  
+  background-color: var(--dark-color);
 }
 
 .btn-outlined {

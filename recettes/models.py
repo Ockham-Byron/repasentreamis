@@ -84,6 +84,7 @@ class Menu(models.Model):
     id = models.UUIDField(default = uuid4, editable = False, primary_key=True)
     recipes=models.ManyToManyField(Recipe, blank=True, related_name="menus")
     picture=models.ImageField(upload_to=path_and_rename_menu, blank=True, null=True)
+    eaten_at=models.DateField(blank=True, null=True)
     created_at=models.DateTimeField(auto_now_add=True)
     updated_at=models.DateTimeField(auto_now=True)
     slug = models.SlugField(max_length=255, unique= True, default=None, null=True)

@@ -1,15 +1,15 @@
 {% extends "dashboard/base.html" %}
 {% load static i18n avatar %}
-{% block title %}Circles - {{object.name}}{% endblock %}
+{% block title %}{{object.name}}{% endblock %}
 
 {% block content %}
 {% if object.group_pic %}
 <section class="hero-wrap d-flex flex-column justify-content-end"
-style="background: linear-gradient(rgb(148,163,184,0.8), rgb(51,65,85,0.8)), url({{object.group_pic.url}}); background-size: cover;" 
+style="background: linear-gradient(rgb(148,163,184,0.8), rgb(51,65,85,0.8)), url({{object.group_pic.url}}); background-size: cover; background-position: center;" 
     >
 {% else %}
 <section class="hero-wrap d-flex flex-column justify-content-end"
-    style="background:url('{% static 'assets/img/default_group.jpg' %}') rgba(255, 255, 255, 0.8) ; background-blend-mode: multiply; background-size:contain;">
+    style="background:linear-gradient(rgb(148,163,184,0.8), rgb(51,65,85,0.8)), url('{% static 'assets/img/default_group.jpg' %}') ; background-blend-mode: multiply; background-size:cover; background-position:center;">
 {% endif %}
     <div class="overlay"></div>
     <div class="container">
@@ -46,7 +46,9 @@ style="background: linear-gradient(rgb(148,163,184,0.8), rgb(51,65,85,0.8)), url
 
                 </div>
             </div>
+            
             <div class="col-6 d-flex align-items-stretch ftco-animate fadeInUp ftco-animated">
+                <a href="{% url 'all-menus' %}">
                 <div class="services-2 text-center">
                     <div class="icon-wrap">
                         <div class="icon d-flex align-items-center justify-content-center">
@@ -58,12 +60,12 @@ style="background: linear-gradient(rgb(148,163,184,0.8), rgb(51,65,85,0.8)), url
                                     <p class="nb_count">{{nb_of_meals}}</p>
                                 </div>
                             </div>
-
                         </div>
                     </div>
-
                 </div>
+                </a>
             </div>
+            
 
         </div>
     </div>
@@ -72,7 +74,7 @@ style="background: linear-gradient(rgb(148,163,184,0.8), rgb(51,65,85,0.8)), url
 <!-- Members container -->
 
 <div class="container">
-    <h2 class="text-center mb-5">{% trans "Members" %}</h2>
+    <h1 class="text-center mb-5 darkest-color">{% trans "Members" %}</h1>
     {% if nb_of_users  == 1 %} 
     <div class="d-flex flex-wrap justify-content-center">
         
@@ -89,16 +91,16 @@ style="background: linear-gradient(rgb(148,163,184,0.8), rgb(51,65,85,0.8)), url
         <div class="d-flex flex-wrap justify-content-center">
             <div class="member text-center mx-2">
                 <div class="icon-wrap">
-                    <button class="icon d-flex align-items-center justify-content-center" data-toggle="modal" data-target="#exampleModal">
+                    <button class="icon d-flex align-items-center justify-content-center" data-bs-toggle="modal" data-bs-target="#exampleModal">
                         <i class="fas fa-plus"></i>
                     </button>
                 </div>
             </div>
             <div class="member text-center mx-2">
-            <a href="{% url 'user_profile' object.leader object.leader.profile.uuid %}">
+            <a href="{% url 'profile' object.leader.slug  %}">
                 <div class="icon-wrap">
-                    {% if object.leader.profile.avatar%}
-                    <div class="icon d-flex align-items-center justify-content-center" style="background:url('{{object.leader.profile.avatar.url}}') rgba(255, 255, 255, 0.8) ; background-blend-mode: multiply;"></div>
+                    {% if object.leader.profile_pic%}
+                    <div class="icon d-flex align-items-center justify-content-center" style="background:url('{{object.leader.profile_pic.url}}') rgba(255, 255, 255, 0.8) ; background-blend-mode: multiply;"></div>
                     {% else %}
                     <div class="icon">{{ object.leader|avatar }}</div>
                     {% endif %}
@@ -115,15 +117,15 @@ style="background: linear-gradient(rgb(148,163,184,0.8), rgb(51,65,85,0.8)), url
 
             {% else %}
             <div class="member text-center mx-2">
-            <a href="{% url 'user_profile' i i.profile.uuid %}">
+            <a href="{% url 'profile'  i.slug %}">
                 <div class="icon-wrap">
-                    {% if i.profile.avatar %}
-                    <div class="icon d-flex align-items-center justify-content-center" style="background:url('{{i.profile.avatar.url}}') rgba(255, 255, 255, 0.8) ; background-blend-mode: multiply;"></div>
+                    {% if i.profile_pic %}
+                    <div class="icon d-flex align-items-center justify-content-center" style="background:url('{{i.profile_pic.url}}') rgba(255, 255, 255, 0.8) ; background-blend-mode: multiply;background-size:cover;"></div>
                     {% else %}
                     <div class="icon">{{ i|avatar }}</div>
                     {% endif %}
                 </div>
-                <p class="text-center">{{i.username}}
+                <p class="text-center">{{i.pseudo}}
                 
                 </p>
                 </a>
@@ -166,21 +168,21 @@ style="background: linear-gradient(rgb(148,163,184,0.8), rgb(51,65,85,0.8)), url
 <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
       <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">{% trans "Invite other people to join your group" %}</h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
+       <div class="text-center">
+        <img src="{% static 'assets/img/icons/user-100.png' %}" alt="error icon" />
+        <br/>
+        <h3 class="modal-title mid-color" id="exampleModalLabel">{% trans "Invite other people to join your group" %}</h3>
         </div>
-        <div class="modal-body text-center">
-            
-            <p class="text-center">{{object.uuid}}</p>
+        <div class="text-center">
+            <p class="darkest-color mt-4">{% trans "Code of the group :" %}</p>
+            <p class="text-center darkest-color">{{object.uuid}}</p>
             <button id="copy-btn" class="btn-kdark btn-rounded" data={{object.uuid}}>{% trans "Copy the invitation" %}</button>
         </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-kdark btn-rounded" data-dismiss="modal">{% trans 'Close' %}</button>
-          
+        <div class="text-center">
+          <a type="button" class="btn btn-outlined btn-modal outline-mid-color my-2" data-bs-dismiss="modal">{% trans 'Cancel' %}</a>
         </div>
+          
+       
       </div>
     </div>
   </div>

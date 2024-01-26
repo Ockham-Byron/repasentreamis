@@ -51,6 +51,9 @@ INSTALLED_APPS = [
     'pages',
     'recettes',
     'groups',
+
+    #plugins
+    'bootstrap_datepicker_plus',
     
     
 ]

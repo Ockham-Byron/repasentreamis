@@ -10,13 +10,15 @@
     <div class="card card-recipe shadow mx-2">
       <div class="row justify-content-center">
         <div class="col-lg-3 order-lg-2">
+          <a href="{% url 'recipe-detail' recipe.slug %}">
           <div class="card-recipe-image">
             {% if recipe.picture %}
               <img src="{{ recipe.picture.url }}" class="rounded-circle">
             {% else %}
-
+            <img src="{% static 'assets/img/illustrations/dish_default.jpeg' %}" alt="Dish picture"  >
             {% endif %}
           </div>
+          </a>
         </div>
       </div>
       
@@ -26,22 +28,22 @@
           <h3>
             {{recipe.name}}
           </h3>
-          <div class="h5 font-weight-300">
-            <i class="ni location_pin mr-2"></i>{{recipe.chef}}
+          <div class="darkest-color">
+            <i class="fa-solid fa-kitchen-set me-2"></i>{{recipe.chef}}
           </div>
-          <div class="h5 mt-4">
-            <i class="ni business_briefcase-24 mr-2"></i>{{recipe.averagereview}}
+          <div class="darkest-color">
+            <i class="fa-solid fa-hands-clapping me-2"></i>{{recipe.averagereview}}
           </div>
           
-          {% for comment in recipe.recipe_comments.all %}
-          <div>
-            <i class="ni education_hat mr-2"></i>{{comment.message}}
-          </div>
-          {% endfor %}
+         
           <hr class="my-4">
-          
 
-          <a href="{% url 'add-comment' recipe.slug %}">{% trans 'Add comment' %}</a>
+          <div class="d-flex flex-column align-items-center">
+          
+          <a class="btn-wide btn-mid-color mb-2" href={% url 'recipe-detail' recipe.slug %}>{% trans 'View details' %}</a>
+          <a class="btn-wide btn-brand-color" href="{% url 'add-comment' recipe.slug %}">{% trans 'Add comment' %}</a>
+
+          </div>
           
         </div>
       </div>

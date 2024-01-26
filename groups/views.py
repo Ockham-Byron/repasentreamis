@@ -27,7 +27,7 @@ def add_group_view(request):
             group.save()
             group_name = group.name
             messages.success(request, _(f'New group {group_name} created successfully'), extra_tags=_('Great !'))
-            return redirect('all_groups')
+            return redirect('all-groups')
 
     return render(request, 'groups/add_group.html', {'form': form,})
 
@@ -54,13 +54,11 @@ def join_group_view(request):
         if is_valid_uuid(group_code):
             if group_exists(group_code):
                 group = CustomGroup.objects.get(uuid=group_code)
-                if user.groups.filter(group=group).exists():
+                if user in group.members.all():
                     messages.error(request, f'Vous faites partie de ce groupe')
                 else:
                     group.members.add(user)    
                     group.save()
-                    user.groups.add(group)
-                    user.save()
                     return redirect('all-groups')
             
             else:

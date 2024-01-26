@@ -1,7 +1,16 @@
 from django.shortcuts import render, redirect
 from django.shortcuts import get_object_or_404, get_list_or_404
+from django.contrib.auth.decorators import login_required
 from .models import *
 from .forms import *
+
+def is_unique_group(user):
+    groups = CustomGroup.objects.filter(members__id__contains=user.id)
+    nb_of_groups = len(groups)
+    if nb_of_groups == 1:
+        return True
+    else:
+        return False
 
 # Create your views here.
 def add_recipe(request):
@@ -51,14 +60,16 @@ def add_comment(request, slug):
 
     return render(request, "recettes/add-comment.html", {'form':form})
 
-
+@login_required
 def add_menu(request):
     form=AddMenuForm()
-
+    if is_unique_group(request.user):
+        group = CustomGroup.objects.get(members__id__contains=request.user.id)
     if request.method == "POST":
         form=AddMenuForm(request.POST, request.FILES)
         if form.is_valid():
-            menu=form.save()
+            menu=form.save(commit=False)
+            menu.group=group
             menu.save()
             if 'add-recipe' in request.POST:
                 return redirect('add-recipe-to-menu', menu.slug)
@@ -109,11 +120,21 @@ def add_anecdote(request, slug):
 
     return render(request, 'recettes/add-anecdote.html', {'form':form})
 
+@login_required
 def all_menus(request):
-    menus = get_list_or_404(Menu)
+    groups = CustomGroup.objects.filter(members__id__contains=request.user.id)
+    nb_of_groups = len(groups)
+    group = None
+    if nb_of_groups == 1:
+        group = CustomGroup.objects.get(members__id__contains=request.user.id)
+    
+    menus = Menu.objects.filter(group__members__id__contains = request.user.id).distinct()
 
     context={
-        'menus':menus
+        'menus':menus,
+        'nb_of_groups':nb_of_groups,
+        'groups':groups,
+        'group':group,
     }
 
     return render(request, "recettes/all-menus.html", context=context )

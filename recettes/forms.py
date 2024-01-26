@@ -7,6 +7,7 @@ from django.utils.html import conditional_escape
 from django.utils.safestring import mark_safe
 from django.utils.translation import gettext as _
 from django.contrib.auth import get_user_model
+from bootstrap_datepicker_plus.widgets import DatePickerInput
 from .models import Recipe, Comment, Menu, Music, Anecdote
 
 User=get_user_model()
@@ -109,10 +110,14 @@ class AddMenuForm(forms.ModelForm):
         widget=ColumnCheckboxSelectMultiple(columns=3, css_class='col-md-4', wrapper_css_class='row',)
     )
     picture=forms.ImageField(widget=forms.FileInput, required=False)
+    eaten_at = forms.DateField(widget=DatePickerInput(options={
+        "format": "DD/MM/YYYY",
+        "showTodayButton": True,
+        }))
 
     class Meta:
         model=Menu
-        fields=['recipes', 'picture']
+        fields=['recipes', 'picture', 'eaten_at']
 
 class AddCommentForm(forms.ModelForm):
     CHOICES = [(i,i) for i in range(11)]
@@ -143,5 +148,5 @@ class AddAnecdoteForm(forms.ModelForm):
     
 
     class Meta:
-        model=Music
+        model=Anecdote
         fields=['message']
