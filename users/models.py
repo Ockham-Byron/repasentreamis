@@ -47,7 +47,7 @@ class CustomUser(AbstractUser):
     updated_at = models.DateTimeField(auto_now=True)
 
     def __str__(self):
-        return self.username
+        return self.pseudo
 
     
     def save(self, *args, **kwargs):

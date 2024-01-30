@@ -95,13 +95,18 @@ def columnize(items, columns):
     return elts_per_column
 
 class AddRecipeForm(forms.ModelForm):
-    name=forms.CharField(widget=forms.TextInput(attrs={'placeholder': _("Name")}))
-    chef=forms.ModelChoiceField(widget=forms.Select(), queryset=User.objects.all())
+    name=forms.CharField(widget=forms.TextInput(attrs={'placeholder': _("Name of the Dish")}))
+    chef=forms.ModelMultipleChoiceField(widget=ColumnCheckboxSelectMultiple(columns=3, css_class='col-md-4', wrapper_css_class='row',), queryset=User.objects.none(), required=None)
     picture=forms.ImageField(required=False, widget=forms.FileInput)
 
     class Meta:
         model=Recipe
         fields=['name', 'chef', 'picture']
+
+    def __init__(self, group, *args, **kwargs):
+        super(AddRecipeForm, self).__init__(*args, **kwargs)
+        
+        self.fields['chef'].queryset=group.members.all()
 
 class AddMenuForm(forms.ModelForm):
     recipes = forms.ModelMultipleChoiceField(

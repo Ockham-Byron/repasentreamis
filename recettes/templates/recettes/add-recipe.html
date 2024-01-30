@@ -1,6 +1,6 @@
 {% extends "dashboard/base.html" %}
 {% load avatar i18n static %}
-{% block title %}{% trans 'Add Recipe' %}{% endblock title %}
+{% block title %}{% trans 'Add Dish' %}{% endblock title %}
 {% block content %}
 
 
@@ -20,7 +20,7 @@
           </button>
       </div>
     {% endif %}
-    <p class="title">{% trans 'Add Recipe' %}</p>
+    <p class="title">{% trans 'Add Dish' %}</p>
     
     <input
       type="file"
@@ -49,6 +49,8 @@
 
         
         {{form.name}}
+
+        <p class="mb-0">{% trans "Who cooked ?" %}</p>
         {{form.chef}}
         
       

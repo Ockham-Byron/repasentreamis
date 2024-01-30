@@ -281,6 +281,7 @@ a.card-recipe-btn-small {
 	padding: 4em 0;
 	  padding-top: 6em;
 	position: relative;
+  max-width:800px;
   }
 
   .services-2 {

@@ -41,10 +41,11 @@ def path_and_rename_menu(instance, filename):
 class Recipe(models.Model):
     id = models.UUIDField(default = uuid4, editable = False, primary_key=True)
     name=models.CharField(max_length=100, blank=False, null=False)
-    chef=models.ForeignKey(User, blank=True, on_delete=models.CASCADE)
+    chef=models.ForeignKey(User, null=True, blank=True, on_delete=models.CASCADE)
     picture=models.ImageField(upload_to=path_and_rename, blank=True, null=True)
     created_at=models.DateTimeField(auto_now_add=True)
     updated_at=models.DateTimeField(auto_now=True)
+    group = models.ForeignKey(CustomGroup, on_delete=models.CASCADE, related_name="recipes")
     slug = models.SlugField(max_length=255, unique= True, default=None, null=True)
 
     def __str__(self):

@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth import get_user_model
+from groups.models import CustomGroup
 
 User = get_user_model
 
@@ -7,10 +8,11 @@ User = get_user_model
 def dashboard_view(request):
   if request.user.is_authenticated:
     user=request.user
-
-    context = {'user': user}
-
-    return render(request, 'dashboard/dashboard.html', context=context)
+    if CustomGroup.objects.filter(members__id__contains=user.id):
+      context = {'user': user}
+      return render(request, 'dashboard/dashboard.html', context=context)
+    else:
+      return redirect('all-groups')
   
   else:
     return redirect('login')

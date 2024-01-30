@@ -4,38 +4,53 @@ from django.contrib.auth.decorators import login_required
 from .models import *
 from .forms import *
 
-def is_unique_group(user):
+    
+def get_groups(user):
     groups = CustomGroup.objects.filter(members__id__contains=user.id)
     nb_of_groups = len(groups)
     if nb_of_groups == 1:
-        return True
-    else:
-        return False
+        group = CustomGroup.objects.get(members__id__contains=user.id)
+    elif nb_of_groups == 0:
+        group = None
+    elif nb_of_groups > 1:
+        pass
+
+    return group
 
 # Create your views here.
+@login_required
 def add_recipe(request):
-    form=AddRecipeForm()
+    group = get_groups(request.user)
+    if group is None:
+        return redirect('all-groups')
+    else:
+        form=AddRecipeForm(group)
 
-    if request.method == "POST":
-        form=AddRecipeForm(request.POST, request.FILES)
-        if form.is_valid():
-            recipe=form.save()
-            recipe.save()
-            return redirect('all-recipes')
+        if request.method == "POST":
+            form=AddRecipeForm(request.POST, request.FILES)
+            if form.is_valid():
+                recipe=form.save()
+                recipe.save()
+                return redirect('all-recipes')
 
-    return render(request, "recettes/add-recipe.html", {'form':form})
+        return render(request, "recettes/add-recipe.html", {'form':form})
 
 
     
-
+@login_required
 def all_recipes(request):
-    recipes = get_list_or_404(Recipe)
+    group = get_groups(request.user)
+    if group is None:
+        return redirect('all-groups')
+    else:
+        recipes = Recipe.objects.filter(group=group)
 
-    context={
-        'recipes':recipes
-    }
-    return render(request, "recettes/all-recipes.html", context=context)
+        context={
+            'recipes':recipes
+        }
+        return render(request, "recettes/all-recipes.html", context=context)
 
+@login_required
 def recipe_detail(request, slug):
     recipe=get_object_or_404(Recipe, slug=slug)
 
@@ -45,6 +60,7 @@ def recipe_detail(request, slug):
     
     return render(request, "recettes/recipe-detail.html", context=context)
 
+@login_required
 def add_comment(request, slug):
     recipe=get_object_or_404(Recipe, slug=slug)
     form=AddCommentForm()
@@ -63,28 +79,36 @@ def add_comment(request, slug):
 @login_required
 def add_menu(request):
     form=AddMenuForm()
-    if is_unique_group(request.user):
-        group = CustomGroup.objects.get(members__id__contains=request.user.id)
-    if request.method == "POST":
-        form=AddMenuForm(request.POST, request.FILES)
-        if form.is_valid():
-            menu=form.save(commit=False)
-            menu.group=group
-            menu.save()
-            if 'add-recipe' in request.POST:
-                return redirect('add-recipe-to-menu', menu.slug)
-            if 'create-menu' in request.POST:
-                return redirect('all-menus')
+    group = get_groups(request.user)
+    if group is None:
+        return redirect('all-groups')
+    else:
+        group=get_groups(request.user)
+        if request.method == "POST":
+            form=AddMenuForm(request.POST, request.FILES)
+            if form.is_valid():
+                menu=form.save(commit=False)
+                menu.group=group
+                menu.save()
+                if 'add-recipe' in request.POST:
+                    return redirect('add-recipe-to-menu', menu.slug)
+                if 'create-menu' in request.POST:
+                    return redirect('all-menus')
 
-    return render(request, "recettes/add-menu.html", {'form':form})
+        return render(request, "recettes/add-menu.html", {'form':form})
 
+@login_required
 def add_recipe_to_menu(request, slug):
     menu = get_object_or_404(Menu, slug=slug)
+    group =get_groups(request.user)
 
-    form=AddRecipeForm()
+    
+    form=AddRecipeForm(group)
+
+    
 
     if request.method == "POST":
-        form=AddRecipeForm(request.POST, request.FILES)
+        form=AddRecipeForm(group, request.POST, request.FILES)
         if form.is_valid():
             recipe=form.save()
             recipe.save()
@@ -94,6 +118,7 @@ def add_recipe_to_menu(request, slug):
 
     return render(request, "recettes/add-recipe.html", {'form':form})
 
+@login_required
 def add_music(request, slug):
     menu=get_object_or_404(Menu, slug=slug)
     form=AddMusicForm()
@@ -107,6 +132,7 @@ def add_music(request, slug):
 
     return render(request, 'recettes/add-music.html', {'form':form})
 
+@login_required
 def add_anecdote(request, slug):
     menu=get_object_or_404(Menu, slug=slug)
     form=AddAnecdoteForm()
@@ -122,19 +148,15 @@ def add_anecdote(request, slug):
 
 @login_required
 def all_menus(request):
-    groups = CustomGroup.objects.filter(members__id__contains=request.user.id)
-    nb_of_groups = len(groups)
-    group = None
-    if nb_of_groups == 1:
-        group = CustomGroup.objects.get(members__id__contains=request.user.id)
-    
-    menus = Menu.objects.filter(group__members__id__contains = request.user.id).distinct()
+    group = get_groups(request.user)
+    if group is None: 
+        return redirect('all-groups')
+    else:
+        menus = Menu.objects.filter(group__members__id__contains = request.user.id).distinct()
 
-    context={
-        'menus':menus,
-        'nb_of_groups':nb_of_groups,
-        'groups':groups,
-        'group':group,
-    }
+        context={
+            'menus':menus,
+            'group':group,
+        }
 
-    return render(request, "recettes/all-menus.html", context=context )
+        return render(request, "recettes/all-menus.html", context=context )
