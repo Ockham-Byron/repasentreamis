@@ -26,7 +26,7 @@ def add_group_view(request):
             group.members.add(user)
             group.save()
             group_name = group.name
-            messages.success(request, _(f'New group {group_name} created successfully'), extra_tags=_('Great !'))
+            messages.add_message(request, messages.SUCCESS ,message= _(f'New group {group_name} created successfully'), extra_tags=_('Great !'))
             return redirect('all-groups')
 
     return render(request, 'groups/add_group.html', {'form': form,})

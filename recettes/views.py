@@ -13,7 +13,8 @@ def get_groups(user):
     elif nb_of_groups == 0:
         group = None
     elif nb_of_groups > 1:
-        pass
+        group = groups
+        
 
     return group
 
@@ -39,11 +40,12 @@ def add_recipe(request):
     
 @login_required
 def all_recipes(request):
-    group = get_groups(request.user)
-    if group is None:
+    groups = get_groups(request.user)
+    if groups is None:
         return redirect('all-groups')
     else:
-        recipes = Recipe.objects.filter(group=group)
+        for group in groups:
+            recipes = Recipe.objects.filter(group=group)
 
         context={
             'recipes':recipes
@@ -98,6 +100,24 @@ def add_menu(request):
         return render(request, "recettes/add-menu.html", {'form':form})
 
 @login_required
+def add_menu_from_group(request, slug):
+    form=AddMenuForm()
+    group = CustomGroup.objects.get(slug=slug)
+
+    if request.method == "POST":
+        form=AddMenuForm(request.POST, request.FILES)
+        if form.is_valid():
+            menu=form.save(commit=False)
+            menu.group=group
+            menu.save()
+            if 'add-recipe' in request.POST:
+                return redirect('add-recipe-to-menu', menu.slug)
+            if 'create-menu' in request.POST:
+                return redirect('all-menus')
+
+    return render(request, "recettes/add-menu.html", {'form':form})
+
+@login_required
 def add_recipe_to_menu(request, slug):
     menu = get_object_or_404(Menu, slug=slug)
     group =get_groups(request.user)
@@ -148,15 +168,18 @@ def add_anecdote(request, slug):
 
 @login_required
 def all_menus(request):
-    group = get_groups(request.user)
-    if group is None: 
+    groups = get_groups(request.user)
+    if groups is None: 
         return redirect('all-groups')
     else:
-        menus = Menu.objects.filter(group__members__id__contains = request.user.id).distinct()
+        for group in groups:
+            menus = Menu.objects.filter(group__members__id__contains = request.user.id).distinct()
+    
+
 
         context={
             'menus':menus,
-            'group':group,
+            'groups':groups,
         }
 
         return render(request, "recettes/all-menus.html", context=context )

@@ -9,7 +9,7 @@ style="background: linear-gradient(rgb(148,163,184,0.8), rgb(51,65,85,0.8)), url
     >
 {% else %}
 <section class="hero-wrap d-flex flex-column justify-content-end"
-    style="background:linear-gradient(rgb(148,163,184,0.8), rgb(51,65,85,0.8)), url('{% static 'assets/img/default_group.jpg' %}') ; background-blend-mode: multiply; background-size:cover; background-position:center;">
+    style="background:linear-gradient(rgb(148,163,184,0.8), rgb(51,65,85,0.8)), url('{% static 'assets/img/illustrations/group_default.jpeg' %}') ; background-blend-mode: multiply; background-size:cover; background-position:center;">
 {% endif %}
     <div class="overlay"></div>
     <div class="container">
@@ -141,7 +141,7 @@ style="background: linear-gradient(rgb(148,163,184,0.8), rgb(51,65,85,0.8)), url
 {% if nb_of_meals == 0 %}
    
 
-    <a class="btn" href="{% url 'add-menu' %}">
+    <a class="btn" href="{% url 'add-menu-from-group' object.slug %}">
         <div class="sketch-box">
             <div class="card-cta border-0 sketch-box">
                 <img class="card-icon mx-auto" src="{% static 'assets/img/icons/add-100.png' %}" alt="Card image cap" width="100px" >
@@ -157,7 +157,7 @@ style="background: linear-gradient(rgb(148,163,184,0.8), rgb(51,65,85,0.8)), url
 
 
 <!-- Floating button -->
-<a href="{% url 'add-menu' %}">
+<a href="{% url 'add-menu-from-group' object.slug %}">
 <div class="kfloat" data-toggle="tooltip" title="{% trans 'Add Meal' %}">
 <div class="my-float">+</div>
 </div>

@@ -7,6 +7,7 @@ from .views import *
 urlpatterns = [
     path(_('all-menus'), all_menus, name="all-menus"),
     path(_('add-menu'), add_menu, name="add-menu"),
+    path(_('add-menu/<slug>'), add_menu_from_group, name="add-menu-from-group"),
     path(_('all-recipes'), all_recipes, name="all-recipes"),
     path(_('add-recipe'), add_recipe, name="add-recipe"),
     path(_('add-recipe-to-menu/<slug>'), add_recipe_to_menu, name="add-recipe-to-menu"),
