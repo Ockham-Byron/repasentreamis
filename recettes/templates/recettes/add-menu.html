@@ -8,18 +8,7 @@
 <div class="d-flex align-items-center justify-content-center">
   <form class="kform" method="POST" enctype="multipart/form-data">
     {% csrf_token %}
-    {% if form.errors %}
-      <div class="alert alert-danger alert-dismissible" role="alert">
-          <div id="form_errors">
-              {% for key, value in form.errors.items %}
-              <strong>{{ value }}</strong>
-              {% endfor %}
-          </div>
-          <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-              <span aria-hidden="true">&times;</span>
-          </button>
-      </div>
-    {% endif %}
+    
     <p class="title">{% trans 'Add Meal' %}</p>
     
     <input
@@ -51,10 +40,19 @@
         <p class="mb-0">{% trans "Which dishes did you eat ?" %}</p>
         
         {{form.recipes}}
+
+        <button class="submit" type="submit" name="add-recipe">{% trans 'Add Dish' %}</button>
+        {% if is_group %}
+
+        {% else %}
+        <p class="mb-0">{% trans "Where did you eat ?" %}</p>
+
+        {{form.group}}
+        {% endif %}
         
         
       
-      <button class="submit" type="submit" name="add-recipe">{% trans 'Add Dish' %}</button>
+      
       <button class="submit" type="submit" name="create-menu">{% trans 'Submit' %}</button>
       <div class="text-center">
         <a href="{% url 'all-menus' %}" class="mid-color">{% trans 'Cancel' %}</a>

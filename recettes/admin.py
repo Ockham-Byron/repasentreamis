@@ -3,7 +3,7 @@ from .models import *
 
 # Register your models here.
 class RecipeAdmin(admin.ModelAdmin):
-  list_display=('name', 'chef','created_at', 'updated_at')
+  list_display=('name', 'created_at', 'updated_at')
   
 
 admin.site.register(Recipe, RecipeAdmin)

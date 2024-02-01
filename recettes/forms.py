@@ -1,6 +1,7 @@
 import math
 from itertools import chain
-
+import uuid
+from django.core.exceptions import ValidationError
 from django import forms
 from django.utils.encoding import force_str
 from django.utils.html import conditional_escape
@@ -9,6 +10,7 @@ from django.utils.translation import gettext as _
 from django.contrib.auth import get_user_model
 from bootstrap_datepicker_plus.widgets import DatePickerInput
 from .models import Recipe, Comment, Menu, Music, Anecdote
+from groups.models import CustomGroup
 
 User=get_user_model()
 
@@ -119,10 +121,23 @@ class AddMenuForm(forms.ModelForm):
         "format": "DD/MM/YYYY",
         "showTodayButton": True,
         }))
+    group = forms.ModelChoiceField(
+        required=True, 
+        queryset=CustomGroup.objects.none(), 
+        widget=ColumnCheckboxSelectMultiple(columns=3, css_class='col-md-4', wrapper_css_class='row',)
+    )
 
     class Meta:
         model=Menu
-        fields=['recipes', 'picture', 'eaten_at']
+        fields=['recipes', 'picture', 'eaten_at', 'group']
+    
+    def __init__(self, user, *args, **kwargs):
+        super(AddMenuForm, self).__init__(*args, **kwargs)
+        
+        self.fields['group'].queryset=user.group_members.all()
+
+    
+    
 
 class AddCommentForm(forms.ModelForm):
     CHOICES = [(i,i) for i in range(11)]

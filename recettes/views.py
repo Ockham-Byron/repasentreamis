@@ -8,11 +8,9 @@ from .forms import *
 def get_groups(user):
     groups = CustomGroup.objects.filter(members__id__contains=user.id)
     nb_of_groups = len(groups)
-    if nb_of_groups == 1:
-        group = CustomGroup.objects.get(members__id__contains=user.id)
-    elif nb_of_groups == 0:
+    if nb_of_groups == 0:
         group = None
-    elif nb_of_groups > 1:
+    elif nb_of_groups >= 1:
         group = groups
         
 
@@ -28,7 +26,7 @@ def add_recipe(request):
         form=AddRecipeForm(group)
 
         if request.method == "POST":
-            form=AddRecipeForm(request.POST, request.FILES)
+            form=AddRecipeForm(group, request.POST, request.FILES)
             if form.is_valid():
                 recipe=form.save()
                 recipe.save()
@@ -80,48 +78,78 @@ def add_comment(request, slug):
 
 @login_required
 def add_menu(request):
-    form=AddMenuForm()
+    form=AddMenuForm(request.user)
     group = get_groups(request.user)
+    is_group = False
+    if len(group) == 1:
+                is_group = True
     if group is None:
         return redirect('all-groups')
+    
     else:
-        group=get_groups(request.user)
+        
         if request.method == "POST":
-            form=AddMenuForm(request.POST, request.FILES)
-            if form.is_valid():
-                menu=form.save(commit=False)
-                menu.group=group
+            form=AddMenuForm(request.user, request.POST, request.FILES)
+            if len(group) == 1:
+                group = CustomGroup.objects.get(uuid=group[0].uuid)
+                is_group = True
+            else:
+                group = request.POST.get('group')
+                group = CustomGroup.objects.get(uuid=group)
+                
+            if form.is_valid() or group is not None:
+                eaten_at = request.POST.get('eaten_at')
+                picture = request.POST.get('picture')
+                recipes = request.POST.get('recipes')
+                print(recipes)
+                
+                menu = Menu(eaten_at=eaten_at,picture=picture, group=group)
                 menu.save()
+                    
+
                 if 'add-recipe' in request.POST:
                     return redirect('add-recipe-to-menu', menu.slug)
                 if 'create-menu' in request.POST:
                     return redirect('all-menus')
+            
+            else:
+                print(form.errors.as_data())
+                
 
-        return render(request, "recettes/add-menu.html", {'form':form})
+        return render(request, "recettes/add-menu.html", {'form':form, 'is_group':is_group})
 
 @login_required
 def add_menu_from_group(request, slug):
-    form=AddMenuForm()
+    form=AddMenuForm(request.user)
     group = CustomGroup.objects.get(slug=slug)
+    is_group = True
 
     if request.method == "POST":
-        form=AddMenuForm(request.POST, request.FILES)
-        if form.is_valid():
-            menu=form.save(commit=False)
-            menu.group=group
+        form=AddMenuForm(request.user, request.POST, request.FILES)
+        print(group)
+        if form.is_valid() or is_group :
+            eaten_at = request.POST.get('eaten_at')
+            picture = request.POST.get('picture')
+            recipes = request.POST.get('recipes')
+            if recipes is not None:
+                menu = Menu(eaten_at=eaten_at,picture=picture,recipes=recipes.set(), group=group)
+            else:
+                menu = Menu(eaten_at=eaten_at,picture=picture, group=group)
             menu.save()
             if 'add-recipe' in request.POST:
                 return redirect('add-recipe-to-menu', menu.slug)
             if 'create-menu' in request.POST:
                 return redirect('all-menus')
+            
+        else:
+            print(form.errors)
 
-    return render(request, "recettes/add-menu.html", {'form':form})
+    return render(request, "recettes/add-menu.html", {'form':form, 'is_group':is_group})
 
 @login_required
 def add_recipe_to_menu(request, slug):
     menu = get_object_or_404(Menu, slug=slug)
-    group =get_groups(request.user)
-
+    group = menu.group
     
     form=AddRecipeForm(group)
 
@@ -129,8 +157,11 @@ def add_recipe_to_menu(request, slug):
 
     if request.method == "POST":
         form=AddRecipeForm(group, request.POST, request.FILES)
+        chef = request.POST.get("chef")
+        print(chef)
         if form.is_valid():
-            recipe=form.save()
+            recipe=form.save(commit=False)
+            recipe.group=group
             recipe.save()
             menu.recipes.add(recipe)
             menu.save()
@@ -168,12 +199,14 @@ def add_anecdote(request, slug):
 
 @login_required
 def all_menus(request):
-    groups = get_groups(request.user)
-    if groups is None: 
+    group = get_groups(request.user)
+    if group is None: 
         return redirect('all-groups')
     else:
+        groups = CustomGroup.objects.filter(members__id__contains=request.user.id)
         for group in groups:
             menus = Menu.objects.filter(group__members__id__contains = request.user.id).distinct()
+    
     
 
 
