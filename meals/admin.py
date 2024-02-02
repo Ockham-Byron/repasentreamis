@@ -13,10 +13,10 @@ class CommentAdmin(admin.ModelAdmin):
 
 admin.site.register(Comment, CommentAdmin)
 
-class MenuAdmin(admin.ModelAdmin):
-    list_display=('created_at',)
+class MealAdmin(admin.ModelAdmin):
+    list_display=('eaten_at',)
 
-admin.site.register(Menu, MenuAdmin)
+admin.site.register(Meal, MealAdmin)
 
 admin.site.register(Music)
 admin.site.register(Anecdote)

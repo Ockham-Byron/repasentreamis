@@ -37,6 +37,7 @@ img#sidebar-logo {
 
 .card-recipe{
   width:300px;
+  margin-bottom:150px;
 }
 
 
@@ -139,7 +140,7 @@ hr {
 }
 
 .card-body {
-  padding: 1.5rem;
+  padding: 1.5rem 1.5rem 50px;
   flex: 1 1 auto;
 }
 
@@ -231,6 +232,12 @@ a.card-recipe-btn-small {
   padding:2px 5px;
 }
 
+.edit-button {
+  padding-top: 20px;
+  position:absolute;
+  bottom:2px;
+  right: 15px;
+}
 
 
 /* Group Card */

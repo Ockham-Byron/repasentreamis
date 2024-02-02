@@ -25,7 +25,7 @@ urlpatterns = i18n_patterns(
     path('admin/', admin.site.urls),
     path('i18n/', include('django.conf.urls.i18n')),
     path('', include('users.urls')),
-    path('recipes/', include('recettes.urls')),
+    path('meals/', include('meals.urls')),
     path('dashboard/', include('dashboard.urls')),
     path('groups/', include('groups.urls')),
     path('pages/', include('pages.urls')),

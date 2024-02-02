@@ -5,12 +5,14 @@ from .views import *
 
 
 urlpatterns = [
-    path(_('all-menus'), all_menus, name="all-menus"),
-    path(_('add-menu'), add_menu, name="add-menu"),
-    path(_('add-menu/<slug>'), add_menu_from_group, name="add-menu-from-group"),
+    path(_('all-meals'), all_meals, name="all-meals"),
+    path(_('add-meal'), add_meal, name="add-meal"),
+    path(_('add-meal/<slug>'), add_meal_from_group, name="add-meal-from-group"),
+    path(_('edit-meal/<slug>'), edit_meal, name="edit-meal"),
+    path(_('delete-meal/<slug>'), delete_meal, name="delete-meal"),
     path(_('all-recipes'), all_recipes, name="all-recipes"),
     path(_('add-recipe'), add_recipe, name="add-recipe"),
-    path(_('add-recipe-to-menu/<slug>'), add_recipe_to_menu, name="add-recipe-to-menu"),
+    path(_('add-recipe-to-meal/<slug>'), add_recipe_to_meal, name="add-recipe-to-meal"),
     path(_('recipe/<slug>'), recipe_detail, name="recipe-detail"),
 
     #comments

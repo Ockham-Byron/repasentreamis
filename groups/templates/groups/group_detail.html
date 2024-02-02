@@ -48,7 +48,7 @@ style="background: linear-gradient(rgb(148,163,184,0.8), rgb(51,65,85,0.8)), url
             </div>
             
             <div class="col-6 d-flex align-items-stretch justify-content-center ftco-animate fadeInUp ftco-animated">
-                <a href="{% url 'all-menus' %}">
+                <a href="{% url 'all-meals' %}">
                 <div class="services-2 text-center">
                     <div class="icon-wrap">
                         <div class="icon d-flex align-items-center justify-content-center">
@@ -141,7 +141,7 @@ style="background: linear-gradient(rgb(148,163,184,0.8), rgb(51,65,85,0.8)), url
 {% if nb_of_meals == 0 %}
    
 
-    <a class="btn" href="{% url 'add-menu-from-group' object.slug %}">
+    <a class="btn" href="{% url 'add-meal-from-group' object.slug %}">
         <div class="sketch-box">
             <div class="card-cta border-0 sketch-box">
                 <img class="card-icon mx-auto" src="{% static 'assets/img/icons/add-100.png' %}" alt="Card image cap" width="100px" >
@@ -157,7 +157,7 @@ style="background: linear-gradient(rgb(148,163,184,0.8), rgb(51,65,85,0.8)), url
 
 
 <!-- Floating button -->
-<a href="{% url 'add-menu-from-group' object.slug %}">
+<a href="{% url 'add-meal-from-group' object.slug %}">
 <div class="kfloat" data-toggle="tooltip" title="{% trans 'Add Meal' %}">
 <div class="my-float">+</div>
 </div>

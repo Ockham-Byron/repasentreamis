@@ -24,8 +24,8 @@ def path_and_rename(instance, filename):
     # return the whole path to the file
     return os.path.join(upload_to, filename)
 
-def path_and_rename_menu(instance, filename):
-    upload_to = 'menus_pictures'
+def path_and_rename_meal(instance, filename):
+    upload_to = 'meals_pictures'
     ext = filename.split('.')[-1]
     # get filename
     if instance.pk:
@@ -81,15 +81,15 @@ class Comment(models.Model):
     rating=models.IntegerField(validators=[MaxValueValidator(10), MinValueValidator(0)], blank=False, null=False)
     message=models.CharField(max_length=500, blank=True, null=True)
 
-class Menu(models.Model):
+class Meal(models.Model):
     id = models.UUIDField(default = uuid4, editable = False, primary_key=True)
-    recipes=models.ManyToManyField(Recipe, blank=True, related_name="menus")
-    picture=models.ImageField(upload_to=path_and_rename_menu, blank=True, null=True)
+    recipes=models.ManyToManyField(Recipe, blank=True, related_name="meals")
+    picture=models.ImageField(upload_to=path_and_rename_meal, blank=True, null=True)
     eaten_at=models.DateField(blank=True, null=True)
     created_at=models.DateTimeField(auto_now_add=True)
     updated_at=models.DateTimeField(auto_now=True)
     slug = models.SlugField(max_length=255, unique= True, default=None, null=True)
-    group = models.ForeignKey(CustomGroup, on_delete=models.CASCADE, related_name="menus")
+    group = models.ForeignKey(CustomGroup, on_delete=models.CASCADE, related_name="meals")
 
     def __str__(self):
         return str(self.created_at)
@@ -99,10 +99,10 @@ class Menu(models.Model):
         # create slug
         if not self.slug:
             self.slug = slugify(str(self.created_at) + '_' + str(self.id))
-        super(Menu, self).save(*args, **kwargs)
+        super(Meal, self).save(*args, **kwargs)
 
 class Music(models.Model):
-    menu=models.ManyToManyField(Menu, blank=True, related_name="musics")
+    meal=models.ManyToManyField(Meal, blank=True, related_name="musics")
     title=models.CharField(max_length=100, blank=True, null=True)
     artist=models.CharField(max_length=100, blank=True, null=True)
 
@@ -110,7 +110,7 @@ class Music(models.Model):
         return self.title
 
 class Anecdote(models.Model):
-    menu=models.ManyToManyField(Menu, blank=True, related_name="anecdotes")
+    meal=models.ManyToManyField(Meal, blank=True, related_name="anecdotes")
     message=models.TextField(blank=False, null=False)
 
     def __str__(self):

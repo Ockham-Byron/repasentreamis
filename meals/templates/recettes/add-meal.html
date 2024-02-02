@@ -9,7 +9,14 @@
   <form class="kform" method="POST" enctype="multipart/form-data">
     {% csrf_token %}
     
-    <p class="title">{% trans 'Add Meal' %}</p>
+    <p class="title">
+    {% if meal %}
+    {% trans 'Edit Meal of ' %} {{meal.eaten_at |date:"d M Y" }}
+    {% else %}
+
+    {% trans 'Add Meal' %}
+    {% endif %}
+    </p>
     
     <input
       type="file"
@@ -53,11 +60,15 @@
         
       
       
-      <button class="submit" type="submit" name="create-menu">{% trans 'Submit' %}</button>
-      <div class="text-center">
-        <a href="{% url 'all-menus' %}" class="mid-color">{% trans 'Cancel' %}</a>
-        
+      <button class="submit" type="submit" name="create-meal">{% trans 'Submit' %}</button>
+      <div class="text-center d-flex flex-column">
+        <a href="{% url 'all-meals' %}" class="mid-color">{% trans 'Cancel' %}</a>
+        {% if meal %}
+        <a href="{% url 'delete-meal' meal.slug %}" class="mid-color">{% trans 'Delete' %}</a>
+        {% endif %}
       </div>
+      
+
   </form>
 </div>
 

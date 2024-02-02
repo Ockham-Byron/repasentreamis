@@ -9,7 +9,7 @@ from django.utils.safestring import mark_safe
 from django.utils.translation import gettext as _
 from django.contrib.auth import get_user_model
 from bootstrap_datepicker_plus.widgets import DatePickerInput
-from .models import Recipe, Comment, Menu, Music, Anecdote
+from .models import Recipe, Comment, Meal, Music, Anecdote
 from groups.models import CustomGroup
 
 User=get_user_model()
@@ -110,7 +110,7 @@ class AddRecipeForm(forms.ModelForm):
         
         self.fields['chef'].queryset=group.members.all()
 
-class AddMenuForm(forms.ModelForm):
+class AddMealForm(forms.ModelForm):
     recipes = forms.ModelMultipleChoiceField(
         required=False,
         queryset=Recipe.objects.all(),
@@ -128,11 +128,11 @@ class AddMenuForm(forms.ModelForm):
     )
 
     class Meta:
-        model=Menu
+        model=Meal
         fields=['recipes', 'picture', 'eaten_at', 'group']
     
     def __init__(self, user, *args, **kwargs):
-        super(AddMenuForm, self).__init__(*args, **kwargs)
+        super(AddMealForm, self).__init__(*args, **kwargs)
         
         self.fields['group'].queryset=user.group_members.all()
 

@@ -14,15 +14,15 @@
 {% endif %}
 </h1>
 
-{% if menus %}
+{% if meals %}
 <div class="d-flex mt-5 pt-5 justify-content-center flex-wrap ">
-  {% for menu in menus %}
+  {% for meal in meals %}
     <div class="card card-recipe shadow mx-2">
       <div class="row justify-content-center">
         <div class="col-lg-3 order-lg-2">
           <div class="card-recipe-image">
-            {% if menu.picture %}
-              <img src="{{ menu.picture.url }}">
+            {% if meal.picture %}
+              <img src="{{ meal.picture.url }}">
             {% else %}
               <img src="{% static 'assets/img/illustrations/meal_default.jpeg' %}" alt="Meal picture"  >
             {% endif %}
@@ -34,10 +34,10 @@
         
         <div class="text-center">
           <h3>
-            {{menu.eaten_at|date:"d M Y"}}
+            {{meal.eaten_at|date:"d M Y"}}
           </h3>
-          <a href="{% url 'add-recipe-to-menu' menu.slug%}" class="card-recipe-btn-small">{% trans 'Dishes' %} <i class="fa-solid fa-plus fa-xs"></i></a>
-          {% for recipe in menu.recipes.all %}
+          <a href="{% url 'add-recipe-to-meal' meal.slug%}" class="card-recipe-btn-small">{% trans 'Dishes' %} <i class="fa-solid fa-plus fa-xs"></i></a>
+          {% for recipe in meal.recipes.all %}
           <a href="{% url 'recipe-detail' recipe.slug %}" class="darkest-color">
             <div class="d-flex justify-content-between align-items-center">
               <div>
@@ -58,8 +58,8 @@
           {% endfor %}
           <hr class="my-4">
 
-          <a href="{% url 'add-music' menu.slug%}" class="card-recipe-btn-small">{% trans 'Music' %} <i class="fa-solid fa-plus fa-xs"></i></a>
-          {% for music in menu.musics.all %}
+          <a href="{% url 'add-music' meal.slug%}" class="card-recipe-btn-small">{% trans 'Music' %} <i class="fa-solid fa-plus fa-xs"></i></a>
+          {% for music in meal.musics.all %}
           <div class="d-flex justify-content-between align-items-center">
             <div>
               <p class="my-auto">{{music.title}}</p>
@@ -72,8 +72,8 @@
 
           <hr class="my-4">
 
-          <a href="{% url 'add-anecdote' menu.slug%}" class="card-recipe-btn-small">{% trans 'Anecdotes' %} <i class="fa-solid fa-plus fa-xs"></i></a>
-          {% for anecdote in menu.anecdotes.all %}
+          <a href="{% url 'add-anecdote' meal.slug%}" class="card-recipe-btn-small">{% trans 'Anecdotes' %} <i class="fa-solid fa-plus fa-xs"></i></a>
+          {% for anecdote in meal.anecdotes.all %}
           <div class="d-flex justify-content-between align-items-center">
             <div>
               <p class="my-auto">{{anecdote.message}}</p>
@@ -83,14 +83,18 @@
           {% endfor %}
           
           
+          
         </div>
+        <div class="edit-button">
+              <a href="{% url 'edit-meal'  meal.slug%}" class="dark-color small"><i class="fa fa-pencil"></i>{% trans 'Edit meal' %}</a>
+          </div>
       </div>
     </div>
   {% endfor %}
 </div>
 {% else %}
 <div class="d-flex p-2 justify-content-center flex-wrap">
-<a class="btn" href="{% url 'add-menu' %}">
+<a class="btn" href="{% url 'add-meal' %}">
         <div class="sketch-box">
             <div class="card-cta border-0 sketch-box">
                 <img class="card-icon mx-auto" src="{% static 'assets/img/icons/add-100.png' %}" alt="Card image cap" width="100px" >
@@ -104,7 +108,7 @@
 {% endif %}
 
 <!-- Floating button -->
-<a href="{% url 'add-menu' %}">
+<a href="{% url 'add-meal' %}">
 <div class="kfloat" data-bs-toggle="tooltip" title="{% trans 'Add Meal' %}">
 <div class="my-float">+</div>
 </div>

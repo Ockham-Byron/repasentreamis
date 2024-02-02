@@ -49,7 +49,7 @@ INSTALLED_APPS = [
     'users',
     'dashboard',
     'pages',
-    'recettes',
+    'meals',
     'groups',
 
     #plugins
