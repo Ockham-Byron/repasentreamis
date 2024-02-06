@@ -38,14 +38,14 @@ def path_and_rename_meal(instance, filename):
 
 
 # Create your models here.
-class Recipe(models.Model):
+class Dish(models.Model):
     id = models.UUIDField(default = uuid4, editable = False, primary_key=True)
     name=models.CharField(max_length=100, blank=False, null=False)
     chef=models.ManyToManyField(User, blank=True)
     picture=models.ImageField(upload_to=path_and_rename, blank=True, null=True)
     created_at=models.DateTimeField(auto_now_add=True)
     updated_at=models.DateTimeField(auto_now=True)
-    group = models.ForeignKey(CustomGroup, on_delete=models.CASCADE, related_name="recipes")
+    group = models.ForeignKey(CustomGroup, on_delete=models.CASCADE, related_name="dishes")
     slug = models.SlugField(max_length=255, unique= True, default=None, null=True)
 
     def __str__(self):
@@ -56,11 +56,11 @@ class Recipe(models.Model):
         # create slug
         if not self.slug:
             self.slug = slugify(self.name + '_' + str(self.id))
-        super(Recipe, self).save(*args, **kwargs)
+        super(Dish, self).save(*args, **kwargs)
 
     def averagereview(self):
-        if Comment.objects.filter(recipe=self).exists():
-            comments = Comment.objects.filter(recipe=self).aggregate(average=Avg('rating'))
+        if Comment.objects.filter(dish=self).exists():
+            comments = Comment.objects.filter(dish=self).aggregate(average=Avg('rating'))
             avg=0
             if ["average"] is not None:
                 avg=float(comments["average"])
@@ -76,14 +76,14 @@ class Recipe(models.Model):
     
 
 class Comment(models.Model):
-    recipe=models.ForeignKey(Recipe, related_name="recipe_comments", on_delete=models.CASCADE)
+    dish=models.ForeignKey(Dish, related_name="recipe_comments", on_delete=models.CASCADE)
     author=models.ForeignKey(User, related_name="user_comments", on_delete=models.CASCADE)
     rating=models.IntegerField(validators=[MaxValueValidator(10), MinValueValidator(0)], blank=False, null=False)
     message=models.CharField(max_length=500, blank=True, null=True)
 
 class Meal(models.Model):
     id = models.UUIDField(default = uuid4, editable = False, primary_key=True)
-    recipes=models.ManyToManyField(Recipe, blank=True, related_name="meals")
+    dishes=models.ManyToManyField(Dish, blank=True, related_name="meals")
     picture=models.ImageField(upload_to=path_and_rename_meal, blank=True, null=True)
     eaten_at=models.DateField(blank=True, null=True)
     created_at=models.DateTimeField(auto_now_add=True)

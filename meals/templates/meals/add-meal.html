@@ -1,6 +1,6 @@
 {% extends "dashboard/base.html" %}
 {% load avatar i18n static %}
-{% block title %}{% trans 'Add Dish' %}{% endblock title %}
+{% block title %}{% trans 'Add Meal' %}{% endblock title %}
 {% block content %}
 
 
@@ -8,19 +8,15 @@
 <div class="d-flex align-items-center justify-content-center">
   <form class="kform" method="POST" enctype="multipart/form-data">
     {% csrf_token %}
-    {% if form.errors %}
-      <div class="alert alert-danger alert-dismissible" role="alert">
-          <div id="form_errors">
-              {% for key, value in form.errors.items %}
-              <strong>{{ value }}</strong>
-              {% endfor %}
-          </div>
-          <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-              <span aria-hidden="true">&times;</span>
-          </button>
-      </div>
+    
+    <p class="title">
+    {% if meal %}
+    {% trans 'Edit Meal of ' %} {{meal.eaten_at |date:"d M Y" }}
+    {% else %}
+
+    {% trans 'Add Meal' %}
     {% endif %}
-    <p class="title">{% trans 'Add Dish' %}</p>
+    </p>
     
     <input
       type="file"
@@ -45,21 +41,34 @@
       </div>
 
     
+        <p class="mb-0">{% trans "When did you share this beautiful meal ?" %}</p>
+        {{form.eaten_at}}
 
-
+        <p class="mb-0">{% trans "Which dishes did you eat ?" %}</p>
         
-        {{form.name}}
+        {{form.dishes}}
 
-        <p class="mb-0">{% trans "Who cooked ?" %}</p>
-        {{form.chef}}
+        <button class="submit" type="submit" name="add-dish">{% trans 'Add Dish' %}</button>
+        {% if is_group %}
+
+        {% else %}
+        <p class="mb-0">{% trans "Where did you eat ?" %}</p>
+
+        {{form.group}}
+        {% endif %}
+        
         
       
       
-      <button class="submit" type="submit ">{% trans 'Submit' %}</button>
-      <div class="text-center">
-        <a href="{% url 'all-recipes' %}" class="mid-color">{% trans 'Cancel' %}</a>
-        
+      <button class="submit" type="submit" name="create-meal">{% trans 'Submit' %}</button>
+      <div class="text-center d-flex flex-column">
+        <a href="{% url 'all-meals' %}" class="mid-color">{% trans 'Cancel' %}</a>
+        {% if meal %}
+        <a href="{% url 'delete-meal' meal.slug %}" class="mid-color">{% trans 'Delete' %}</a>
+        {% endif %}
       </div>
+      
+
   </form>
 </div>
 

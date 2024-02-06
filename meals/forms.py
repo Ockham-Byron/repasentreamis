@@ -9,7 +9,7 @@ from django.utils.safestring import mark_safe
 from django.utils.translation import gettext as _
 from django.contrib.auth import get_user_model
 from bootstrap_datepicker_plus.widgets import DatePickerInput
-from .models import Recipe, Comment, Meal, Music, Anecdote
+from .models import Dish, Comment, Meal, Music, Anecdote
 from groups.models import CustomGroup
 
 User=get_user_model()
@@ -96,24 +96,24 @@ def columnize(items, columns):
         columns -= 1
     return elts_per_column
 
-class AddRecipeForm(forms.ModelForm):
+class AddDishForm(forms.ModelForm):
     name=forms.CharField(widget=forms.TextInput(attrs={'placeholder': _("Name of the Dish")}))
     chef=forms.ModelMultipleChoiceField(widget=ColumnCheckboxSelectMultiple(columns=3, css_class='col-md-4', wrapper_css_class='row',), queryset=User.objects.none(), required=None)
     picture=forms.ImageField(required=False, widget=forms.FileInput)
 
     class Meta:
-        model=Recipe
+        model=Dish
         fields=['name', 'chef', 'picture']
 
     def __init__(self, group, *args, **kwargs):
-        super(AddRecipeForm, self).__init__(*args, **kwargs)
+        super(AddDishForm, self).__init__(*args, **kwargs)
         
         self.fields['chef'].queryset=group.members.all()
 
 class AddMealForm(forms.ModelForm):
-    recipes = forms.ModelMultipleChoiceField(
+    dishes = forms.ModelMultipleChoiceField(
         required=False,
-        queryset=Recipe.objects.all(),
+        queryset=Dish.objects.all(),
         widget=ColumnCheckboxSelectMultiple(columns=3, css_class='col-md-4', wrapper_css_class='row',)
     )
     picture=forms.ImageField(widget=forms.FileInput, required=False)
@@ -129,7 +129,7 @@ class AddMealForm(forms.ModelForm):
 
     class Meta:
         model=Meal
-        fields=['recipes', 'picture', 'eaten_at', 'group']
+        fields=['dishes', 'picture', 'eaten_at', 'group']
     
     def __init__(self, user, *args, **kwargs):
         super(AddMealForm, self).__init__(*args, **kwargs)

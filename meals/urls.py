@@ -10,10 +10,10 @@ urlpatterns = [
     path(_('add-meal/<slug>'), add_meal_from_group, name="add-meal-from-group"),
     path(_('edit-meal/<slug>'), edit_meal, name="edit-meal"),
     path(_('delete-meal/<slug>'), delete_meal, name="delete-meal"),
-    path(_('all-recipes'), all_recipes, name="all-recipes"),
-    path(_('add-recipe'), add_recipe, name="add-recipe"),
-    path(_('add-recipe-to-meal/<slug>'), add_recipe_to_meal, name="add-recipe-to-meal"),
-    path(_('recipe/<slug>'), recipe_detail, name="recipe-detail"),
+    path(_('all-dishes'), all_dishes, name="all-dishes"),
+    path(_('add-dish'), add_dish, name="add-dish"),
+    path(_('add-dish-to-meal/<slug>'), add_dish_to_meal, name="add-dish-to-meal"),
+    path(_('dish/<slug>'), dish_detail, name="dish-detail"),
 
     #comments
     path(_('add-comment/<slug>'), add_comment, name="add-comment"),

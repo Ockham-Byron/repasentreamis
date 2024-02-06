@@ -2,14 +2,14 @@ from django.contrib import admin
 from .models import *
 
 # Register your models here.
-class RecipeAdmin(admin.ModelAdmin):
+class DishAdmin(admin.ModelAdmin):
   list_display=('name', 'created_at', 'updated_at')
   
 
-admin.site.register(Recipe, RecipeAdmin)
+admin.site.register(Dish, DishAdmin)
 
 class CommentAdmin(admin.ModelAdmin):
-    list_display=('recipe', 'author', 'rating')
+    list_display=('dish', 'author', 'rating')
 
 admin.site.register(Comment, CommentAdmin)
 

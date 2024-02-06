@@ -6,14 +6,14 @@
 <h1 class="mt-2 mb-5 text-center">{% trans "Dishes" %}</h1>
 
 <div class="d-flex mt-5 pt-5 justify-content-center flex-wrap ">
-  {% for recipe in recipes %}
+  {% for dish in dishes %}
     <div class="card card-recipe shadow mx-2">
       <div class="row justify-content-center">
         <div class="col-lg-3 order-lg-2">
-          <a href="{% url 'recipe-detail' recipe.slug %}">
+          <a href="{% url 'dish-detail' dish.slug %}">
           <div class="card-recipe-image">
-            {% if recipe.picture %}
-              <img src="{{ recipe.picture.url }}" class="rounded-circle">
+            {% if dish.picture %}
+              <img src="{{ dish.picture.url }}" class="rounded-circle">
             {% else %}
             <img src="{% static 'assets/img/illustrations/dish_default.jpeg' %}" alt="Dish picture"  >
             {% endif %}
@@ -26,13 +26,25 @@
         
         <div class="text-center">
           <h3>
-            {{recipe.name}}
+            {{dish.name}}
           </h3>
           <div class="darkest-color">
-            <i class="fa-solid fa-kitchen-set me-2"></i>{{recipe.chef}}
+            <i class="fa-solid fa-kitchen-set me-2"></i>
+            {% if dish.chef.all%}
+              {% for chef in dish.chef.all %}
+                {{chef}}
+              {% endfor %}
+            {% else %}
+              {% trans 'Nobody cooked ' %} ?
+            {% endif %}
           </div>
           <div class="darkest-color">
-            <i class="fa-solid fa-hands-clapping me-2"></i>{{recipe.averagereview}}
+            <i class="fa-solid fa-hands-clapping me-2"></i>
+            {% if dish.averagereview %}
+              {{dish.averagereview}}
+            {% else %}
+              {% trans 'No comment' %}
+            {% endif %}
           </div>
           
          
@@ -40,8 +52,8 @@
 
           <div class="d-flex flex-column align-items-center">
           
-          <a class="btn-wide btn-mid-color mb-2" href={% url 'recipe-detail' recipe.slug %}>{% trans 'View details' %}</a>
-          <a class="btn-wide btn-brand-color" href="{% url 'add-comment' recipe.slug %}">{% trans 'Add comment' %}</a>
+          <a class="btn-wide btn-mid-color mb-2" href={% url 'dish-detail' dish.slug %}>{% trans 'View details' %}</a>
+          <a class="btn-wide btn-brand-color" href="{% url 'add-comment' dish.slug %}">{% trans 'Add comment' %}</a>
 
           </div>
           

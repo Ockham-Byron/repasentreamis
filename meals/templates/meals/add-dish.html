@@ -1,22 +1,27 @@
 {% extends "dashboard/base.html" %}
 {% load avatar i18n static %}
-{% block title %}{% trans 'Add Meal' %}{% endblock title %}
+{% block title %}{% trans 'Add Dish' %}{% endblock title %}
 {% block content %}
 
 
 <!-- New Form -->
 <div class="d-flex align-items-center justify-content-center">
+  {% if is_group %}
   <form class="kform" method="POST" enctype="multipart/form-data">
     {% csrf_token %}
-    
-    <p class="title">
-    {% if meal %}
-    {% trans 'Edit Meal of ' %} {{meal.eaten_at |date:"d M Y" }}
-    {% else %}
-
-    {% trans 'Add Meal' %}
+    {% if form.errors %}
+      <div class="alert alert-danger alert-dismissible" role="alert">
+          <div id="form_errors">
+              {% for key, value in form.errors.items %}
+              <strong>{{ value }}</strong>
+              {% endfor %}
+          </div>
+          <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+          </button>
+      </div>
     {% endif %}
-    </p>
+    <p class="title">{% trans 'Add Dish' %}</p>
     
     <input
       type="file"
@@ -41,35 +46,35 @@
       </div>
 
     
-        <p class="mb-0">{% trans "When did you share this beautiful meal ?" %}</p>
-        {{form.eaten_at}}
 
-        <p class="mb-0">{% trans "Which dishes did you eat ?" %}</p>
+
         
-        {{form.recipes}}
+        {{form.name}}
 
-        <button class="submit" type="submit" name="add-recipe">{% trans 'Add Dish' %}</button>
-        {% if is_group %}
+        <p class="mb-0">{% trans "Who cooked ?" %}</p>
+        {{form.chef}}
 
-        {% else %}
-        <p class="mb-0">{% trans "Where did you eat ?" %}</p>
-
-        {{form.group}}
+        {% if no_meal %}
+          <p class="mb-0">{% trans "At which meal did you eat this dish ? " %}</p>
+          <div class="form-group mb-3">
+        
+        <select class="p-2" name="meal">
+        {% for meal in group.meals.all %}
+            <option value="{{ meal.id }}">{{ meal.eaten_at|date:"d M Y" }}</option>
+        {% endfor %}
+        </select>
+    </div>
         {% endif %}
-        
         
       
       
-      <button class="submit" type="submit" name="create-meal">{% trans 'Submit' %}</button>
-      <div class="text-center d-flex flex-column">
-        <a href="{% url 'all-meals' %}" class="mid-color">{% trans 'Cancel' %}</a>
-        {% if meal %}
-        <a href="{% url 'delete-meal' meal.slug %}" class="mid-color">{% trans 'Delete' %}</a>
-        {% endif %}
+      <button class="submit" type="submit ">{% trans 'Submit' %}</button>
+      <div class="text-center">
+        <a href="{% url 'all-dishes' %}" class="mid-color">{% trans 'Cancel' %}</a>
+        
       </div>
-      
-
   </form>
+  {% endif %}
 </div>
 
 <!-- Modals -->

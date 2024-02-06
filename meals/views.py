@@ -18,63 +18,75 @@ def get_groups(user):
 
 # Create your views here.
 @login_required
-def add_recipe(request):
-    group = get_groups(request.user)
-    if group is None:
+def add_dish(request):
+    groups = get_groups(request.user)
+    is_group = False
+    no_meal = True
+    if len(groups) == 1:
+        is_group = True
+        group = groups[0]
+    if groups is None:
         return redirect('all-groups')
-    else:
-        form=AddRecipeForm(group)
-
+    
+    if is_group:
+        print("group unique")
+        form = AddDishForm(group)
         if request.method == "POST":
-            form=AddRecipeForm(group, request.POST, request.FILES)
+            form=AddDishForm(group, request.POST, request.FILES)
+            meal = request.POST.get('meal')
+            meal = Meal.objects.get(id=meal)
             if form.is_valid():
-                recipe=form.save()
-                recipe.save()
-                return redirect('all-recipes')
+                dish=form.save(commit=False)
+                dish.group = group
+                dish.save()
+                meal.dishes.add(dish)
+                meal.save()
+                
+                return redirect('all-dishes')
 
-        return render(request, "recettes/add-recipe.html", {'form':form})
+        return render(request, "meals/add-dish.html", {'form':form, 'is_group':is_group, 'groups':groups, 'group':group, 'no_meal':no_meal})
 
 
     
 @login_required
-def all_recipes(request):
+def all_dishes(request):
     groups = get_groups(request.user)
     if groups is None:
         return redirect('all-groups')
     else:
         for group in groups:
-            recipes = Recipe.objects.filter(group=group)
+            dishes = Dish.objects.filter(group=group)
 
         context={
-            'recipes':recipes
+            'dishes':dishes
         }
-        return render(request, "recettes/all-recipes.html", context=context)
+        return render(request, "meals/all-dishes.html", context=context)
 
 @login_required
-def recipe_detail(request, slug):
-    recipe=get_object_or_404(Recipe, slug=slug)
+def dish_detail(request, slug):
+    dish=get_object_or_404(Dish, slug=slug)
 
     context={
-        'recipe':recipe,
+        'dish':dish,
     }
     
-    return render(request, "recettes/recipe-detail.html", context=context)
+    return render(request, "meals/dish-detail.html", context=context)
 
 @login_required
 def add_comment(request, slug):
-    recipe=get_object_or_404(Recipe, slug=slug)
+    dish=get_object_or_404(Dish, slug=slug)
     form=AddCommentForm()
 
     if request.method=='POST':
         form=AddCommentForm(request.POST)
         if form.is_valid():
             comment=form.save(commit=False)
-            comment.recipe=recipe
+            comment.dish=dish
             comment.author=request.user
             comment.save()
-            return redirect('recipe-detail', recipe.slug)
+            return redirect('dish-detail', dish.slug)
 
-    return render(request, "recettes/add-comment.html", {'form':form})
+    return render(request, "meals/add-comment.html", {'form':form})
 
 @login_required
 def add_meal(request):
@@ -100,20 +112,20 @@ def add_meal(request):
             if form.is_valid() or group is not None:
                 eaten_at = request.POST.get('eaten_at')
                 picture = request.FILES.get('picture')
-                recipes = request.POST.getlist('recipes')
+                dishes = request.POST.getlist('dishes')
                 
                 
                 meal = Meal(eaten_at=eaten_at,picture=picture, group=group)
                 meal.save()
-                if recipes:
-                    for i in recipes:
-                        recipe = Recipe.objects.get(id=i)
-                        meal.recipes.add(recipe)
+                if dishes:
+                    for i in dishes:
+                        dish = Dish.objects.get(id=i)
+                        meal.dishes.add(dish)
                     meal.save()
                     
 
-                if 'add-recipe' in request.POST:
-                    return redirect('add-recipe-to-meal', meal.slug)
+                if 'add-dish' in request.POST:
+                    return redirect('add-dish-to-meal', meal.slug)
                 if 'create-meal' in request.POST:
                     return redirect('all-meals')
             
@@ -121,7 +133,7 @@ def add_meal(request):
                 print(form.errors.as_data())
                 
 
-        return render(request, "recettes/add-meal.html", {'form':form, 'is_group':is_group})
+        return render(request, "meals/add-meal.html", {'form':form, 'is_group':is_group})
 
 @login_required
 def add_meal_from_group(request, slug):
@@ -135,21 +147,21 @@ def add_meal_from_group(request, slug):
         if form.is_valid() or is_group :
             eaten_at = request.POST.get('eaten_at')
             picture = request.FILES.get('picture')
-            recipes = request.POST.get('recipes')
-            if recipes is not None:
-                meal = Meal(eaten_at=eaten_at,picture=picture,recipes=recipes.set(), group=group)
+            dishes = request.POST.get('dishes')
+            if dishes is not None:
+                meal = Meal(eaten_at=eaten_at,picture=picture,dishes=dishes.set(), group=group)
             else:
                 meal = Meal(eaten_at=eaten_at,picture=picture, group=group)
             meal.save()
-            if 'add-recipe' in request.POST:
-                return redirect('add-recipe-to-meal', meal.slug)
+            if 'add-dish' in request.POST:
+                return redirect('add-dish-to-meal', meal.slug)
             if 'create-meal' in request.POST:
                 return redirect('all-meals')
             
         else:
             print(form.errors)
 
-    return render(request, "recettes/add-meal.html", {'form':form, 'is_group':is_group})
+    return render(request, "meals/add-meal.html", {'form':form, 'is_group':is_group})
 
 @login_required
 def edit_meal(request, slug):
@@ -163,24 +175,24 @@ def edit_meal(request, slug):
         if form.is_valid() or is_group:
                 eaten_at = request.POST.get('eaten_at')
                 picture = request.FILES.get('picture')
-                recipes = request.POST.getlist('recipes')
+                dishes = request.POST.getlist('dishes')
                 
-                meal.recipes.through.objects.all().delete()
+                # meal.dishes.through.objects.all().delete()
                 
                 meal.eaten_at = eaten_at
                 meal.picture = picture
                 meal.group = group
                 meal.save()
-                if recipes:
-                    for i in recipes:
-                        recipe = Recipe.objects.get(id=i)
-                        
-                        meal.recipes.add(recipe)
+                if dishes:
+                    for i in dishes:
+                        dish = Dish.objects.get(id=i)
+                        if dish not in meal.dishes.all():
+                            meal.dishes.add(dish)
                     meal.save()
                     
 
-                if 'add-recipe' in request.POST:
-                    return redirect('add-recipe-to-meal', meal.slug)
+                if 'add-dish' in request.POST:
+                    return redirect('add-dish-to-meal', meal.slug)
                 if 'create-meal' in request.POST:
                     return redirect('all-meals')
             
@@ -188,7 +200,7 @@ def edit_meal(request, slug):
             print(form.errors)
      
 
-    return render(request, 'recettes/add-meal.html', {'form': form, 'meal': meal, 'is_group': is_group})
+    return render(request, 'meals/add-meal.html', {'form': form, 'meal': meal, 'is_group': is_group})
 
 @login_required
 def delete_meal(request, slug):
@@ -199,25 +211,30 @@ def delete_meal(request, slug):
     return redirect('all-meals')
 
 @login_required
-def add_recipe_to_meal(request, slug):
+def add_dish_to_meal(request, slug):
     meal = get_object_or_404(Meal, slug=slug)
     group = meal.group
     
-    form=AddRecipeForm(group)
+    form=AddDishForm(group)
 
     if request.method == "POST":
-        form=AddRecipeForm(group, request.POST, request.FILES)
-        chef = request.POST.get("chef")
-        print(chef)
+        form=AddDishForm(group, request.POST, request.FILES)
+        chefs = request.POST.getlist('chef')
+        print(chefs)
         if form.is_valid():
-            recipe=form.save(commit=False)
-            recipe.group=group
-            recipe.save()
-            meal.recipes.add(recipe)
+            dish=form.save(commit=False)
+            dish.group=group
+            dish.save()
+            if chefs:
+                for chef in chefs:
+                    user = User.objects.get(id=chef)
+                    dish.chef.add(user)
+            dish.save()
+            meal.dishes.add(dish)
             meal.save()
             return redirect('all-meals')
 
-    return render(request, "recettes/add-recipe.html", {'form':form})
+    return render(request, "meals/add-dish.html", {'form':form})
 
 @login_required
 def add_music(request, slug):
@@ -231,7 +248,7 @@ def add_music(request, slug):
             music.save()
             return redirect('all-meals')
 
-    return render(request, 'recettes/add-music.html', {'form':form})
+    return render(request, 'meals/add-music.html', {'form':form})
 
 @login_required
 def add_anecdote(request, slug):
@@ -245,7 +262,7 @@ def add_anecdote(request, slug):
             anecdote.save()
             return redirect('all-meals')
 
-    return render(request, 'recettes/add-anecdote.html', {'form':form})
+    return render(request, 'meals/add-anecdote.html', {'form':form})
 
 @login_required
 def all_meals(request):
@@ -265,5 +282,5 @@ def all_meals(request):
             'groups':groups,
         }
 
-        return render(request, "recettes/all-meals.html", context=context )
+        return render(request, "meals/all-meals.html", context=context )
     
