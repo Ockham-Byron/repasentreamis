@@ -33,11 +33,17 @@ def add_dish(request):
         form = AddDishForm(group)
         if request.method == "POST":
             form=AddDishForm(group, request.POST, request.FILES)
+            chefs = request.POST.getlist('chef')
             meal = request.POST.get('meal')
             meal = Meal.objects.get(id=meal)
             if form.is_valid():
                 dish=form.save(commit=False)
                 dish.group = group
+                dish.save()
+                if chefs:
+                    for chef in chefs:
+                        user = User.objects.get(id=chef)
+                        dish.chef.add(user)
                 dish.save()
                 meal.dishes.add(dish)
                 meal.save()
@@ -214,6 +220,7 @@ def delete_meal(request, slug):
 def add_dish_to_meal(request, slug):
     meal = get_object_or_404(Meal, slug=slug)
     group = meal.group
+    is_group = True
     
     form=AddDishForm(group)
 
@@ -233,8 +240,34 @@ def add_dish_to_meal(request, slug):
             meal.dishes.add(dish)
             meal.save()
             return redirect('all-meals')
+        
+    else:
+        print("Nothing")
 
-    return render(request, "meals/add-dish.html", {'form':form})
+    return render(request, "meals/add-dish.html", {'form':form, 'is_group':is_group, 'meal':meal})
+
+@login_required
+def add_existing_dish_to_meal(request, slug):
+    meal = get_object_or_404(Meal, slug=slug)
+    
+    
+    dishes = Dish.objects.filter(group= meal.group)
+    print(dishes)
+
+    if request.method == "POST":
+        if 'create-dish' in request.POST:
+            return redirect('add-dish-to-meal', meal.slug)
+        if 'add-dish' in request.POST:
+            dish=request.POST.get('dish')
+            print(dish)
+            meal.dishes.add(dish)
+            meal.save()
+            return redirect('all-meals')
+        
+    else:
+        print("Nothing")
+
+    return render(request, "meals/add-existing-dish.html", {'meal':meal, 'dishes':dishes})
 
 @login_required
 def add_music(request, slug):

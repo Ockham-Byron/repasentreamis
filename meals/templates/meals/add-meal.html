@@ -44,11 +44,15 @@
         <p class="mb-0">{% trans "When did you share this beautiful meal ?" %}</p>
         {{form.eaten_at}}
 
-        <p class="mb-0">{% trans "Which dishes did you eat ?" %}</p>
-        
-        {{form.dishes}}
+        <div class="d-flex justify-content-between">
 
-        <button class="submit" type="submit" name="add-dish">{% trans 'Add Dish' %}</button>
+        <p class="mb-0">{% trans "Which dishes did you eat ?" %}</p>
+         <button class="submit py-0 px-1" type="submit" name="add-dish"><small>{% trans 'Add Dish Option ?' %}</small></button>
+        </div>
+        <div class="form-choices">
+        {{form.dishes}}
+        </div>
+       
         {% if is_group %}
 
         {% else %}

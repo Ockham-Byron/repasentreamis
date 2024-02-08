@@ -13,6 +13,7 @@ urlpatterns = [
     path(_('all-dishes'), all_dishes, name="all-dishes"),
     path(_('add-dish'), add_dish, name="add-dish"),
     path(_('add-dish-to-meal/<slug>'), add_dish_to_meal, name="add-dish-to-meal"),
+    path(_('add-existing-dish/<slug>'), add_existing_dish_to_meal, name="add-existing-dish"),
     path(_('dish/<slug>'), dish_detail, name="dish-detail"),
 
     #comments

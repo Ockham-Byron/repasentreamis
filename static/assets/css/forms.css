@@ -314,6 +314,11 @@ ul.form-errors li, ul.errorlist li {
   cursor: pointer;
 }
 
+.form-choices li {
+  min-height: 80px;
+  text-align: center;
+}
+
 @keyframes pulse {
   from {
     transform: scale(0.9);
@@ -325,4 +330,6 @@ ul.form-errors li, ul.errorlist li {
     opacity: 0;
   }
 }
+
+
 

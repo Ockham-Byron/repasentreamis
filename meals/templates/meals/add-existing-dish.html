@@ -6,84 +6,37 @@
 
 <!-- New Form -->
 <div class="d-flex align-items-center justify-content-center">
-  {% if is_group %}
+ 
   <form class="kform" method="POST" enctype="multipart/form-data">
     {% csrf_token %}
-    {% if form.errors %}
-      <div class="alert alert-danger alert-dismissible" role="alert">
-          <div id="form_errors">
-              {% for key, value in form.errors.items %}
-              <strong>{{ value }}</strong>
-              {% endfor %}
-          </div>
-          <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-              <span aria-hidden="true">&times;</span>
-          </button>
-      </div>
-    {% endif %}
+    
     
     <p class="title">
     
-    {% trans 'Add Dish ' %}
-    {% if meal%}
-    {% trans 'at the Meal of ' %} {{meal.eaten_at|date:"d M Y"}}
-    {% endif%}
+    {% trans 'Add Dish ' %} {% trans 'at the Meal of ' %} {{meal.eaten_at|date:"d M Y"}}
+  
     </p>
     
-    
-    
-    <input
-      type="file"
-      id="fileElem"
-      multiple
-      accept="image/*"
-      name="picture"
-      style="display:none" 
-      />
-      <div class="avatar-wrapper text-center mx-auto">
-      
-        <a href="#" id="fileSelect" class="avatar-upload">
-          
-          <img id="add-image" class="avatar-upload d-none" src="{% static 'assets/img/illustrations/in_thought.svg' %}" style="cursor: pointer;"/>
-          <div class="avatar-overlay"><i class="fa fa-camera-retro icon"></i></div>
-        </a>
-      
-      
-      </div>
-      <div id="fileList" class="mt-3 color-light">
-        <p></p>
-      </div>
 
-    
-
-
+       
         
-        {{form.name}}
-
-        <p class="mb-0">{% trans "Who cooked ?" %}</p>
-        {{form.chef}}
-
-        {% if no_meal %}
-          <p class="mb-0">{% trans "At which meal did you eat this dish ? " %}</p>
-          <div class="form-group mb-3">
-        
-        <select class="p-2" name="meal">
-        {% for meal in group.meals.all %}
-            <option value="{{ meal.id }}">{{ meal.eaten_at|date:"d M Y" }}</option>
+        <select class="p-2" name="dish">
+        {% for dish in dishes %}
+            <option value="{{ dish.id }}">{{ dish.name }}</option>
         {% endfor %}
         </select>
-    </div>
-        {% endif %}
+  
+     
         
       
       
-      <button class="submit" type="submit ">{% trans 'Submit' %}</button>
+      <button class="submit" type="submit" name="add-dish">{% trans 'Submit' %}</button>
       <div class="text-center">
-        <a href="{% url 'all-dishes' %}" class="mid-color">{% trans 'Cancel' %}</a>
+        <a href="{% url 'all-meals' %}" class="mid-color">{% trans 'Cancel' %}</a>
         
       </div>
   </form>
-  {% endif %}
+
 </div>
 
 <!-- Modals -->

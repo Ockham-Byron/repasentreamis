@@ -36,7 +36,7 @@
           <h3>
             {{meal.eaten_at|date:"d M Y"}}
           </h3>
-          <a href="{% url 'add-dish-to-meal' meal.slug%}" class="card-recipe-btn-small">{% trans 'Dishes' %} <i class="fa-solid fa-plus fa-xs"></i></a>
+          <a href="{% url 'add-existing-dish' meal.slug%}" class="card-recipe-btn-small">{% trans 'Dishes' %} <i class="fa-solid fa-plus fa-xs"></i></a>
           {% for dish in meal.dishes.all %}
           <a href="{% url 'dish-detail' dish.slug %}" class="darkest-color">
             <div class="d-flex justify-content-between align-items-center">
