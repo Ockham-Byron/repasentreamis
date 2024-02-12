@@ -3,9 +3,19 @@ Général:
 ☐ add login required
 
 Dish:
-    ☐ edit
-    ☐ suppress
+    ✔ edit @done(24-02-12 16:01)
+    ✔ suppress @done(24-02-12 16:15)
     ☐ gérer plusieurs groupes
+
+All-dishes:
+    ☐ add comment or edit comment si déjà commenté
+
+Dish detail:
+    ☐ layout
+
+Comment:
+    ☐ edit
+    ☐ delete
 
 Messages:
     ☐ add logic

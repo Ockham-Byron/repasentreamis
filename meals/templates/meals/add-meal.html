@@ -68,7 +68,7 @@
       <div class="text-center d-flex flex-column">
         <a href="{% url 'all-meals' %}" class="mid-color">{% trans 'Cancel' %}</a>
         {% if meal %}
-        <a href="{% url 'delete-meal' meal.slug %}" class="mid-color">{% trans 'Delete' %}</a>
+        <a href="#" type="button" class="joy-color" data-bs-toggle="modal" data-bs-target="#deleteMealModal"><i class="fa-solid fa-trash pe-2"></i>{% trans 'Delete Meal' %}</a>
         {% endif %}
       </div>
       
@@ -81,44 +81,26 @@
 
 
 <!-- Modals -->
-<!-- Modal delete pic -->
-<div class="modal fade" id="deletePicModal" tabindex="-1" aria-labelledby="deletePicModalLabel" aria-hidden="true">
+<!-- Modal delete meal -->
+<div class="modal fade" id="deleteMealModal" tabindex="-1" aria-labelledby="deleteMealModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered">
     <div class="modal-content">
       <div class="text-center">
         <img src="{% static 'assets/img/icons/error-100.png' %}" alt="error icon" />
         <br/>
-        <h5 class="modal-title mid-color" id="exampleModalLabel">{% trans 'Delete Profile Pic ?' %}</h5>
+        <h5 class="modal-title mid-color" id="exampleModalLabel">{% trans 'Delete Meal ?' %}</h5>
       </div>
       <div class="text-center">
-        <p class="darkest-color p-4">{% trans "We think you look good on this pic, but your face, your choice !" %}</p>
+        <p class="darkest-color p-4">{% trans "You will lose all the memories, but hey, no pression..." %}</p>
       </div>
       <div class="d-flex justify-content-evenly pb-2">
-        <a href="{% url 'profile-pic-delete' request.user.slug %}"  class="btn btn-mid-color btn-modal" >{% trans "Yes, no regret" %}</a>
+        <a href="{% url 'delete-meal' meal.slug %}"  class="btn btn-mid-color btn-modal" >{% trans "Yes, no regret" %}</a>
         <a type="button" class="btn btn-outlined btn-modal outline-mid-color" data-bs-dismiss="modal">{% trans 'Cancel' %}</a>
       </div>
     </div>
   </div>
 </div>
- <!-- Modal delete Account-->
-<div class="modal fade" id="deleteAccountModal" tabindex="-1" aria-labelledby="deleteAccountModalLabel" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered">
-    <div class="modal-content">
-      <div class="text-center">
-        <img src="{% static 'assets/img/icons/llorando-100.png' %}" alt="error icon" />
-        <br/>
-        <h5 class="modal-title mid-color" id="exampleModalLabel">{% trans 'Delete your Account ?' %}</h5>
-      </div>
-      <div class="text-center">
-        <p class="darkest-color p-4">{% trans "We'll miss you, but no emotional blackmail here !" %}</p>
-      </div>
-      <div class="d-flex justify-content-evenly pb-2">
-        <a href="#"  class="btn btn-mid-color btn-modal" >{% trans "Yes, no regret" %}</a>
-        <a type="button" class="btn btn-outlined btn-modal outline-mid-color" data-bs-dismiss="modal">{% trans 'Cancel' %}</a>
-      </div>
-    </div>
-  </div>
-</div>
+ 
 {% endblock content %}
 
 {% block extrajs %}

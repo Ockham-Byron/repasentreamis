@@ -49,6 +49,12 @@ input#id_eaten_at {
   padding-bottom:10px !important;
 }
 
+.kform select {
+  border-radius: 10px !important;
+  padding:5px;
+  border-color:grey !important;
+  color:grey !important;
+}
 
 /* || Login and Register */
 

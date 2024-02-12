@@ -253,18 +253,15 @@ a.btn:hover>div.label-container{
   min-width:130px !important;
 }
 
-/* Style Card */
-.style-card {
+/* Comments Card */
+
+
+
+
+.comment-card {
   background-color: whitesmoke;
-  width:500px;
-  border-radius:10%;
-}
+  width:400px;
+  border-radius:10px;
+  position: relative;
 
-.style-card p.title{
-  font-weight: bold;
-  font-size: 2em;
-}
-
-.style-card .actions a {
-  color:var(--dark-color);
 }

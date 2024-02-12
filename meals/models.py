@@ -76,7 +76,7 @@ class Dish(models.Model):
     
 
 class Comment(models.Model):
-    dish=models.ForeignKey(Dish, related_name="recipe_comments", on_delete=models.CASCADE)
+    dish=models.ForeignKey(Dish, related_name="dish_comments", on_delete=models.CASCADE)
     author=models.ForeignKey(User, related_name="user_comments", on_delete=models.CASCADE)
     rating=models.IntegerField(validators=[MaxValueValidator(10), MinValueValidator(0)], blank=False, null=False)
     message=models.CharField(max_length=500, blank=True, null=True)

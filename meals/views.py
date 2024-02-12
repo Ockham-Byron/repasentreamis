@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect
 from django.shortcuts import get_object_or_404, get_list_or_404
 from django.contrib.auth.decorators import login_required
+from django.db.models import Count, Q
 from .models import *
 from .forms import *
 
@@ -51,9 +52,7 @@ def add_dish(request):
                 return redirect('all-dishes')
 
         return render(request, "meals/add-dish.html", {'form':form, 'is_group':is_group, 'groups':groups, 'group':group, 'no_meal':no_meal})
-
-
-    
+   
 @login_required
 def all_dishes(request):
     groups = get_groups(request.user)
@@ -62,6 +61,9 @@ def all_dishes(request):
     else:
         for group in groups:
             dishes = Dish.objects.filter(group=group)
+            dishes = dishes.annotate(
+            has_commented=Count('dish_comments', filter=Q(dish_comments__author=request.user))
+    )
 
         context={
             'dishes':dishes
@@ -71,12 +73,55 @@ def all_dishes(request):
 @login_required
 def dish_detail(request, slug):
     dish=get_object_or_404(Dish, slug=slug)
+    comments=Comment.objects.filter(dish=dish)
+    not_commented = True
+    if Comment.objects.filter(dish=dish, author=request.user).exists():
+        not_commented = False
+    
+    print(not_commented)
 
     context={
         'dish':dish,
+        'comments':comments,
+        'not_commented':not_commented
+        
     }
     
     return render(request, "meals/dish-detail.html", context=context)
+
+@login_required
+def edit_dish(request, slug):
+    dish = get_object_or_404(Dish, slug=slug)
+    group = dish.group
+    is_group = True
+    form=AddDishForm(group=group, instance=dish)
+
+    if request.method == "POST":
+        form = AddDishForm(group, request.POST, request.FILES, instance=dish)
+        if form.is_valid() or is_group:
+            dish.name=request.POST.get('name')
+            dish.picture=request.FILES.get('picture')
+            chefs = request.POST.getlist('chef')
+            dish.chef.clear()
+            if chefs:
+                for chef in chefs:
+                    user = User.objects.get(id=chef)
+                    dish.chef.add(user)
+            dish.save()
+            return redirect('dish-detail', dish.slug)
+        else:
+            print(form.errors)
+
+    return render(request, "meals/add-dish.html", {'form':form, 'is_group':is_group, 'dish':dish})
+
+@login_required
+def delete_dish(request, slug):
+    dish = get_object_or_404(Dish, slug=slug)
+    if dish.picture:
+        os.remove(dish.picture.path)
+        dish.picture.delete()
+    dish.delete()
+    return redirect('all-dishes')
 
 @login_required
 def add_comment(request, slug):
@@ -92,7 +137,27 @@ def add_comment(request, slug):
             comment.save()
             return redirect('dish-detail', dish.slug)
 
-    return render(request, "meals/add-comment.html", {'form':form})
+    return render(request, "meals/add-comment.html", {'form':form, 'dish':dish})
+
+@login_required
+def edit_comment(request,id):
+    comment=get_object_or_404(Comment, id=id)
+    dish=comment.dish
+    form=AddCommentForm(instance=comment)
+    if request.method=='POST':
+        form=AddCommentForm(request.POST, instance=comment)
+        comment=form.save()
+        comment.save()
+        return redirect('dish-detail', dish.slug)
+    
+    return render(request, "meals/add-comment.html", {'form':form, 'dish':dish, 'comment':comment})
+
+@login_required
+def delete_comment(request,id):
+    comment=get_object_or_404(Comment, id=id)
+    dish=comment.dish
+    comment.delete()
+    return redirect('dish-detail', dish.slug)
 
 @login_required
 def add_meal(request):
@@ -211,8 +276,9 @@ def edit_meal(request, slug):
 @login_required
 def delete_meal(request, slug):
     meal = get_object_or_404(Meal, slug=slug)
-    os.remove(meal.picture.path)
-    meal.picture.delete()
+    if meal.picture:
+        os.remove(meal.picture.path)
+        meal.picture.delete()
     meal.delete()
     return redirect('all-meals')
 
