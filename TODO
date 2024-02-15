@@ -1,21 +1,14 @@
-Général:
 ☐ traduire
 ☐ add login required
+☐ changer couleur des boutons
 
 Dish:
-    ✔ edit @done(24-02-12 16:01)
-    ✔ suppress @done(24-02-12 16:15)
     ☐ gérer plusieurs groupes
 
 All-dishes:
-    ☐ add comment or edit comment si déjà commenté
+    ☐ floating button
 
-Dish detail:
-    ☐ layout
 
-Comment:
-    ☐ edit
-    ☐ delete
 
 Messages:
     ☐ add logic
@@ -24,9 +17,26 @@ Mode invité:
     ☐ add logic
 
 Anecdote:
-    ☐ créer
+    ✔ liste des anectodes @done(24-02-13 16:12)
+
+Music:
     ☐ éditer
     ☐ supprimer
-    ☐ lire en pop up
+    ☐ liste des musiques
 
+Homepage:
+    ☐ layout
 
+Archive:
+  ✔ edit @done(24-02-12 16:01) @project(Dish)
+  ✔ suppress @done(24-02-12 16:15) @project(Dish)
+  ✔ add comment or edit comment si déjà commenté @done(24-02-13 12:06) @project(All-dishes)
+  ✔ layout @done(24-02-13 12:07) @project(Dish detail)
+  ✔ edit @done(24-02-13 12:08) @project(Comment)
+  ✔ delete @done(24-02-13 12:08) @project(Comment)
+  ✔ créer @done(24-02-13 12:16) @project(Anecdote)
+  ✔ éditer @done(24-02-13 13:03) @project(Anecdote)
+  ✔ supprimer @done(24-02-13 13:03) @project(Anecdote)
+  ✔ warning delete @done(24-02-13 13:03) @project(Anecdote)
+  ✔ lire en pop up @done(24-02-13 12:45) @project(Anecdote)
+  ✔ créer @done(24-02-13 13:04) @project(Music)

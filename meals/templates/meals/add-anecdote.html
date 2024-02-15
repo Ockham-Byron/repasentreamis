@@ -20,18 +20,47 @@
           </button>
       </div>
     {% endif %}
-    <p class="title">{% trans 'Add Anecdote' %}</p>
+    <p class="title">
+    {% if anecdote %}
+    {% trans 'Edit Anecdote' %}
+    {% else %}
+    {% trans 'Add Anecdote' %}
+    {% endif %}
+    </p>
     
         {{form.message}}
         
       
       <button class="submit" type="submit ">{% trans 'Submit' %}</button>
+      <div class="text-center d-flex flex-column">
+        <a href="{% url 'all-meals' %}" class="mid-color">{% trans 'Cancel' %}</a>
+        {% if anecdote %}
+        <a href="#" type="button" class="joy-color" data-bs-toggle="modal" data-bs-target="#deleteModal"><i class="fa-solid fa-trash pe-2"></i>{% trans 'Delete Anecdote' %}</a>
+        <!-- Modal delete meal -->
+<div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
       <div class="text-center">
-        <a href="{% url 'all-recipes' %}" class="mid-color">{% trans 'Cancel' %}</a>
-        
+        <img src="{% static 'assets/img/icons/error-100.png' %}" alt="error icon" />
+        <br/>
+        <h5 class="modal-title mid-color" id="exampleModalLabel">{% trans 'Delete Anecdote ?' %}</h5>
+      </div>
+      <div class="text-center">
+        <p class="darkest-color p-4">{% trans "You will lose all the memories, but hey, no pression..." %}</p>
+      </div>
+      <div class="d-flex justify-content-evenly pb-2">
+        <a href="{% url 'delete-anecdote' anecdote.id %}"  class="btn btn-mid-color btn-modal" >{% trans "Yes, no regret" %}</a>
+        <a type="button" class="btn btn-outlined btn-modal outline-mid-color" data-bs-dismiss="modal">{% trans 'Cancel' %}</a>
+      </div>
+    </div>
+  </div>
+</div>
+        {% endif %}
       </div>
   </form>
 </div>
+
+<!-- Modals -->
 
 
 {% endblock content %}

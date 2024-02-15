@@ -343,6 +343,7 @@ def add_music(request, slug):
         form=AddMusicForm(request.POST)
         if form.is_valid():
             music=form.save()
+            music.group = meal.group
             music.meal.add(meal)
             music.save()
             return redirect('all-meals')
@@ -357,11 +358,40 @@ def add_anecdote(request, slug):
         form=AddAnecdoteForm(request.POST)
         if form.is_valid():
             anecdote=form.save()
+            anecdote.group=meal.group
+            anecdote.date=meal.date
             anecdote.meal.add(meal)
             anecdote.save()
             return redirect('all-meals')
 
     return render(request, 'meals/add-anecdote.html', {'form':form})
+
+@login_required
+def edit_anecdote(request, id):
+    anecdote= get_object_or_404(Anecdote, pk=id)
+    form = AddAnecdoteForm(instance=anecdote)
+
+    if request.method == 'POST':
+        form = AddAnecdoteForm(request.POST, instance=anecdote)
+        anecdote = form.save()
+        return redirect('all-meals')
+    
+    return render(request, 'meals/add-anecdote.html', {'form':form, 'anecdote':anecdote})
+
+@login_required
+def delete_anecdote(request, id):
+    anecdote = get_object_or_404(Anecdote, pk=id)
+    anecdote.delete()
+    return redirect('all-meals')
+
+@login_required
+def group_anecdotes(request, slug):
+    group = get_object_or_404(CustomGroup, slug=slug)
+    anecdotes = Anecdote.objects.filter(group=group)
+
+    context = {'anecdotes': anecdotes,
+               'group': group}
+    return render(request, 'meals/all-anecdotes.html', context=context)
 
 @login_required
 def all_meals(request):

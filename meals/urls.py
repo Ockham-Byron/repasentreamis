@@ -28,6 +28,9 @@ urlpatterns = [
 
     #anecdotes
     path(_('anecdote/<slug>'), add_anecdote, name="add-anecdote"),
+    path(_('edit-anecdote/<id>'), edit_anecdote, name="edit-anecdote"),
+    path(_('delete-anecdote/<id>'), delete_anecdote, name="delete-anecdote"),
+    path(_('group-anecdotes/<slug>'), group_anecdotes, name="group-anecdotes"),
 
 
 ]

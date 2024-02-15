@@ -102,16 +102,19 @@ class Meal(models.Model):
         super(Meal, self).save(*args, **kwargs)
 
 class Music(models.Model):
-    meal=models.ManyToManyField(Meal, blank=True, related_name="musics")
+    meal=models.ManyToManyField(Meal, blank=True, related_name="meal_musics")
     title=models.CharField(max_length=100, blank=True, null=True)
     artist=models.CharField(max_length=100, blank=True, null=True)
+    group = models.ForeignKey(CustomGroup, on_delete=models.CASCADE, related_name="group_musics", null=True)
 
     def __str__(self):
         return self.title
 
 class Anecdote(models.Model):
-    meal=models.ManyToManyField(Meal, blank=True, related_name="anecdotes")
+    meal=models.ManyToManyField(Meal, blank=True, related_name="meal_anecdotes")
     message=models.TextField(blank=False, null=False)
+    group = models.ForeignKey(CustomGroup, on_delete=models.CASCADE, related_name="group_anecdotes", null=True)
+    date = models.DateField(blank=True, null=True)
 
     def __str__(self):
         return self.message[:30]

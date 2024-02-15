@@ -12,7 +12,7 @@
           <a href="{% url 'dish-detail' dish.slug %}">
           <div class="card-recipe-image">
             {% if dish.picture %}
-              <img src="{{ dish.picture.url }}" class="rounded-circle">
+              <img src="{{ dish.picture.url }}">
             {% else %}
             <img src="{% static 'assets/img/illustrations/dish_default.jpeg' %}" alt="Dish picture"  >
             {% endif %}

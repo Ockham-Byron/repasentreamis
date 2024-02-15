@@ -137,7 +137,7 @@ style="background: linear-gradient(rgb(148,163,184,0.8), rgb(51,65,85,0.8)), url
     {% endif %}  
 </div> <!-- Members container end -->
 
-<div class="d-flex p-2 justify-content-center flex-wrap">
+<div class="d-flex p-2 justify-content-center">
 {% if nb_of_meals == 0 %}
    
 
@@ -151,8 +151,25 @@ style="background: linear-gradient(rgb(148,163,184,0.8), rgb(51,65,85,0.8)), url
             </div>
         </div>
     </a>
+
+{% else %}
+<a href="{% url 'group-anecdotes' object.slug %}">
+    <div class="sketch-box text-center">
+            <div class="card-cta border-0 sketch-box">
+                <img class="card-icon mx-auto" src="{% static 'assets/img/icons/micro-100.png' %}" alt="Card image cap" width="100px" >
+                <div class="card-body brand-color">
+                {% trans 'View Anecdotes' %}
+                </div>
+            </div>
+        </div>
+</a>
 {% endif %}
 </div>
+
+
+
+
+
 
 
 

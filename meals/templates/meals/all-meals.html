@@ -40,7 +40,7 @@
           {% for dish in meal.dishes.all %}
           <a href="{% url 'dish-detail' dish.slug %}" class="darkest-color">
             <div class="d-flex justify-content-between align-items-center">
-              <div>
+              <div style="width:50px;">
                 {% if dish.picture%}
                 <img src="{{dish.picture.url}}" class="rounded-circle small-img">
                 {% endif %}
@@ -48,7 +48,7 @@
               <div>
                 <p class="my-auto">{{dish.name}}</p>
               </div>
-              <div>
+              <div style="width:50px;">
               {% if dish.averagereview != None %}
                 {{dish.averagereview}}
               {% endif %}
@@ -59,7 +59,8 @@
           <hr class="my-4">
 
           <a href="{% url 'add-music' meal.slug%}" class="card-recipe-btn-small">{% trans 'Music' %} <i class="fa-solid fa-plus fa-xs"></i></a>
-          {% for music in meal.musics.all %}
+          <div class="mb-4"></div>
+          {% for music in meal.meal_musics.all %}
           <div class="d-flex justify-content-between align-items-center">
             <div>
               <p class="my-auto">{{music.title}}</p>
@@ -71,15 +72,38 @@
           {% endfor %}
 
           <hr class="my-4">
-
+          <!-- Anecdotes -->
           <a href="{% url 'add-anecdote' meal.slug%}" class="card-recipe-btn-small">{% trans 'Anecdotes' %} <i class="fa-solid fa-plus fa-xs"></i></a>
-          {% for anecdote in meal.anecdotes.all %}
-          <div class="d-flex justify-content-between align-items-center">
+          <div class="mb-4"></div>
+          {% for anecdote in meal.meal_anecdotes.all %}
+          
+            <a href="#" type="button" class="darkest-color" data-bs-toggle="modal" data-bs-target="#showAnecdoteModal">
             <div>
-              <p class="my-auto">{{anecdote.message}}</p>
+              <p class="my-auto">{{anecdote.message|truncatewords:20}}</p>
+              <hr>
             </div>
+              </a>
+              <div class="modal fade" id="showAnecdoteModal" tabindex="-1" aria-labelledby="showAnecdoteModalLabel" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered">
+                  <div class="modal-content">
+                    <div class="text-center">
+                      <img src="{% static 'assets/img/icons/micro-100.png' %}" alt="error icon" />
+                      <br/>
+                      <h5 class="modal-title mid-color" id="exampleModalLabel">{% trans 'Anecdote' %}</h5>
+                    </div>
+                    <div class="text-center">
+                      <p class="darkest-color p-4">{{anecdote.message}}</p>
+                    </div>
+                    <div class="d-flex justify-content-evenly pb-2">
+                      <a href="{% url 'edit-anecdote' anecdote.id %}"  class="btn btn-mid-color btn-modal" >{% trans "Edit" %}</a>
+                      <a type="button" class="btn btn-outlined btn-modal outline-mid-color" data-bs-dismiss="modal">{% trans 'Close' %}</a>
+                    </div>
+                  </div>
+                </div>
+              </div>
             
-          </div>
+            
+          
           {% endfor %}
           
           
@@ -114,5 +138,8 @@
 </div>
 </a>
  
+
+
+
 
 {% endblock %}
