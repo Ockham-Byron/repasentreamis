@@ -13,14 +13,14 @@
             <div class="col-4">
                 <form method="post" class="text-center"> 
                     {% csrf_token %}
-                    <button  class="btn btn-mid-color" type="submit">{% trans 'Verify now' %}</button>
+                    <button  class="btn btn-brand-color" type="submit">{% trans 'Verify now' %}</button>
                 </form>
             </div>
             <div class="col-4">
-                <a href="{% url 'dashboard' %}" class="btn btn-brand-color">{% trans 'Verify later' %}</a>
+                <a href="{% url 'dashboard' %}" class="btn btn-mid-color">{% trans 'Verify later' %}</a>
             </div>
             <div class="col-4">
-                <a href="{% url 'change-email' %}" class="btn btn-brand-color">{% trans 'Update email' %}</a>
+                <a href="{% url 'change-email' %}" class="btn btn-mid-color">{% trans 'Update email' %}</a>
             </div>
         </div>
     </div>

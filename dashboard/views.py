@@ -4,15 +4,31 @@ from groups.models import CustomGroup
 
 User = get_user_model
 
+def get_groups(user):
+    groups = CustomGroup.objects.filter(members__id__contains=user.id)
+    nb_of_groups = len(groups)
+    if nb_of_groups == 0:
+        group = None
+    elif nb_of_groups >= 1:
+        group = groups
+        
+
+    return group
+
 # Create your views here.
 def dashboard_view(request):
   if request.user.is_authenticated:
-    user=request.user
-    if CustomGroup.objects.filter(members__id__contains=user.id):
-      context = {'user': user}
-      return render(request, 'dashboard/dashboard.html', context=context)
+    print("is_authenticated")
+    group = get_groups(request.user)
+    if group is None: 
+        print("rien")
+        return redirect('all-groups')
     else:
-      return redirect('all-groups')
-  
+        print("dashboard")
+        
+        context = {'user': request.user,
+                   }
+        return render(request, 'dashboard/dashboard.html', context=context)
+   
   else:
     return redirect('login')

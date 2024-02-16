@@ -63,6 +63,41 @@
                   
               </ul>
           </li>
+          <!-- Atmosphere -->
+          <li class="dropdown">
+              <a href="#" class="nav-link dropdown-toggle px-sm-0 px-2 lightest-color" id="dropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                <i class="fa-solid fa-blender"></i><span class="ms-1 d-none d-sm-inline">{% trans 'Atmosphere' %}</span>
+              </a>
+              <ul class="dropdown-menu dropdown-menu-dark text-small shadow" aria-labelledby="dropdown">
+                {% if groups.count == 1%}
+                    {% for group in groups%}
+                        <li><a class="dropdown-item lightest-color" href="{% url 'group-anecdotes' group.slug %}">{% trans 'Anecdotes' %}</a></li>
+                        <li><a class="dropdown-item lightest-color" href="{% url 'group-musics' group.slug %}">{% trans 'Music' %}</a></li>
+                    {% endfor %}
+                {% else %}
+                    <li class="dropdown-submenu">
+                      <a class="second-level lightest-color ps-2" tabindex="-1" href="#">{% trans 'Anecdotes' %}<span class="caret"></span></a>
+                      <ul class="dropdown-menu dropdown-menu-dark ps-2">
+                        {% for group in groups %}
+                        <li><a tabindex="-1" class="lightest-color" href="{% url 'group-anecdotes' group.slug %}"><small>{% trans 'Anecdotes with ' %} {{group.name}}</small></a></li>
+                        <hr class="dropdown-divider">
+                        {% endfor %}
+                      </ul>
+                    </li>
+                    <hr class="dropdown-divider">
+                    <li class="dropdown-submenu">
+                      <a class="second-level lightest-color ps-2" tabindex="-1" href="#">{% trans 'Music' %}<span class="caret"></span></a>
+                      <ul class="dropdown-menu dropdown-menu-dark ps-2">
+                        {% for group in groups %}
+                        <li><a tabindex="-1" class="lightest-color" href="{% url 'group-musics' group.slug %}"><small>{% trans 'Music with ' %} {{group.name}}</small></a></li>
+                        <hr class="dropdown-divider">
+                        {% endfor %}
+                      </ul>
+                    </li>
+                {% endif %}
+                  
+              </ul>
+          </li>
 
           
           

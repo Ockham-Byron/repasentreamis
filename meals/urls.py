@@ -25,6 +25,9 @@ urlpatterns = [
 
     #musics
     path(_('add-music/<slug>'), add_music, name="add-music"),
+    path(_('edit-music/<id>'), edit_music, name="edit-music"),
+    path(_('delete-music/<id>'), delete_music, name="delete-music"),
+    path(_('group-music/<slug>'), group_musics, name="group-musics"),
 
     #anecdotes
     path(_('anecdote/<slug>'), add_anecdote, name="add-anecdote"),

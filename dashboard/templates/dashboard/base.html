@@ -85,7 +85,16 @@
     {% endif %}
 
     
-   
+<!-- Dropdown Multilevel -->
+<script>
+$(document).ready(function(){
+  $('.dropdown-submenu a.second-level').on("click", function(e){
+    $(this).next('ul').toggle();
+    e.stopPropagation();
+    e.preventDefault();
+  });
+});
+</script>   
    
 
 

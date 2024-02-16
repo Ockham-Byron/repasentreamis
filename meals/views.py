@@ -351,6 +351,33 @@ def add_music(request, slug):
     return render(request, 'meals/add-music.html', {'form':form})
 
 @login_required
+def group_musics(request, slug):
+    group = get_object_or_404(CustomGroup, slug=slug)
+    musics = Music.objects.filter(group=group)
+
+    context = {'musics': musics,
+               'group': group}
+    return render(request, 'meals/all-musics.html', context=context)
+
+@login_required
+def edit_music(request, id):
+    music= get_object_or_404(Music, pk=id)
+    form = AddMusicForm(instance=music)
+
+    if request.method == 'POST':
+        form = AddMusicForm(request.POST, instance=music)
+        music = form.save()
+        return redirect('group-musics', music.group.slug)
+    
+    return render(request, 'meals/add-music.html', {'form':form, 'music':music})
+
+@login_required
+def delete_music(request, id):
+    music = get_object_or_404(Music, pk=id)
+    music.delete()
+    return redirect('all-meals')
+
+@login_required
 def add_anecdote(request, slug):
     meal=get_object_or_404(Meal, slug=slug)
     form=AddAnecdoteForm()

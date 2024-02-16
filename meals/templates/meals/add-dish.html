@@ -85,18 +85,7 @@
         <a href="{% url 'all-dishes' %}" class="mid-color">{% trans 'Cancel' %}</a>
         {% if dish %}
         <a href="#" type="button" class="joy-color" data-bs-toggle="modal" data-bs-target="#deleteDishModal"><i class="fa-solid fa-trash pe-2"></i>{% trans 'Delete Dish' %}</a>
-        {% endif %}
-      </div>
-  </form>
-  {% endif %}
-</div>
-
-<!-- Modals -->
-<!-- Button trigger modal -->
-
-
-<!-- Modals -->
-<!-- Modal delete dish -->
+        <!-- Modal delete dish -->
 <div class="modal fade" id="deleteDishModal" tabindex="-1" aria-labelledby="deleteDishModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered">
     <div class="modal-content">
@@ -115,6 +104,14 @@
     </div>
   </div>
 </div>
+        {% endif %}
+      </div>
+  </form>
+  {% endif %}
+</div>
+
+
+
  
 {% endblock content %}
 

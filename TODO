@@ -5,10 +5,9 @@
 Dish:
     ☐ gérer plusieurs groupes
 
-All-dishes:
-    ☐ floating button
 
-
+Group: 
+    ☐ edit photo
 
 Messages:
     ☐ add logic
@@ -16,18 +15,22 @@ Messages:
 Mode invité:
     ☐ add logic
 
-Anecdote:
-    ✔ liste des anectodes @done(24-02-13 16:12)
 
-Music:
-    ☐ éditer
-    ☐ supprimer
-    ☐ liste des musiques
 
-Homepage:
-    ☐ layout
+Dashboard:
+    ☐ proposer roadmap
+    ☐ plusieurs groups pour anecdotes
+    ☐ plusieurs groups pour musics
+
 
 Archive:
+  ✔ floating button @done(24-02-16 10:50) @project(All-dishes)
+  ✔ liste des anectodes @done(24-02-13 16:12) @project(Anecdote)
+  ✔ éditer @done(24-02-16 17:50) @project(Music)
+  ✔ supprimer @done(24-02-16 17:55) @project(Music)
+  ✔ liste des musiques @done(24-02-16 17:50) @project(Music)
+  ✔ sidebar : group en context processor @done(24-02-16 16:25) @project(Dashboard)
+  ✔ layout @done(24-02-16 10:54) @project(Homepage)
   ✔ edit @done(24-02-12 16:01) @project(Dish)
   ✔ suppress @done(24-02-12 16:15) @project(Dish)
   ✔ add comment or edit comment si déjà commenté @done(24-02-13 12:06) @project(All-dishes)
