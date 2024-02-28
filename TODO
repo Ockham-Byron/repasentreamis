@@ -1,29 +1,41 @@
 ☐ traduire
-☐ add login required
-☐ changer couleur des boutons
+☐ gérer le toggle
+☐ couleur text footer
+
+Login/Register:
+    ☐ form style
+
 
 Dish:
     ☐ gérer plusieurs groupes
 
-
+Meals:
+    ☐ gérer plusieurs groupes
 Group: 
-    ☐ edit photo
+    ✔ edit photo @done(24-02-22 17:57)
 
 Messages:
     ☐ add logic
 
 Mode invité:
     ☐ add logic
+    ☐ permettre de s'enregister à partir du profil
+    ☐ changer les membres dans groupe
+    ☐ verfier pas le même pseudo dans un groupe
 
-
-
-Dashboard:
-    ☐ proposer roadmap
-    ☐ plusieurs groups pour anecdotes
-    ☐ plusieurs groups pour musics
-
+    
 
 Archive:
+  ✔ edit form:ajouter placeholders @done(24-02-22 17:35) @project(Profile)
+  ✔ supprimer dashboard et aller à meals @done(24-02-22 17:36) @project(Dashboard)
+  ✔ add login required @done(24-02-22 11:26)
+  ✔ changer couleur des boutons @done(24-02-22 12:35)
+  ✔ add dish to existing dishes @done(24-02-19 10:58) @project(Dish)
+  ✔ voir tous les plats existants @done(24-02-22 11:06) @project(Meal)
+  ✔ supprimer du formulaire les plats déjà associés au repas @done(24-02-22 11:06) @project(Meal)
+  ✔ trier les repas par date @done(24-02-22 11:26) @project(Meal)
+  ✔ plusieurs groups pour anecdotes @done(24-02-22 11:26) @project(Dashboard)
+  ✔ plusieurs groups pour musics @done(24-02-22 11:26) @project(Dashboard)
   ✔ floating button @done(24-02-16 10:50) @project(All-dishes)
   ✔ liste des anectodes @done(24-02-13 16:12) @project(Anecdote)
   ✔ éditer @done(24-02-16 17:50) @project(Music)

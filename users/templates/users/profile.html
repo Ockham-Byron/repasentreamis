@@ -2,9 +2,9 @@
 {% load avatar static i18n %}
 {% block content %}
 <div class="profile-wrapper">
-  <div class="row">
+  <div class="d-flex justify-content-align align-items-center">
     <!-- Principal Profile Card -->
-    <div class="col-12 col-md-6">
+    
         <div class="profile-card mx-auto d-flex flex-column">
         <header>
           <div class="profile-card-avatar">
@@ -21,15 +21,13 @@
         <h6 class="darkest-color text-start">{% trans 'Informations' %}</h6>
         {% if request.user == user %}
           <p class="profile-card-subtitle text-start darkest-color small mb-0">{% trans 'Your name' %}</p>
-          {% if user.first_name and user.last_name  %}
+          {% if user.first_name or user.last_name  %}
             <p class="profile-card-info text-start small">{{user.first_name}} {{user.last_name}}</p>
           {% else %}
-            <div class="text-start small">
-              <a href="#" class="btn-edit"><i class="fa-solid fa-pencil btn-edit-icon"></i><span class="label">{% trans 'Add this info' %}</span></a>
-            </div>
+            <p class="profile-card-info text-start">-</p>
           {% endif %}
         {% else %}
-          {% if user.first_name and user.last_name and user.is_name_visible %}
+          {% if user.first_name or user.last_name and user.is_name_visible %}
           <p class="profile-card-subtitle text-start darkest-color mb-0">{% trans 'Name' %}</p>
           <p class="profile-card-info text-start small">{{user.first_name}} {{user.last_name}}</p>
           {% endif%}
@@ -70,7 +68,7 @@
       
           {% if request.user == user %}
           <div class="text-start small">
-          <a href="{% url 'profile-update' request.user.slug %}" class="text-center btn-edit"><i class="fa-solid fa-pencil btn-edit-icon pe-2"></i>{% trans 'Edit Profile' %}</a>
+          <a href="{% url 'profile-update' request.user.slug %}" class="text-center btn-edit btn-joy-color"><i class="fa-solid fa-pencil btn-edit-icon pe-2"></i><span class="label">{% trans 'Edit Profile' %}</span></a>
           </div>
           {% else %}
           <a href="#">Contact</a>
@@ -78,20 +76,9 @@
         </div>
       </div>
 
-    </div>
+    
 
-    <!-- Secondary Profile Cards -->
-    <div class="col-12 col-md-6">
-      <div class="d-flex flex-column justify-content-around profile-subcard-wrapper">
-        <div id="infos1" class="profile-subcard mt-sm-3 p-3">
-          <h6 class="darkest-color"><mark>{% trans 'Infos'%}</mark></h6>
-        </div>
-
-        <div id="infos2" class="profile-subcard mt-sm-3 p-3">
-        <h6 class="darkest-color"><mark>{% trans 'Other infos'%}</mark></h6>
-        </div>
-      </div>
-    </div>
+   
 
   </div>
 </div>

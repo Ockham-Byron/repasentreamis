@@ -124,7 +124,7 @@ class AddMealForm(forms.ModelForm):
     group = forms.ModelChoiceField(
         required=True, 
         queryset=CustomGroup.objects.none(), 
-        widget=ColumnCheckboxSelectMultiple(columns=3, css_class='col-md-4', wrapper_css_class='row',)
+        
     )
 
     class Meta:
@@ -170,3 +170,13 @@ class AddAnecdoteForm(forms.ModelForm):
     class Meta:
         model=Anecdote
         fields=['message']
+
+
+class GuestRegistrationForm(forms.ModelForm):
+    pseudo = forms.CharField(widget=forms.TextInput(attrs={'class': 'form-control border-right-0', 'placeholder': _('Username'), 'autocomplete':"username"}),)
+    
+    
+    
+    class Meta:
+        model = User
+        fields = ['pseudo']

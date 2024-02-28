@@ -93,7 +93,9 @@ class GroupDetailView(LoginRequiredMixin, DetailView):
         group = self.object
         
         context = super().get_context_data(**kwargs)
-        context['nb_of_users'] = group.members.all().count()
+        context['members'] = group.members.all().filter(is_guest=False)
+        context['guests'] = group.members.all().filter(is_guest=True)
+        context['nb_of_users'] = group.members.all().filter(is_guest=False).count()
         context['nb_of_meals'] = group.meals.all().count() 
         return context
     

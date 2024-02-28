@@ -2,7 +2,13 @@
 {% load i18n static %}
 {% block content %}
 
-<h1 class="mt-2 mb-5 text-center">{% trans "Dishes" %}</h1>
+<h1 class="mt-2 mb-5 text-center">
+{% if group.name %}
+  {% trans "Dishes of" %} {{group.name}}
+{% else %}
+  {% trans 'All Dishes' %}
+{% endif %}
+</h1>
 
 <div class="d-flex mt-5 pt-5 justify-content-center flex-wrap ">
   {% for dish in dishes %}

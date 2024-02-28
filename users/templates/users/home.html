@@ -7,11 +7,16 @@
       <h1 class="mb-5 dark-color">{% trans 'Tasty Moments' %}</h1>
       <h4>{% trans 'The  webapp that turns your meals into unforgettable moments.' %}</h4>
       <p>{% trans "Picture yourself relishing a delightful dish with your loved ones, surrounded by laughter and lively conversation. TastyMoments captures these precious moments in the blink of an eye. More than just an app, it's your perfect companion for immortalizing every bite, every burst of laughter, and every melody that accompanies your meals." %}</p>
-
+      
       <div class="d-flex">
+      {% if request.user.is_authenticated %}
+        <a href="{% url 'all-meals' %}" class="btn btn-brand-color">{% trans 'Enter' %}</a>
+      {% else %}
         <a href="{% url 'login' %}" class="btn btn-brand-color">{% trans 'Enter' %}</a>
         <a href="{% url 'register' %}" class="btn btn-outlined outline-brand-color ms-3">{% trans 'Join for first time' %}</a>
+      {% endif %}
       </div>
+      
     </div>
 
     <div class="showcase-right bg-brand">

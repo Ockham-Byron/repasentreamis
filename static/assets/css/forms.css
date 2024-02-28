@@ -1,7 +1,6 @@
 /* || General */
 
 input.form-control, span.input-group-text {
- 
  border:none !important;
  height:50px !important;
  font-size:20px;
@@ -14,6 +13,9 @@ input.form-control {
 
 .input-group {
   margin-bottom:10px !important;
+  background-color: white;
+  border:solid 1px #999;
+  border-radius:10px;
 }
 
 input::placeholder{
@@ -107,12 +109,11 @@ input#id_eaten_at {
 #password-form input{
   width:85% !important;
   height: 50px !important;
-  background-color:rgb(239, 239, 239) !important;
   border:none !important;
   padding-left:10px;
 }
 
-#password-form input:focusin{
+#password-form input:focus{
   border-color:var(--mid-color) !important;
 }
 
@@ -194,7 +195,7 @@ ul.form-errors li, ul.errorlist li {
   
 }
 
-.kform .title {
+.kform .title, .fullscreen-form .title {
   font-size: 28px;
   color:var(--mid-color);
   font-weight: 600;
@@ -205,7 +206,7 @@ ul.form-errors li, ul.errorlist li {
   padding-left: 30px;
 }
 
-.kform .title::before, .kform .title::after {
+.kform .title::before, .kform .title::after, .fullscreen-form .title::before, .fullscreen-form .title::after {
   position: absolute;
   content: "";
   height: 16px;
@@ -215,13 +216,13 @@ ul.form-errors li, ul.errorlist li {
   background-color: var(--mid-color);
 }
 
-.kform .title::before {
+.kform .title::before, .fullscreen-form .title::before  {
   width: 18px;
   height: 18px;
   background-color: var(--mid-color);
 }
 
-.kform .title::after {
+.kform .title::after, .fullscreen-form .title::after {
   width: 18px;
   height: 18px;
   animation: pulse 1s linear infinite;
@@ -337,5 +338,91 @@ ul.form-errors li, ul.errorlist li {
   }
 }
 
+.fullscreen-form {
+  margin:0 20px;
+}
 
 
+/* Img checkbox */
+
+.choice-container {
+  height: 150px;
+  width: 150px;
+  background-color: #ffffff;
+  margin-bottom: 20px;
+  box-shadow: 0 0 25px rgba(17, 1, 68, 0.08);
+  border-radius: 8px;
+  position: relative;
+  cursor: pointer;
+}
+
+.choice-container p {
+  font-size:0.8rem;
+  padding-top:5x;
+}
+
+.fullscreen-form input[type="checkbox"] {
+  -webkit-appearance: none;
+  position: absolute;
+  top:-2px;
+  right:-8px;
+  width: 100%;
+  cursor: pointer;
+}
+
+.choice-container img {
+  width: 60%;
+  position: absolute;
+  margin: auto;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  cursor: pointer;
+}
+
+@media only screen and (min-width: 768px) {
+  .choice-container {
+    height: 300px;
+    width: 300px;
+  }
+
+  .choice-container p {
+    font-size: 1rem;
+  }
+
+  .fullscreen-form input[type="checkbox"] {
+    top:8px;
+    right:0px;
+  }
+
+  .choice-container img {
+    width: 70%;
+  }
+
+
+
+}
+
+.fullscreen-form input[type="checkbox"]:after {
+  position: absolute;
+  font-family: "Font Awesome 5 Free";
+  font-weight: 400;
+  content: "\f111" !important;
+  font-size: 18px;
+  color: var(--brand-color);
+  right: 10px;
+  top: -5px;
+}
+.fullscreen-form input[type="checkbox"]:checked:after {
+  font-weight: 900;
+  content: "\f058" !important;
+  color: var(--brand-color);
+}
+
+@media screen and (min-width: 950px) {
+  
+  input[type="checkbox"].img-checkbox:after {
+    font-size: 22px;
+  }
+}

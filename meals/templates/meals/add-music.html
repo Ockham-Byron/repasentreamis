@@ -33,7 +33,7 @@
       
       <button class="submit" type="submit ">{% trans 'Submit' %}</button>
       <div class="text-center d-flex flex-column">
-        <a href="{% url 'group-musics' music.group.slug %}" class="mid-color">{% trans 'Cancel' %}</a>
+        <a href="{% url 'all-meals' %}" class="mid-color">{% trans 'Cancel' %}</a>
         {% if music %}
           <a href="#" type="button" class="joy-color" data-bs-toggle="modal" data-bs-target="#deleteModal"><i class="fa-solid fa-trash pe-2"></i>{% trans 'Delete Song' %}</a>
           <!-- Modal delete meal -->

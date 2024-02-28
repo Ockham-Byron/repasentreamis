@@ -16,6 +16,7 @@ from django.contrib.auth.views import PasswordContextMixin
 from django.views.generic.edit import FormView
 from .forms import *
 
+
 from django.template.loader import render_to_string
 from django.contrib.sites.shortcuts import get_current_site
 from django.utils.http import urlsafe_base64_encode, urlsafe_base64_decode
@@ -171,6 +172,9 @@ def register_view(request):
     }
 
     return render(request, 'users/authentication/register.html', context=context)
+
+
+                                     
 
 @login_required
 def custom_logout(request):

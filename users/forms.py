@@ -40,6 +40,10 @@ class UserRegistrationForm(UserCreationForm):
             user.save()
         return user
     
+
+
+
+    
 class UserLoginForm(AuthenticationForm):
 
     username = forms.EmailField(widget=forms.EmailInput(attrs={'class': 'form-control border-right-0', 'placeholder': _('Email')}),)
@@ -115,10 +119,12 @@ class UserUpdatePasswordForm(forms.Form):
         return self.user
     
 class UserUpdateForm(forms.ModelForm):
+    first_name = forms.CharField(widget=forms.TextInput(attrs={'placeholder':_('First Name')}), required=False)
+    last_name = forms.CharField(widget=forms.TextInput(attrs={'placeholder':_('Last Name')}), required=False)
     email = forms.EmailField(widget=forms.EmailInput(attrs={ 'placeholder': _('Email')}),required=False)
     pseudo = forms.CharField(widget=forms.TextInput(attrs={'placeholder':_('Pseudo')}), required=False)
     profile_pic = forms.ImageField(widget=forms.FileInput(attrs={'class': 'form-control-file'}), required=False)
-    bio = forms.CharField(widget=forms.Textarea(attrs={'rows': 5}), required=False)
+    bio = forms.CharField(widget=forms.Textarea(attrs={'placeholder':_('Bio'), 'rows': 5}), required=False)
     class Meta:
         model = User
         fields = ['first_name', 'last_name', 'email', 'profile_pic', 'bio', 'pseudo']

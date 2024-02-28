@@ -1,6 +1,8 @@
 from django.shortcuts import render, redirect
 from django.shortcuts import get_object_or_404, get_list_or_404
 from django.contrib.auth.decorators import login_required
+from django.contrib import messages
+from django.utils.translation import gettext as _
 from django.db.models import Count, Q
 from .models import *
 from .forms import *
@@ -50,9 +52,42 @@ def add_dish(request):
                 meal.save()
                 
                 return redirect('all-dishes')
-
+    
         return render(request, "meals/add-dish.html", {'form':form, 'is_group':is_group, 'groups':groups, 'group':group, 'no_meal':no_meal})
+    
+    else:
+        return render(request, "meals/choose-group.html")
+    
+
    
+@login_required
+def add_dish_to_group(request, slug):
+    group = CustomGroup.objects.get(slug=slug)
+    form = AddDishForm(group)
+    is_group = True
+    no_meal = True
+
+    if request.method == "POST":
+        form=AddDishForm(group, request.POST, request.FILES)
+        chefs = request.POST.getlist('chef')
+        meal = request.POST.get('meal')
+        meal = Meal.objects.get(id=meal)
+        if form.is_valid():
+            dish=form.save(commit=False)
+            dish.group = group
+            dish.save()
+            if chefs:
+                for chef in chefs:
+                    user = User.objects.get(id=chef)
+                    dish.chef.add(user)
+            dish.save()
+            meal.dishes.add(dish)
+            meal.save()
+            
+            return redirect('all-dishes')
+            
+    return render(request, "meals/add-dish.html", {'form':form, 'is_group':is_group, 'group':group, 'no_meal':no_meal})
+    
 @login_required
 def all_dishes(request):
     groups = get_groups(request.user)
@@ -60,7 +95,7 @@ def all_dishes(request):
         return redirect('all-groups')
     else:
         for group in groups:
-            dishes = Dish.objects.filter(group=group)
+            dishes = Dish.objects.filter(group__members__id__contains = request.user.id).distinct()
             dishes = dishes.annotate(
             has_commented=Count('dish_comments', filter=Q(dish_comments__author=request.user))
     )
@@ -69,6 +104,15 @@ def all_dishes(request):
             'dishes':dishes
         }
         return render(request, "meals/all-dishes.html", context=context)
+
+@login_required
+def group_dishes(request, slug):
+    group = get_object_or_404(CustomGroup, slug=slug)
+    dishes = Dish.objects.filter(group=group)
+
+    context = {'dishes': dishes,
+               'group': group}
+    return render(request, 'meals/all-dishes.html', context=context)
 
 @login_required
 def dish_detail(request, slug):
@@ -84,6 +128,28 @@ def dish_detail(request, slug):
         'dish':dish,
         'comments':comments,
         'not_commented':not_commented
+        
+    }
+    
+    return render(request, "meals/dish-detail.html", context=context)
+
+@login_required
+def dish_detail_with_guest(request, slug, guest):
+    dish=get_object_or_404(Dish, slug=slug)
+    guest=get_object_or_404(User, slug=guest)
+    print(guest)
+    comments=Comment.objects.filter(dish=dish)
+    not_commented = True
+    if Comment.objects.filter(dish=dish, author=request.user).exists():
+        not_commented = False
+    
+    print(not_commented)
+
+    context={
+        'dish':dish,
+        'comments':comments,
+        'not_commented':not_commented,
+        'guest':guest,
         
     }
     
@@ -139,6 +205,23 @@ def add_comment(request, slug):
 
     return render(request, "meals/add-comment.html", {'form':form, 'dish':dish})
 
+def add_comment_guest(request,slug, guest):
+    dish=get_object_or_404(Dish, slug=slug)
+    guest=get_object_or_404(User, slug=guest)
+    form=AddCommentForm()
+
+    if request.method=='POST':
+        form=AddCommentForm(request.POST)
+        if form.is_valid():
+            comment=form.save(commit=False)
+            comment.dish=dish
+            comment.author=guest
+            comment.save()
+            return redirect('dish-detail-with-guest', dish.slug, guest.slug)
+
+    return render(request, "meals/add-comment.html", {'form':form, 'dish':dish, 'guest':guest})
+
+
 @login_required
 def edit_comment(request,id):
     comment=get_object_or_404(Comment, id=id)
@@ -163,6 +246,9 @@ def delete_comment(request,id):
 def add_meal(request):
     form=AddMealForm(request.user)
     group = get_groups(request.user)
+    is_dish = False
+    if Dish.objects.filter(group__in=group).exists():
+        is_dish = True
     is_group = False
     if len(group) == 1:
                 is_group = True
@@ -170,21 +256,25 @@ def add_meal(request):
         return redirect('all-groups')
     
     else:
-        
         if request.method == "POST":
+            print("request method is POST")
             form=AddMealForm(request.user, request.POST, request.FILES)
             if len(group) == 1:
                 group = CustomGroup.objects.get(uuid=group[0].uuid)
                 is_group = True
             else:
                 group = request.POST.get('group')
-                group = CustomGroup.objects.get(uuid=group)
+                if group is not None:
+                    print("y a un groupe")
+                    group = CustomGroup.objects.get(uuid=group)
+                else:
+                    print("manque le groupe")
 
             if form.is_valid() or group is not None:
+                print("ok")
                 eaten_at = request.POST.get('eaten_at')
                 picture = request.FILES.get('picture')
                 dishes = request.POST.getlist('dishes')
-                
                 
                 meal = Meal(eaten_at=eaten_at,picture=picture, group=group)
                 meal.save()
@@ -197,19 +287,25 @@ def add_meal(request):
 
                 if 'add-dish' in request.POST:
                     return redirect('add-dish-to-meal', meal.slug)
+                if 'add-existing-dish' in request.POST:
+                    return redirect('add-existing-dish', meal.slug)
                 if 'create-meal' in request.POST:
                     return redirect('all-meals')
             
             else:
-                print(form.errors.as_data())
-                
+                print("not ok")
+                messages.error(request,_('Please select the group you shared the meal with.'))
+                return redirect('add-meal')
 
-        return render(request, "meals/add-meal.html", {'form':form, 'is_group':is_group})
+        return render(request, "meals/add-meal.html", {'form':form, 'is_group':is_group, 'is_dish':is_dish})
 
 @login_required
 def add_meal_from_group(request, slug):
     form=AddMealForm(request.user)
     group = CustomGroup.objects.get(slug=slug)
+    is_dish = False
+    if Dish.objects.filter(group=group).exists():
+        is_dish = True
     is_group = True
 
     if request.method == "POST":
@@ -226,13 +322,15 @@ def add_meal_from_group(request, slug):
             meal.save()
             if 'add-dish' in request.POST:
                 return redirect('add-dish-to-meal', meal.slug)
+            if 'add-existing-dish' in request.POST:
+                return redirect('add-existing-dish', meal.slug)
             if 'create-meal' in request.POST:
                 return redirect('all-meals')
             
         else:
             print(form.errors)
 
-    return render(request, "meals/add-meal.html", {'form':form, 'is_group':is_group})
+    return render(request, "meals/add-meal.html", {'form':form, 'is_group':is_group, 'is_dish':is_dish})
 
 @login_required
 def edit_meal(request, slug):
@@ -317,16 +415,18 @@ def add_existing_dish_to_meal(request, slug):
     meal = get_object_or_404(Meal, slug=slug)
     
     
-    dishes = Dish.objects.filter(group= meal.group)
+    dishes = Dish.objects.filter(group= meal.group).exclude(meals__id__contains = meal.id)
     print(dishes)
 
     if request.method == "POST":
         if 'create-dish' in request.POST:
             return redirect('add-dish-to-meal', meal.slug)
         if 'add-dish' in request.POST:
-            dish=request.POST.get('dish')
-            print(dish)
-            meal.dishes.add(dish)
+            dishes=request.POST.getlist('dish')
+            for dish in dishes:
+                dish = Dish.objects.get(id=dish)
+                print(dish)
+                meal.dishes.add(dish)
             meal.save()
             return redirect('all-meals')
         
@@ -429,6 +529,7 @@ def all_meals(request):
         groups = CustomGroup.objects.filter(members__id__contains=request.user.id)
         for group in groups:
             meals = Meal.objects.filter(group__members__id__contains = request.user.id).distinct()
+            meals = meals.order_by('-eaten_at')
     
     
 
@@ -440,3 +541,48 @@ def all_meals(request):
 
         return render(request, "meals/all-meals.html", context=context )
     
+@login_required
+def group_meals(request, slug):
+    group = get_object_or_404(CustomGroup, slug=slug)
+    meals = Meal.objects.filter(group=group)
+
+    context = {'meals': meals,
+               'group': group}
+    return render(request, 'meals/all-meals.html', context=context)
+
+@login_required
+def meal_detail_guest(request, slug, guest):
+    meal = get_object_or_404(Meal, slug=slug)
+    guest = get_object_or_404(User, slug=guest)
+
+    context = {'meal':meal,
+               'guest': guest}
+
+    return render(request, "meals/meal-detail-with-guest.html", context=context)
+
+@login_required
+def invite_guest(request,slug):
+    meal = get_object_or_404(Meal, slug = slug)
+    group = meal.group
+    form = GuestRegistrationForm()
+
+    if request.method == "POST":
+        form = GuestRegistrationForm(request.POST)
+        if form.is_valid():
+            guest = form.save(commit=False)
+            guest.email = str(guest.pseudo) + "123@false-email.com"
+            guest.username = str(guest.pseudo) + "123"
+            print(guest.email)
+            guest.is_rgpd = True
+            guest.is_guest = True
+            guest.save()
+            guest.email = str(guest.slug) + "@false-email.com"
+            guest.username = str(guest.slug)
+            guest.save()
+            group.members.add(guest)
+            group.save()
+            
+            
+            return redirect('meal-detail-guest', slug=meal.slug, guest=guest.slug)
+        
+    return render(request, 'meals/invite-guest.html',{'form': form})

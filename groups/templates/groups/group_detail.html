@@ -112,7 +112,7 @@ style="background: linear-gradient(rgb(148,163,184,0.8), rgb(51,65,85,0.8)), url
                 </p>
                 </a>
             </div>
-        {% for i in object.members.all %}
+        {% for i in members %}
             {% if object.leader == i %}
 
             {% else %}
@@ -136,6 +136,37 @@ style="background: linear-gradient(rgb(148,163,184,0.8), rgb(51,65,85,0.8)), url
         </div>
     {% endif %}  
 </div> <!-- Members container end -->
+
+<!-- Guests container -->
+
+<div class="container mt-5">
+    <h1 class="text-center mb-5 darkest-color">{% trans "Guests" %}</h1>
+    
+        <div class="d-flex flex-wrap justify-content-center">
+            
+            
+        {% for i in guests %}
+            
+            <div class="member text-center mx-2">
+            <a href="{% url 'profile'  i.slug %}">
+                <div class="icon-wrap">
+                    {% if i.profile_pic %}
+                    <div class="icon d-flex align-items-center justify-content-center" style="background:url('{{i.profile_pic.url}}') rgba(255, 255, 255, 0.8) ; background-blend-mode: multiply;background-size:cover;"></div>
+                    {% else %}
+                    <div class="icon">{{ i|avatar }}</div>
+                    {% endif %}
+                </div>
+                <p class="text-center">{{i.pseudo}}
+                
+                </p>
+                </a>
+            </div>
+           
+            
+        {% endfor %}
+        </div>
+   
+</div> <!-- Guestscontainer end -->
 
 <div class="d-flex p-2 justify-content-center">
 {% if nb_of_meals == 0 %}

@@ -40,35 +40,59 @@
         <p></p>
       </div>
 
-    
-        <p class="mb-0">{% trans "When did you share this beautiful meal ?" %}</p>
-        {{form.eaten_at}}
-
-        <div class="d-flex justify-content-between">
-
-        <p class="mb-0">{% trans "Which dishes did you eat ?" %}</p>
-         <button class="submit py-0 px-1" type="submit" name="add-dish"><small>{% trans 'Add Dish Option ?' %}</small></button>
-        </div>
-        <div class="form-choices">
-        {{form.dishes}}
-        </div>
-       
         {% if is_group %}
 
         {% else %}
-        <p class="mb-0">{% trans "Where did you eat ?" %}</p>
+        <p class="mb-0 mid-color">{% trans "Where did you eat ?" %}</p>
 
         {{form.group}}
         {% endif %}
+
+    
+        <p class="mb-0 mid-color">{% trans "When did you share this beautiful meal ?" %}</p>
+        {{form.eaten_at}}
+
+       
+
+        <p class="mb-2 mid-color">{% trans "Which dishes did you eat ?" %}</p>
+         <div class="d-flex justify-content-between">
+         <button class="btn  btn-mid-color w-75 me-1" type="submit" name="add-dish"><small>{% trans 'Add New Dish' %}</small></button>
+         {% if is_dish %}
+         <button class="btn   btn-darkest-color w-75 ms-1 " type="submit" name="add-existing-dish"><small>{% trans 'Add Existing Dish' %}</small></button>
+         {% endif %}
+        </div>
+
+      
+       
+        
         
         
       
       
-      <button class="submit" type="submit" name="create-meal">{% trans 'Submit' %}</button>
+      <button class="submit mt-4" type="submit" name="create-meal">{% trans 'Submit' %}</button>
       <div class="text-center d-flex flex-column">
         <a href="{% url 'all-meals' %}" class="mid-color">{% trans 'Cancel' %}</a>
         {% if meal %}
         <a href="#" type="button" class="joy-color" data-bs-toggle="modal" data-bs-target="#deleteMealModal"><i class="fa-solid fa-trash pe-2"></i>{% trans 'Delete Meal' %}</a>
+        <!-- Modal delete meal -->
+        <div class="modal fade" id="deleteMealModal" tabindex="-1" aria-labelledby="deleteMealModalLabel" aria-hidden="true">
+          <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+              <div class="text-center">
+                <img src="{% static 'assets/img/icons/error-100.png' %}" alt="error icon" />
+                <br/>
+                <h5 class="modal-title mid-color" id="exampleModalLabel">{% trans 'Delete Meal ?' %}</h5>
+              </div>
+              <div class="text-center">
+                <p class="darkest-color p-4">{% trans "You will lose all the memories, but hey, no pression..." %}</p>
+              </div>
+              <div class="d-flex justify-content-evenly pb-2">
+                <a href="{% url 'delete-meal' meal.slug %}"  class="btn btn-mid-color btn-modal" >{% trans "Yes, no regret" %}</a>
+                <a type="button" class="btn btn-outlined btn-modal outline-mid-color" data-bs-dismiss="modal">{% trans 'Cancel' %}</a>
+              </div>
+            </div>
+          </div>
+        </div>
         {% endif %}
       </div>
       
@@ -81,25 +105,7 @@
 
 
 <!-- Modals -->
-<!-- Modal delete meal -->
-<div class="modal fade" id="deleteMealModal" tabindex="-1" aria-labelledby="deleteMealModalLabel" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered">
-    <div class="modal-content">
-      <div class="text-center">
-        <img src="{% static 'assets/img/icons/error-100.png' %}" alt="error icon" />
-        <br/>
-        <h5 class="modal-title mid-color" id="exampleModalLabel">{% trans 'Delete Meal ?' %}</h5>
-      </div>
-      <div class="text-center">
-        <p class="darkest-color p-4">{% trans "You will lose all the memories, but hey, no pression..." %}</p>
-      </div>
-      <div class="d-flex justify-content-evenly pb-2">
-        <a href="{% url 'delete-meal' meal.slug %}"  class="btn btn-mid-color btn-modal" >{% trans "Yes, no regret" %}</a>
-        <a type="button" class="btn btn-outlined btn-modal outline-mid-color" data-bs-dismiss="modal">{% trans 'Cancel' %}</a>
-      </div>
-    </div>
-  </div>
-</div>
+
  
 {% endblock content %}
 

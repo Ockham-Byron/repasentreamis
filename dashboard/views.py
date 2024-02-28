@@ -17,6 +17,7 @@ def get_groups(user):
 
 # Create your views here.
 def dashboard_view(request):
+  print("Dashboard clicked!")
   if request.user.is_authenticated:
     print("is_authenticated")
     group = get_groups(request.user)

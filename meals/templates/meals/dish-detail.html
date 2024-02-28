@@ -3,6 +3,9 @@
 
 {% block content %}
 
+{% if guest %}
+<div class="over-container">
+{% endif %}
 {% if dish.picture %}
 <section class="hero-wrap d-flex flex-column justify-content-end"
 style="background: linear-gradient(rgb(148,163,184,0.8), rgb(51,65,85,0.8)), url({{dish.picture.url}}); background-size: cover;" 
@@ -23,6 +26,9 @@ style="background: linear-gradient(rgb(148,163,184,0.8), rgb(51,65,85,0.8)), url
 
 
 <section class="mt-3">
+    {% if guest %}
+    <p class="text-center text-white">{% trans 'Guest Mode with ' %} {{guest.pseudo}}</p>
+    {% endif %}
     {% if comments %}
         <h3 class="text-center mid-color">{% trans 'Ratings' %}: {{dish.averagereview}}</h3>
         <div class="d-flex flex-wrap justify-content-center">
@@ -57,7 +63,7 @@ style="background: linear-gradient(rgb(148,163,184,0.8), rgb(51,65,85,0.8)), url
     {% endif %}
     {% if not_commented %}
         <div class="text-center">
-            <a class="btn-wide btn-brand-color" href="{% url 'add-comment' dish.slug %}">{% trans 'Add your comment' %}</a>
+            <a class="btn-wide btn-brand-color" href="{% url 'add-comment-guest' dish.slug guest.slug %}">{% trans 'Add your comment' %}</a>
         </div>
     {% endif %}
 </section>
@@ -81,4 +87,8 @@ style="background: linear-gradient(rgb(148,163,184,0.8), rgb(51,65,85,0.8)), url
     </div>
 
 </section>
+
+{% if guest %}
+</div>
+{% endif %}
 {% endblock%}
