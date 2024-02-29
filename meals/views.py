@@ -137,18 +137,16 @@ def dish_detail(request, slug):
 def dish_detail_with_guest(request, slug, guest):
     dish=get_object_or_404(Dish, slug=slug)
     guest=get_object_or_404(User, slug=guest)
-    print(guest)
-    comments=Comment.objects.filter(dish=dish)
-    not_commented = True
-    if Comment.objects.filter(dish=dish, author=request.user).exists():
-        not_commented = False
     
-    print(not_commented)
+    comments=Comment.objects.filter(dish=dish)
+    
+   
+    
+    
 
     context={
         'dish':dish,
         'comments':comments,
-        'not_commented':not_commented,
         'guest':guest,
         
     }
@@ -486,7 +484,7 @@ def add_anecdote(request, slug):
         if form.is_valid():
             anecdote=form.save()
             anecdote.group=meal.group
-            anecdote.date=meal.date
+            anecdote.date=meal.eaten_at
             anecdote.meal.add(meal)
             anecdote.save()
             return redirect('all-meals')
@@ -530,6 +528,9 @@ def all_meals(request):
         for group in groups:
             meals = Meal.objects.filter(group__members__id__contains = request.user.id).distinct()
             meals = meals.order_by('-eaten_at')
+            for meal in meals:
+                musics = meal.meal_musics.all()
+                print(musics)
     
     
 
@@ -545,6 +546,7 @@ def all_meals(request):
 def group_meals(request, slug):
     group = get_object_or_404(CustomGroup, slug=slug)
     meals = Meal.objects.filter(group=group)
+    meals = meals.order_by('-eaten_at')
 
     context = {'meals': meals,
                'group': group}

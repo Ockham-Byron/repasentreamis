@@ -168,10 +168,10 @@ style="background: linear-gradient(rgb(148,163,184,0.8), rgb(51,65,85,0.8)), url
    
 </div> <!-- Guestscontainer end -->
 
-<div class="d-flex p-2 justify-content-center">
+
 {% if nb_of_meals == 0 %}
    
-
+<div class="d-flex p-2 justify-content-center">
     <a class="btn" href="{% url 'add-meal-from-group' object.slug %}">
         <div class="sketch-box">
             <div class="card-cta border-0 sketch-box">
@@ -182,20 +182,52 @@ style="background: linear-gradient(rgb(148,163,184,0.8), rgb(51,65,85,0.8)), url
             </div>
         </div>
     </a>
-
+</div>
 {% else %}
-<a href="{% url 'group-anecdotes' object.slug %}">
+<div class="group-cards d-flex  justify-content-center flex-wrap px-5">
+<a class="m-2" href="{% url 'group-meals' object.slug %}">
     <div class="sketch-box text-center">
-            <div class="card-cta border-0 sketch-box">
-                <img class="card-icon mx-auto" src="{% static 'assets/img/icons/micro-100.png' %}" alt="Card image cap" width="100px" >
-                <div class="card-body brand-color">
-                {% trans 'View Anecdotes' %}
-                </div>
+        <div class="card-cta border-0 sketch-box">
+            <img class="card-icon mx-auto" src="{% static 'assets/img/icons/meal-100.png' %}" alt="Card image cap" width="100px" >
+            <div class="brand-color">
+            {% trans 'View Meals' %}
             </div>
         </div>
+    </div>
 </a>
-{% endif %}
+<a class="m-2" href="{% url 'group-dishes' object.slug %}">
+    <div class="sketch-box text-center">
+        <div class="card-cta border-0 sketch-box">
+            <img class="card-icon mx-auto" src="{% static 'assets/img/icons/dish-100.png' %}" alt="Card image cap" width="100px" >
+            <div class="brand-color">
+            {% trans 'View Dishes' %}
+            </div>
+        </div>
+    </div>
+</a>
+<a class="m-2" href="{% url 'group-anecdotes' object.slug %}">
+    <div class="sketch-box text-center">
+        <div class="card-cta border-0 sketch-box">
+            <img class="card-icon mx-auto" src="{% static 'assets/img/icons/friends-100.png' %}" alt="Card image cap" width="100px" >
+            <div class=" brand-color">
+            {% trans 'View Anecdotes' %}
+            </div>
+        </div>
+    </div>
+</a>
+<a class="m-2" href="{% url 'group-musics' object.slug %}">
+    <div class="sketch-box text-center">
+        <div class="card-cta border-0 sketch-box">
+            <img class="card-icon mx-auto" src="{% static 'assets/img/icons/micro-100.png' %}" alt="Card image cap" width="100px" >
+            <div class=" brand-color">
+            {% trans 'View Musics' %}
+            </div>
+        </div>
+    </div>
+</a>
 </div>
+{% endif %}
+
 
 
 
@@ -206,7 +238,7 @@ style="background: linear-gradient(rgb(148,163,184,0.8), rgb(51,65,85,0.8)), url
 
 <!-- Floating button -->
 <a href="{% url 'add-meal-from-group' object.slug %}">
-<div class="kfloat" data-toggle="tooltip" title="{% trans 'Add Meal' %}">
+<div class="kfloat" data-bs-toggle="tooltip" title="{% trans 'Add Meal' %}">
 <div class="my-float">+</div>
 </div>
 </a>

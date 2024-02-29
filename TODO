@@ -1,31 +1,29 @@
 ☐ traduire
-☐ gérer le toggle
+☐ gérer le toggle des add buttons
 ☐ couleur text footer
 
 Login/Register:
     ☐ form style
-
 
 Dish:
     ☐ gérer plusieurs groupes
 
 Meals:
     ☐ gérer plusieurs groupes
-Group: 
-    ✔ edit photo @done(24-02-22 17:57)
 
 Messages:
     ☐ add logic
 
 Mode invité:
-    ☐ add logic
-    ☐ permettre de s'enregister à partir du profil
-    ☐ changer les membres dans groupe
-    ☐ verfier pas le même pseudo dans un groupe
-
+    ☐ après avoir commenté un plat ramener au repas
+    ☐ après la mise en ligne, envoyer un mail pour changer de password
+    ☐ ajouter la logique commenter ou éditer en mode guest
     
-
 Archive:
+  ✔ edit photo @done(24-02-22 17:57) @project(Group)
+  ✔ add logic @done(24-02-28 16:01) @project(Mode invité)
+  ✔ permettre de s'enregister à partir du profil @done(24-02-28 16:01) @project(Mode invité)
+  ✔ changer les membres dans groupe @done(24-02-28 15:21) @project(Mode invité)
   ✔ edit form:ajouter placeholders @done(24-02-22 17:35) @project(Profile)
   ✔ supprimer dashboard et aller à meals @done(24-02-22 17:36) @project(Dashboard)
   ✔ add login required @done(24-02-22 11:26)

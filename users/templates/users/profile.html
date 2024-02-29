@@ -18,7 +18,9 @@
         
         <h3>{{user.pseudo}}</h3>
         <div class="infos flex-grow-1">
+        {% if user.is_guest == False %}
         <h6 class="darkest-color text-start">{% trans 'Informations' %}</h6>
+        {% endif %}
         {% if request.user == user %}
           <p class="profile-card-subtitle text-start darkest-color small mb-0">{% trans 'Your name' %}</p>
           {% if user.first_name or user.last_name  %}
@@ -67,12 +69,17 @@
 
       
           {% if request.user == user %}
-          <div class="text-start small">
-          <a href="{% url 'profile-update' request.user.slug %}" class="text-center btn-edit btn-joy-color"><i class="fa-solid fa-pencil btn-edit-icon pe-2"></i><span class="label">{% trans 'Edit Profile' %}</span></a>
-          </div>
-          {% else %}
-          <a href="#">Contact</a>
+            <div class="text-start small">
+            <a href="{% url 'profile-update' request.user.slug %}" class="text-center btn-edit btn-joy-color"><i class="fa-solid fa-pencil btn-edit-icon pe-2"></i><span class="label">{% trans 'Edit Profile' %}</span></a>
+            </div>
           {% endif %}
+          {% if user.is_guest == True %}
+
+          <div class="text-start small">
+            <a href="{% url 'create-account-from-guest' user.slug %}" class="text-center btn-edit btn-joy-color"><i class="fa-solid fa-pencil btn-edit-icon pe-2"></i><span class="label">{% trans 'Create an Account' %}</span></a>
+            </div>
+
+            {% endif %}
         </div>
       </div>
 
