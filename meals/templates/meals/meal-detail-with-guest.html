@@ -35,7 +35,7 @@
           </h3>
           <a href="#" class="card-recipe-btn-small">{% trans 'Dishes' %} </a>
           {% for dish in meal.dishes.all %}
-          <a href="{% url 'dish-detail-with-guest' dish.slug guest.slug %}" class="darkest-color">
+          <a href="{% url 'dish-detail-with-guest' meal.slug dish.slug guest.slug %}" class="darkest-color">
             <div class="d-flex justify-content-between align-items-center">
               <div style="width:50px;">
                 {% if dish.picture%}
@@ -47,7 +47,7 @@
               </div>
               <div style="width:50px;">
               {% if dish.averagereview != None %}
-                {{dish.averagereview}}
+                {{dish.averagereview|floatformat:1}}
               {% endif %}
               </div>
             </div>
@@ -106,12 +106,7 @@
           
           
         </div>
-        <div class="d-flex justify-content-between bottom-buttons">
-        <a href="{% url 'invite-guest' meal.slug %}" class="mid-color small"><i class="fa-solid fa-door-open pe-1"></i>{% trans "Invite Guest" %}</a>
-       
-          <a href="{% url 'edit-meal'  meal.slug%}" class="dark-color small"><i class="fa fa-pencil pe-1"></i>{% trans 'Edit meal' %}</a>
         
-        </div>
       </div>
     </div>
  

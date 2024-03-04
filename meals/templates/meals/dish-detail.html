@@ -29,15 +29,24 @@ style="background: linear-gradient(rgb(148,163,184,0.8), rgb(51,65,85,0.8)), url
     {% if guest %}
     <p class="text-center text-white">{% trans 'Guest Mode with ' %} {{guest.pseudo}}</p>
    
-        <div class="text-center my-4">
-            
-            <a class="btn-wide btn-brand-color" href="{% url 'add-comment-guest' dish.slug guest.slug %}">{% trans 'Add your comment' %}</a>
-            
+        <div class="text-center d-flex justify-content-center my-4">
+        
+            {% if guestcomments %}
+            {% for comment in guestcomments %}
+                <a class="btn btn-brand-color mx-2" href="{% url 'edit-comment-guest' meal.slug dish.slug guest.slug comment.id %}">{% trans 'Edit your comment' %}</a> 
+                {% endfor %}
+           
+            {% else %}
+                 <a class="btn btn-brand-color mx-2" href="{% url 'add-comment-guest' meal.slug dish.slug guest.slug %}">{% trans 'Add your comment' %}</a>
+            {% endif %}
+     
+            <a class="btn btn-mid-color mx-2" href="{% url 'meal-detail-guest' meal.slug guest.slug %}">{% trans 'Back to Meal' %}</a>
+
         </div>
    
     {% endif %}
     {% if comments %}
-        <h3 class="text-center mid-color">{% trans 'Ratings' %}: {{dish.averagereview}}</h3>
+        <h3 class="text-center mid-color">{% trans 'Ratings' %}: {{dish.averagereview |floatformat:1}}</h3>
         <div class="d-flex flex-wrap justify-content-center">
         {% for comment in comments %}
             <div class="p-3 comment-card shadow mx-3">
@@ -60,9 +69,12 @@ style="background: linear-gradient(rgb(148,163,184,0.8), rgb(51,65,85,0.8)), url
                     </p>
                 </div>
                 {% if comment.author == request.user %}
+                    {% if guest %}
+                    {% else %}
                     <div class="edit-button">
                         <a href="{% url 'edit-comment'  comment.id %}" class="dark-color small"><i class="fa fa-pencil"></i></a>
                     </div>
+                    {% endif %}
                 {% endif %}
             </div>
         {% endfor %}

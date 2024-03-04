@@ -23,12 +23,13 @@ urlpatterns = [
     path(_('delete-dish/<slug>'), delete_dish, name="delete-dish"),
     path(_('add-existing-dish/<slug>'), add_existing_dish_to_meal, name="add-existing-dish"),
     path(_('dish/<slug>'), dish_detail, name="dish-detail"),
-    path(_('dish/<slug>/<guest>'), dish_detail_with_guest, name="dish-detail-with-guest"),
+    path(_('dish/<meal>/<dish>/<guest>'), dish_detail_with_guest, name="dish-detail-with-guest"),
 
     #comments
     path(_('add-comment/<slug>'), add_comment, name="add-comment"),
-    path(_('add-comment/<slug>/<guest>'), add_comment_guest, name="add-comment-guest"),
+    path(_('add-comment/<meal>/<dish>/<guest>'), add_comment_guest, name="add-comment-guest"),
     path(_('edit-comment/<id>'), edit_comment, name="edit-comment"),
+    path(_('edit-comment/<meal>/<dish>/<guest>/<id>'), edit_comment_guest, name="edit-comment-guest"),
     path(_('delete-comment/<id>'), delete_comment, name="delete-comment"),
 
     #musics

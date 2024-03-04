@@ -134,20 +134,27 @@ def dish_detail(request, slug):
     return render(request, "meals/dish-detail.html", context=context)
 
 @login_required
-def dish_detail_with_guest(request, slug, guest):
-    dish=get_object_or_404(Dish, slug=slug)
+def dish_detail_with_guest(request, meal, dish, guest):
+    meal=get_object_or_404(Meal, slug=meal)
+    dish=get_object_or_404(Dish, slug=dish)
     guest=get_object_or_404(User, slug=guest)
-    
+
     comments=Comment.objects.filter(dish=dish)
+    
+    guestcomments = Comment.objects.filter(dish=dish, author=guest)
+
+    print(guestcomments)
     
    
     
     
 
     context={
+        'meal':meal,
         'dish':dish,
         'comments':comments,
         'guest':guest,
+        'guestcomments':guestcomments,
         
     }
     
@@ -203,8 +210,10 @@ def add_comment(request, slug):
 
     return render(request, "meals/add-comment.html", {'form':form, 'dish':dish})
 
-def add_comment_guest(request,slug, guest):
-    dish=get_object_or_404(Dish, slug=slug)
+@login_required
+def add_comment_guest(request,meal, dish, guest):
+    meal=get_object_or_404(Meal, slug=meal)
+    dish=get_object_or_404(Dish, slug=dish)
     guest=get_object_or_404(User, slug=guest)
     form=AddCommentForm()
 
@@ -215,7 +224,7 @@ def add_comment_guest(request,slug, guest):
             comment.dish=dish
             comment.author=guest
             comment.save()
-            return redirect('dish-detail-with-guest', dish.slug, guest.slug)
+            return redirect('meal-detail-guest', meal.slug, guest.slug)
 
     return render(request, "meals/add-comment.html", {'form':form, 'dish':dish, 'guest':guest})
 
@@ -230,6 +239,22 @@ def edit_comment(request,id):
         comment=form.save()
         comment.save()
         return redirect('dish-detail', dish.slug)
+    
+    return render(request, "meals/add-comment.html", {'form':form, 'dish':dish, 'comment':comment})
+
+@login_required
+def edit_comment_guest(request,meal, dish, guest, id):
+    meal=get_object_or_404(Meal, slug=meal)
+    dish=get_object_or_404(Dish, slug=dish)
+    guest=get_object_or_404(User, slug=guest)
+    comment=get_object_or_404(Comment, id=id)
+    dish=comment.dish
+    form=AddCommentForm(instance=comment)
+    if request.method=='POST':
+        form=AddCommentForm(request.POST, instance=comment)
+        comment=form.save()
+        comment.save()
+        return redirect('dish-detail-with-guest', meal.slug, dish.slug, guest.slug)
     
     return render(request, "meals/add-comment.html", {'form':form, 'dish':dish, 'comment':comment})
 

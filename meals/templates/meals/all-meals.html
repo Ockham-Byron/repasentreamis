@@ -50,7 +50,7 @@
               </div>
               <div style="width:50px;">
               {% if dish.averagereview != None %}
-                {{dish.averagereview}}
+                {{dish.averagereview |floatformat:1}}
               {% endif %}
               </div>
             </div>

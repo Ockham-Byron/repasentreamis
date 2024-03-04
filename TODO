@@ -1,25 +1,22 @@
 ☐ traduire
-☐ gérer le toggle des add buttons
-☐ couleur text footer
 
-Login/Register:
-    ☐ form style
 
-Dish:
-    ☐ gérer plusieurs groupes
 
-Meals:
-    ☐ gérer plusieurs groupes
 
 Messages:
     ☐ add logic
 
 Mode invité:
-    ☐ après avoir commenté un plat ramener au repas
     ☐ après la mise en ligne, envoyer un mail pour changer de password
-    ☐ ajouter la logique commenter ou éditer en mode guest
     
 Archive:
+  ✔ gérer le toggle des add buttons @done(24-03-04 15:14)
+  ✔ couleur text footer @done(24-03-04 15:14)
+  ✔ form style @done(24-03-04 15:14) @project(Login/Register)
+  ✔ gérer plusieurs groupes @done(24-03-04 15:14) @project(Dish)
+  ✔ gérer plusieurs groupes @done(24-03-04 15:14) @project(Meals)
+  ✔ après avoir commenté un plat ramener au repas @done(24-03-01 11:27) @project(Mode invité)
+  ✔ ajouter la logique commenter ou éditer en mode guest @done(24-03-04 15:14) @project(Mode invité)
   ✔ edit photo @done(24-02-22 17:57) @project(Group)
   ✔ add logic @done(24-02-28 16:01) @project(Mode invité)
   ✔ permettre de s'enregister à partir du profil @done(24-02-28 16:01) @project(Mode invité)
