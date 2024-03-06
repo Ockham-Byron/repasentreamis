@@ -353,27 +353,27 @@ msgstr "Ajouter un commentaire"
 
 #: meals/templates/meals/add-comment.html:26
 msgid "Edit your comment of"
-msgstr ""
+msgstr "Modifier votre commentaire sur"
 
 #: meals/templates/meals/add-comment.html:28
 msgid "Add Comment to"
-msgstr ""
+msgstr "Ajouter un commentaire sur"
 
 #: meals/templates/meals/add-comment.html:33
 msgid "Your rating"
-msgstr ""
+msgstr "Votre note"
 
 #: meals/templates/meals/add-comment.html:40
 msgid "Delete Comment"
-msgstr ""
+msgstr "Supprimer votre commentaire"
 
 #: meals/templates/meals/add-comment.html:48
 msgid "Delete Comment ?"
-msgstr ""
+msgstr "Supprimer votre commentaire ?"
 
 #: meals/templates/meals/add-comment.html:51
 msgid "Your opinion was interesant, you know..."
-msgstr ""
+msgstr "Votre avis était intéressant, vous savez..."
 
 #: meals/templates/meals/add-dish.html:27
 #: meals/templates/meals/all-anecdotes.html:26
@@ -381,206 +381,206 @@ msgstr ""
 #: meals/templates/meals/all-musics.html:27
 #: meals/templates/meals/meal-detail-with-guest.html:95
 msgid "Edit"
-msgstr ""
+msgstr "Modifier"
 
 #: meals/templates/meals/add-dish.html:29
 #: meals/templates/meals/add-existing-dish.html:12
 msgid "Add Dish "
-msgstr ""
+msgstr "Ajouter un plat "
 
 #: meals/templates/meals/add-dish.html:32
 #: meals/templates/meals/add-existing-dish.html:12
 msgid "at the Meal of "
-msgstr ""
+msgstr "au repas du "
 
 #: meals/templates/meals/add-dish.html:66
 msgid "Who cooked ?"
-msgstr ""
+msgstr "Qui a cuisiné ?"
 
 #: meals/templates/meals/add-dish.html:70
 msgid "At which meal did you eat this dish ? "
-msgstr ""
+msgstr "Lors de quel repas avez-vous dégusté ce plat ?"
 
 #: meals/templates/meals/add-dish.html:87
 msgid "Delete Dish"
-msgstr ""
+msgstr "Supprimer le plat"
 
 #: meals/templates/meals/add-dish.html:95
 msgid "Delete Dish ?"
-msgstr ""
+msgstr "Supprimer le plat ?"
 
 #: meals/templates/meals/add-dish.html:98
 msgid "Big big choice here, you're sure to send this dish to the trash ? "
-msgstr ""
+msgstr "Grosse décision là, voulez-vous vraiment jeter ce plat à la poubelle ? "
 
 #: meals/templates/meals/add-existing-dish.html:13
 msgid "Add New Dish ?"
-msgstr ""
+msgstr "Ajouter un nouveau plat ?"
 
 #: meals/templates/meals/add-existing-dish.html:15
 msgid "Or Add existing Dish:"
-msgstr ""
+msgstr "Ou ajouter un plat existant:"
 
 #: meals/templates/meals/add-existing-dish.html:42
 msgid "Add to Meal"
-msgstr ""
+msgstr "Ajouter au repas"
 
 #: meals/templates/meals/add-meal.html:14
 msgid "Edit Meal of "
-msgstr ""
+msgstr "Modifier le repas du "
 
 #: meals/templates/meals/add-meal.html:46
 msgid "Where did you eat ?"
-msgstr ""
+msgstr "Où avez-vous mangé ?"
 
 #: meals/templates/meals/add-meal.html:52
 msgid "When did you share this beautiful meal ?"
-msgstr ""
+msgstr "Quand avez-vous partagé ce délicieux repas ?"
 
 #: meals/templates/meals/add-meal.html:57
 msgid "Which dishes did you eat ?"
-msgstr ""
+msgstr "Quels plats avez-vous mangé ?"
 
 #: meals/templates/meals/add-meal.html:59
 msgid "Add New Dish"
-msgstr ""
+msgstr "Ajouter un nouveau plat"
 
 #: meals/templates/meals/add-meal.html:61
 msgid "Add Existing Dish"
-msgstr ""
+msgstr "Ajouter un plat existant"
 
 #: meals/templates/meals/add-meal.html:76
 msgid "Delete Meal"
-msgstr ""
+msgstr "Supprimer le repas"
 
 #: meals/templates/meals/add-meal.html:84
 msgid "Delete Meal ?"
-msgstr ""
+msgstr "Supprimer ce repas ?"
 
 #: meals/templates/meals/add-music.html:3
 #: meals/templates/meals/add-music.html:27
 msgid "Add Song"
-msgstr ""
+msgstr "Ajouter une musique"
 
 #: meals/templates/meals/add-music.html:25
 msgid "Edit Song"
-msgstr ""
+msgstr "Modifier ce morceau"
 
 #: meals/templates/meals/add-music.html:38
 msgid "Delete Song"
-msgstr ""
+msgstr "Supprimer ce morceau"
 
 #: meals/templates/meals/add-music.html:46
 msgid "Delete Song ?"
-msgstr ""
+msgstr "Supprimer ce morceau ?"
 
 #: meals/templates/meals/add-music.html:49
 msgid "You will lose all the memories of this song, but hey, no pression..."
-msgstr ""
+msgstr "Vous allez perdre tous les souvenirs liés à ce morceau, mais bon, pas de pression..."
 
 #: meals/templates/meals/all-anecdotes.html:5
 msgid "Anecdotes of"
-msgstr ""
+msgstr "Anecdotes avec "
 
 #: meals/templates/meals/all-dishes.html:43
 msgid "Nobody cooked "
-msgstr ""
+msgstr "Personne n'a cuisiné (des lutins ?)"
 
 #: meals/templates/meals/all-dishes.html:51
 msgid "No comment"
-msgstr ""
+msgstr "Pas de commentaire"
 
 #: meals/templates/meals/all-dishes.html:60
 msgid "View details"
-msgstr ""
+msgstr "Voir les détails"
 
 #: meals/templates/meals/all-dishes.html:64
 msgid "Edit you comment"
-msgstr ""
+msgstr "Modifier votre commentaire"
 
 #: meals/templates/meals/all-dishes.html:68
 msgid "Add comment"
-msgstr ""
+msgstr "Ajouter un commentaire"
 
 #: meals/templates/meals/all-dishes.html:78
 msgid "Edit Dish"
-msgstr ""
+msgstr "Modifier le repas"
 
 #: meals/templates/meals/all-meals.html:99
 #: meals/templates/meals/meal-detail-with-guest.html:96
 msgid "Close"
-msgstr ""
+msgstr "Fermer"
 
 #: meals/templates/meals/all-meals.html:113
 #: meals/templates/meals/invite-guest.html:3
 msgid "Invite Guest"
-msgstr ""
+msgstr "Convier un invité"
 
 #: meals/templates/meals/all-meals.html:115
 msgid "Edit meal"
-msgstr ""
+msgstr "Modifier le repas"
 
 #: meals/templates/meals/all-meals.html:129
 msgid "ADD FIRST MEAL"
-msgstr ""
+msgstr "AJOUTER LE PREMIER REPAS"
 
 #: meals/templates/meals/all-musics.html:5
 msgid "Musics of"
-msgstr ""
+msgstr "Musique de"
 
 #: meals/templates/meals/choose-group.html:3
 msgid "Choose Group"
-msgstr ""
+msgstr "Choisir un groupe"
 
 #: meals/templates/meals/choose-group.html:8
 msgid "With whom did you share this dish ?"
-msgstr ""
+msgstr "Avec qui avez-vous partagé ce plat ?"
 
 #: meals/templates/meals/dish-detail.html:30
 msgid "Guest Mode with "
-msgstr ""
+msgstr "Mode invité avec "
 
 #: meals/templates/meals/dish-detail.html:36
 msgid "Edit your comment"
-msgstr ""
+msgstr "Modifier votre commentaire"
 
 #: meals/templates/meals/dish-detail.html:40
 #: meals/templates/meals/dish-detail.html:88
 msgid "Add your comment"
-msgstr ""
+msgstr "Ajouter votre commentaire"
 
 #: meals/templates/meals/dish-detail.html:43
 msgid "Back to Meal"
-msgstr ""
+msgstr "Revenir au repas"
 
 #: meals/templates/meals/dish-detail.html:49
 msgid "Ratings"
-msgstr ""
+msgstr "Avis"
 
 #: meals/templates/meals/dish-detail.html:99
 msgid "Eaten at"
-msgstr ""
+msgstr "Dégusté"
 
 #: meals/templates/meals/dish-detail.html:103
 #: meals/templates/meals/meal-detail-with-guest.html:4
 msgid "Meal"
-msgstr ""
+msgstr "Repas"
 
 #: meals/templates/meals/invite-guest.html:25
 msgid "Invite Guest to Comment"
-msgstr ""
+msgstr "Convier un invité à commenter"
 
 #: meals/templates/meals/invite-guest.html:33
 msgid "Invite"
-msgstr ""
+msgstr "Inviter"
 
 #: meals/templates/meals/meal-detail-with-guest.html:11
 msgid "Meal shared with "
-msgstr ""
+msgstr "Repas partagé avec "
 
 #: meals/templates/meals/meal-detail-with-guest.html:15
 msgid "Guest Mode"
-msgstr ""
+msgstr "Mode invité"
 
 #: meals/urls.py:8
 msgid "all-meals"
@@ -708,27 +708,27 @@ msgstr ""
 
 #: meals/views.py:320
 msgid "Please select the group you shared the meal with."
-msgstr ""
+msgstr "Merci de sélectionner le groupe avec qui vous avez partagé ce repas."
 
 #: pages/templates/pages/bye.html:3 pages/templates/pages/bye.html:10
 msgid "See you ?"
-msgstr ""
+msgstr "à Bientôt ?"
 
 #: pages/templates/pages/bye.html:11
 msgid "Your account has been deleted successfully"
-msgstr ""
+msgstr "Votre compte a été supprimé avec succès."
 
 #: pages/templates/pages/bye.html:12
 msgid "If there is anything we could have done differently, please write us !"
-msgstr ""
+msgstr "S'il y a quoi que ce soit que nous aurion pu faire différemment, merci de nous écrire !"
 
 #: pages/templates/pages/bye.html:13
 msgid "Write a message"
-msgstr ""
+msgstr "Écrire un message"
 
 #: pages/templates/pages/page_not_found.html:3
 msgid "Page not found"
-msgstr ""
+msgstr "Page non trouvée"
 
 #: pages/templates/pages/page_not_found.html:10
 msgid "Oops"
@@ -736,11 +736,11 @@ msgstr ""
 
 #: pages/templates/pages/page_not_found.html:11
 msgid "We can't find what your looking for ;-( "
-msgstr ""
+msgstr "Nous ne pouvons trouver ce que vous cherchez ;-( "
 
 #: pages/templates/pages/page_not_found.html:18
 msgid "Go back"
-msgstr ""
+msgstr "Retour"
 
 #: users/admin.py:11
 msgid "Activity within six months"
@@ -758,69 +758,71 @@ msgstr ""
 msgid ""
 "A user with that email already exists. If you have lost your password, "
 "please go to Login and Forgot password."
-msgstr ""
+msgstr "Un utilisateur avec ce mail existe déjà. Si vous avez oublié votre mot de passe, "
+"merci d'aller de vous rendre sur l'espace de connexion et cliquer sur Oubli du mot de passe."
 
 #: users/forms.py:25 users/forms.py:49 users/forms.py:72 users/forms.py:124
 #: users/templates/users/profile.html:47
 #: users/templates/users/profile_update.html:75
 msgid "Email"
-msgstr ""
+msgstr "Courriel"
 
 #: users/forms.py:28 users/forms.py:50
 msgid "Password"
-msgstr ""
+msgstr "Mot de passe"
 
 #: users/forms.py:29
 msgid "Repeat Password"
-msgstr ""
+msgstr "Confirmation du mot de passe"
 
 #: users/forms.py:59
 #, python-format
 msgid ""
 "This isn't the password registered with %(email)s. If you don't remember "
 "your password, please click on 'Forgot Password' ."
-msgstr ""
+msgstr "Ceci n'est pas un mot de passe enregistré avec %(email)s. Si vous avez oublié "
+"votre mot de passe, merci de cliquer sur Oubli du mot de passe."
 
 #: users/forms.py:62
 #, python-format
 msgid "No user registered with %(email)s..."
-msgstr ""
+msgstr "Aucun utilisateur enregistré avec cet %(email)s..."
 
 #: users/forms.py:84
 msgid "The two password fields didn’t match."
-msgstr ""
+msgstr "Les deux mots de passe sont différents."
 
 #: users/forms.py:87
 msgid "New password"
-msgstr ""
+msgstr "Nouveau mot de passe"
 
 #: users/forms.py:93
 msgid "New password confirmation"
-msgstr ""
+msgstr "Confirmation du nouveau mot de passer"
 
 #: users/forms.py:122
 msgid "First Name"
-msgstr ""
+msgstr "Prénom"
 
 #: users/forms.py:123
 msgid "Last Name"
-msgstr ""
+msgstr "Nom"
 
 #: users/forms.py:125
 msgid "Pseudo"
-msgstr ""
+msgstr "Pseudo"
 
 #: users/forms.py:127 users/templates/users/profile.html:54
 msgid "Bio"
-msgstr ""
+msgstr "Bio"
 
 #: users/templates/users/authentication/change_email.html:11
 msgid "Update your email"
-msgstr ""
+msgstr "Actualiser votre courriel"
 
 #: users/templates/users/authentication/change_email.html:41
 msgid "Update Email"
-msgstr ""
+msgstr "Actualiser"
 
 #: users/templates/users/authentication/emails/create_account_email.html:4
 #: users/templates/users/authentication/emails/password_reset_email.html:4
@@ -828,13 +830,13 @@ msgstr ""
 #: users/templates/users/authentication/emails/verify_email_message.html:9
 #: users/views.py:38
 msgid "Verify Email"
-msgstr ""
+msgstr "Vérifier le courriel"
 
 #: users/templates/users/authentication/emails/create_account_email.html:6
 #: users/templates/users/authentication/emails/password_reset_email.html:6
 #: users/templates/users/authentication/emails/verify_email_message.html:6
 msgid "Hi"
-msgstr ""
+msgstr "Salut"
 
 #: users/templates/users/authentication/emails/create_account_email.html:7
 #: users/templates/users/authentication/emails/password_reset_email.html:7
@@ -842,226 +844,232 @@ msgid ""
 "You're receiving this email because you requested a password reset for your "
 "user account at"
 msgstr ""
+"Vous recevez ce courriel car vous avez demandé une réinitialisation du mot de passe "
+"pour votre compte chez"
 
 #: users/templates/users/authentication/emails/create_account_email.html:8
 msgid "We don't have any account registered with this email address."
-msgstr ""
+msgstr "Nous n'avons aucun compte enregistré avec ce courriel."
 
 #: users/templates/users/authentication/emails/create_account_email.html:9
 msgid "However, you can create a new account !"
-msgstr ""
+msgstr "Vous pouvez toujours créer un nouveau compte !"
 
 #: users/templates/users/authentication/emails/create_account_email.html:11
 msgid "Create account"
-msgstr ""
+msgstr "Créer un compte"
 
 #: users/templates/users/authentication/emails/create_account_email.html:13
 #: users/templates/users/authentication/emails/password_reset_email.html:11
 #: users/templates/users/authentication/emails/verify_email_message.html:11
 msgid "Or you can copy the link below to your browser"
-msgstr ""
+msgstr "Ou vous pouvez copier le lien ci-dessous dans la barre d'adresse de votre navigaeur"
 
 #: users/templates/users/authentication/emails/password_reset_email.html:9
 #: users/templates/users/authentication/password_reset_confirm.html:58
 msgid "Reset Password"
-msgstr ""
+msgstr "Réinitialiser votre mot de passe"
 
 #: users/templates/users/authentication/emails/password_reset_subject.txt:3
 msgid "Password Reset"
-msgstr ""
+msgstr "Reinitialiser le mot de passe"
 
 #: users/templates/users/authentication/emails/verify_email_message.html:7
 msgid ""
 "You created an account on ...., you need to verify your email. Please click "
 "on the button below to verify your email."
 msgstr ""
+"Vous avez créé un compte ..... Pour vérifier votre courriel, merci de cliquer "
+"sur le bouton ci-dessous."
 
 #: users/templates/users/authentication/login.html:11
 msgid "Welcome back"
-msgstr ""
+msgstr "Bienvenue"
 
 #: users/templates/users/authentication/login.html:12
 msgid "Please sign in to access your account"
-msgstr ""
+msgstr "Merci de vous connecter pour accéder à votre compte"
 
 #: users/templates/users/authentication/login.html:47
 msgid "Remember me"
-msgstr ""
+msgstr "Se souvenir de moi"
 
 #: users/templates/users/authentication/login.html:48
 msgid "Forgot password?"
-msgstr ""
+msgstr "Oubli du mot de passe ?"
 
 #: users/templates/users/authentication/login.html:57
 #: users/templates/users/authentication/register.html:79
 msgid "Log in"
-msgstr ""
+msgstr "Se connecter"
 
 #: users/templates/users/authentication/login.html:59
 msgid "New member?"
-msgstr ""
+msgstr "Nouveau membre ?"
 
 #: users/templates/users/authentication/login.html:59
 msgid "Signup now"
-msgstr ""
+msgstr "S'inscrire"
 
 #: users/templates/users/authentication/logout.html:3
 msgid "See you soon"
-msgstr ""
+msgstr "À bientôt"
 
 #: users/templates/users/authentication/logout.html:10
 msgid "See you soon !"
-msgstr ""
+msgstr "À bientôt !"
 
 #: users/templates/users/authentication/logout.html:11
 msgid "You have been logged out successfully "
-msgstr ""
+msgstr "Déconnexion réussie !"
 
 #: users/templates/users/authentication/logout.html:12
 #: users/templates/users/includes/header.html:37
 msgid "Log In"
-msgstr ""
+msgstr "Se connecter"
 
 #: users/templates/users/authentication/password_reset.html:11
 #: users/templates/users/authentication/password_reset_confirm.html:11
 msgid "Reset password"
-msgstr ""
+msgstr "Réinitialiser le passeport"
 
 #: users/templates/users/authentication/password_reset.html:12
 msgid ""
 "Please enter your email address below and we will send you an email with a "
 "link to reset your password."
-msgstr ""
+msgstr "Merci de préciser votre courriel ci-dessous et nous vous enverrons un mail avec "
+"un lien pour réinitialiser votre mot de passe."
 
 #: users/templates/users/authentication/password_reset.html:45
 msgid "Send Email"
-msgstr ""
+msgstr "Envoyer le mail"
 
 #: users/templates/users/authentication/password_reset_complete.html:10
 msgid "You have successfully reset your password !"
-msgstr ""
+msgstr "Passeport réinitialisé !"
 
 #: users/templates/users/authentication/password_reset_complete.html:12
 #: users/templates/users/authentication/verify_email_complete.html:12
 msgid "Access my dashboard"
-msgstr ""
+msgstr "Accéder au tableau de bord"
 
 #: users/templates/users/authentication/password_reset_confirm.html:44
 #: users/templates/users/authentication/register.html:58
 msgid "Minimum 8 characters"
-msgstr ""
+msgstr "Minimum 8 caractères"
 
 #: users/templates/users/authentication/password_reset_confirm.html:45
 #: users/templates/users/authentication/register.html:59
 msgid "Mix of lowercase and uppercase"
-msgstr ""
+msgstr "Mélange de minuscules et de majuscules"
 
 #: users/templates/users/authentication/password_reset_confirm.html:46
 #: users/templates/users/authentication/register.html:60
 msgid "Minimum a number"
-msgstr ""
+msgstr "Au moins un chiffre"
 
 #: users/templates/users/authentication/password_reset_confirm.html:47
 #: users/templates/users/authentication/register.html:61
 msgid "Minimum a special character"
-msgstr ""
+msgstr "Au moins un caractère spécial"
 
 #: users/templates/users/authentication/password_reset_confirm.html:48
 #: users/templates/users/authentication/register.html:62
 msgid "Same passwords"
-msgstr ""
+msgstr "Mots de passe identiques"
 
 #: users/templates/users/authentication/password_reset_done.html:10
 msgid "An email has been sent !"
-msgstr ""
+msgstr "Un mail a été envoyé"
 
 #: users/templates/users/authentication/password_reset_done.html:12
 msgid ""
 "Please check your mailbox and follow the instructions to reset your password."
 msgstr ""
+"Merci de vérifier votre boîte mail et de suivre les instructions pour réinitialiser votre passeport."
 
 #: users/templates/users/authentication/register.html:11
 msgid "Get Started"
-msgstr ""
+msgstr "Démarrez"
 
 #: users/templates/users/authentication/register.html:12
 msgid "by creating a free account"
-msgstr ""
+msgstr "en créant un compte gratuit"
 
 #: users/templates/users/authentication/register.html:67
 msgid "By creating an account you agree to our"
-msgstr ""
+msgstr "En créant un compte vous acceptez d'être lié aux"
 
 #: users/templates/users/authentication/register.html:67
 #: users/templates/users/includes/footer.html:12
 msgid "Terms and Conditions"
-msgstr ""
+msgstr "Conditions d'utilisation"
 
 #: users/templates/users/authentication/register.html:67
 msgid "and our "
-msgstr ""
+msgstr "et à"
 
 #: users/templates/users/authentication/register.html:67
 #: users/templates/users/includes/footer.html:14
 msgid "Privacy Policy"
-msgstr ""
+msgstr "la Politique de Confidentialité"
 
 #: users/templates/users/authentication/register.html:77
 msgid "Sign up"
-msgstr ""
+msgstr "S'inscrire"
 
 #: users/templates/users/authentication/register.html:79
 msgid "Already a member?"
-msgstr ""
+msgstr "Déjà membre ?"
 
 #: users/templates/users/authentication/verify_email.html:10
 msgid "Verify your email address"
-msgstr ""
+msgstr "Vérifiez votre adresse mail"
 
 #: users/templates/users/authentication/verify_email.html:11
 msgid "To unlock all the features of the app, we need to verify your email:"
-msgstr ""
+msgstr "Pour débloquer toutes les fonctions de l'application, nous avons besoin de vérifier votre adresse courriel."
 
 #: users/templates/users/authentication/verify_email.html:16
 msgid "Verify now"
-msgstr ""
+msgstr "Vérifier maintenant"
 
 #: users/templates/users/authentication/verify_email.html:20
 msgid "Verify later"
-msgstr ""
+msgstr "Vérifier plus tard"
 
 #: users/templates/users/authentication/verify_email.html:23
 #: users/templates/users/authentication/verify_email_done.html:15
 msgid "Update email"
-msgstr ""
+msgstr "Actualiser l'adresse courriel"
 
 #: users/templates/users/authentication/verify_email_complete.html:10
 msgid "You have successfully verified your email !"
-msgstr ""
+msgstr "Vous avez vérifié votre adresse courriel avec succès !"
 
 #: users/templates/users/authentication/verify_email_done.html:10
 msgid "An email has been sent with instructions to verify your email address"
-msgstr ""
+msgstr "Un email a été envoyé avec des instructions pour vérifier votre adresse courriel"
 
 #: users/templates/users/authentication/verify_email_done.html:12
 msgid "Please check your mailbox and follow the instructions."
-msgstr ""
+msgstr "Merci de vous rendre sur votre boîte mail et de de suivre les instructions."
 
 #: users/templates/users/authentication/verify_email_done.html:13
 msgid "No thanks, I prefer going to my dashboard"
-msgstr ""
+msgstr "Non merci, je préfère aller sur mon tableau de bord"
 
 #: users/templates/users/choose_avatar.html:3
 msgid "Update Avatar"
-msgstr ""
+msgstr "Actualiser Avatar"
 
 #: users/templates/users/choose_avatar.html:11
 msgid "Update Avatar Color"
-msgstr ""
+msgstr "Actualiser la couleur de l'avatar"
 
 #: users/templates/users/choose_avatar.html:18
 msgid "Pick your favorite color"
-msgstr ""
+msgstr "Choisissez votre couleur préférée"
 
 #: users/templates/users/home.html:7
 msgid "Tasty Moments"
@@ -1069,7 +1077,7 @@ msgstr ""
 
 #: users/templates/users/home.html:8
 msgid "The  webapp that turns your meals into unforgettable moments."
-msgstr ""
+msgstr "L'application web qui transforme vos repas en moments inoubliables."
 
 #: users/templates/users/home.html:9
 msgid ""
@@ -1079,18 +1087,23 @@ msgid ""
 "perfect companion for immortalizing every bite, every burst of laughter, and "
 "every melody that accompanies your meals."
 msgstr ""
+"Imaginez-vous en train de savourer un délicieux plat avec vos proches, "
+"entouré de rires et de discussions animées. TastyMoments capture ces "
+"instants précieux en un clin d'œil. Plus qu'une simple application, c'est votre "
+"compagnon idéal pour immortaliser chaque bouchée, chaque éclat de rire et "
+"chaque mélodie qui accompagne vos repas."
 
 #: users/templates/users/home.html:13 users/templates/users/home.html:15
 msgid "Enter"
-msgstr ""
+msgstr "Entrer"
 
 #: users/templates/users/home.html:16
 msgid "Join for first time"
-msgstr ""
+msgstr "Rejoignez-nous pour la première fois"
 
 #: users/templates/users/home.html:31
 msgid "Preserve your culinary memories"
-msgstr ""
+msgstr "Conservez vos souvenirs culinaires"
 
 #: users/templates/users/home.html:33
 msgid ""
@@ -1098,10 +1111,13 @@ msgid ""
 "family. Whether it's a Sunday brunch or a festive dinner, every moment "
 "deserves to be preserved."
 msgstr ""
+"Gardez une trace de tous les plats délicieux que vous avez partagés avec vos amis "
+"et votre famille. Qu'il s'agisse d'un brunch dominical ou d'un dîner de fête, chaque moment "
+"mérite d'être préservé."
 
 #: users/templates/users/home.html:38
 msgid "Blend flavors and memories"
-msgstr ""
+msgstr "Mélangez les saveurs et les souvenirs"
 
 #: users/templates/users/home.html:41
 msgid ""
@@ -1109,10 +1125,13 @@ msgid ""
 "accompany them. Create unique and personal moments that you'll cherish "
 "forever."
 msgstr ""
+"Associez les plats que vous aimez à la musique, aux anecdotes et aux émotions "
+"qui les accompagnent. Créez des moments uniques et personnels que vous chérirez "
+"pour toujours."
 
 #: users/templates/users/home.html:47
 msgid "Rate dishes"
-msgstr ""
+msgstr "Notez les plats"
 
 #: users/templates/users/home.html:50
 msgid ""
@@ -1120,123 +1139,126 @@ msgid ""
 "can evaluate and share your opinions on the dishes you've tasted, while "
 "discovering recommendations from your friends."
 msgstr ""
+"Ne laissez aucun plat exceptionnel passer inaperçu. Avec notre fonction de notation, vous "
+"pouvez évaluer et partager vos avis sur les plats que vous avez dégustés, "
+"tout en découvrant les recommandations de vos amis."
 
 #: users/templates/users/includes/footer.html:11
 msgid "Legal Information"
-msgstr ""
+msgstr "Informations légales"
 
 #: users/templates/users/includes/footer.html:16
 msgid "Credits"
-msgstr ""
+msgstr "Crédits"
 
 #: users/templates/users/includes/footer.html:19
 msgid "Contact"
-msgstr ""
+msgstr "Contact"
 
 #: users/templates/users/includes/footer.html:27
 msgid "All Rights Reserved"
-msgstr ""
+msgstr "Tous droits réservés"
 
 #: users/templates/users/includes/footer.html:28
 msgid "Made with"
-msgstr ""
+msgstr "Réalisé avec"
 
 #: users/templates/users/includes/footer.html:28
 msgid "by"
-msgstr ""
+msgstr "par"
 
 #: users/templates/users/profile.html:22
 msgid "Informations"
-msgstr ""
+msgstr "Informations"
 
 #: users/templates/users/profile.html:25
 msgid "Your name"
-msgstr ""
+msgstr "Votre nom"
 
 #: users/templates/users/profile.html:33
 msgid "Name"
-msgstr ""
+msgstr "Nom"
 
 #: users/templates/users/profile.html:38
 msgid "Your Email"
-msgstr ""
+msgstr "Votre courriel"
 
 #: users/templates/users/profile.html:73
 msgid "Edit Profile"
-msgstr ""
+msgstr "Modifier votre profil"
 
 #: users/templates/users/profile.html:79
 msgid "Create an Account"
-msgstr ""
+msgstr "Créer un compte"
 
 #: users/templates/users/profile_update.html:3
 msgid "Profile Update"
-msgstr ""
+msgstr "Modifier votre profil"
 
 #: users/templates/users/profile_update.html:26
 msgid "Create Account"
-msgstr ""
+msgstr "Créer un compte"
 
 #: users/templates/users/profile_update.html:28
 msgid "Update Profile"
-msgstr ""
+msgstr "Modifier votre profil"
 
 #: users/templates/users/profile_update.html:61
 msgid "Delete your profile picture ?"
-msgstr ""
+msgstr "Supprimer votre image de profil ?"
 
 #: users/templates/users/profile_update.html:64
 msgid "Change your avatar color ?"
-msgstr ""
+msgstr "Changer la couleur de votre avatar ?"
 
 #: users/templates/users/profile_update.html:76
 msgid "Keep your email updated because it's your connection id"
-msgstr ""
+msgstr "Conservez votre adresse courriel à jour car il s'afit de votre identifiant de connection"
 
 #: users/templates/users/profile_update.html:81
 msgid "Change password"
-msgstr ""
+msgstr "Changer le mot de passe"
 
 #: users/templates/users/profile_update.html:89
 msgid "Delete Account"
-msgstr ""
+msgstr "Supprimer le compte"
 
 #: users/templates/users/profile_update.html:107
 msgid "Delete Profile Pic ?"
-msgstr ""
+msgstr "Supprimer votre image de profil ?"
 
 #: users/templates/users/profile_update.html:110
 msgid "We think you look good on this pic, but your face, your choice !"
-msgstr ""
+msgstr "On vous trouve bien sur cette photo, mais votre image, votre choix !"
 
 #: users/templates/users/profile_update.html:126
 msgid "Delete your Account ?"
-msgstr ""
+msgstr "Supprimer votre compte ?"
 
 #: users/templates/users/profile_update.html:129
 msgid "We'll miss you, but no emotional blackmail here !"
-msgstr ""
+msgstr "Vous nous manquerez, mais on ne fait pas de chantage affectif ici !"
 
 #: users/views.py:193
 msgid "Password reset"
-msgstr ""
+msgstr "Reinitialiser le mot de passe"
 
 #: users/views.py:223
 msgid "Password reset on App"
-msgstr ""
+msgstr "Réinitialiser le mot de passe sur l'app"
 
 #: users/views.py:248
 msgid "Enter new password"
-msgstr ""
+msgstr "Entrer un nouveau mot de passe"
 
 #: users/views.py:308
 msgid "Password reset unsuccessful"
-msgstr ""
+msgstr "Mot de passe correctement réinitialisé"
 
 #: users/views.py:326
 msgid "Your profile has been successfully updated "
-msgstr ""
+msgstr "Votre profil a été correctement actualisé "
 
 #: users/views.py:373
 msgid "Your profile has been successfully created "
-msgstr ""
+msgstr "Votre profil a été correctement créé"
