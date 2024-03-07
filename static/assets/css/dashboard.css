@@ -39,17 +39,26 @@ img#sidebar-logo {
   width:40px;
 }
 
-@media  screen and (max-width:767px) {
-  #sidebar {
-    height: 55px;
-  }
-}
-
 .dropdown-submenu .dropdown-menu {
   top: 0;
   left: 100%;
   margin-top: -1px;
 }
+
+@media  screen and (max-width:767px) {
+  #sidebar {
+    height: 55px;
+  }
+
+  .dropdown-submenu .dropdown-menu {
+    top: 10;
+    left: 0;
+    margin-top: 80px;
+  }
+
+}
+
+
 /* Recipe Card */
 
 

@@ -400,6 +400,9 @@ def delete_meal(request, slug):
     if meal.picture:
         os.remove(meal.picture.path)
         meal.picture.delete()
+    anecdotes = Anecdote.objects.filter(meal=meal)
+    for anecdote in anecdotes:
+        anecdote.delete()
     meal.delete()
     return redirect('all-meals')
 
@@ -408,12 +411,16 @@ def add_dish_to_meal(request, slug):
     meal = get_object_or_404(Meal, slug=slug)
     group = meal.group
     is_group = True
+    chefs = group.members.all().exclude(is_guest=True)
+    guests = meal.guests.all().exclude(is_guest=False)
+    chefs=chefs.union(guests)
     
     form=AddDishForm(group)
 
     if request.method == "POST":
         form=AddDishForm(group, request.POST, request.FILES)
         chefs = request.POST.getlist('chef')
+        
         print(chefs)
         if form.is_valid():
             dish=form.save(commit=False)
@@ -431,7 +438,7 @@ def add_dish_to_meal(request, slug):
     else:
         print("Nothing")
 
-    return render(request, "meals/add-dish.html", {'form':form, 'is_group':is_group, 'meal':meal})
+    return render(request, "meals/add-dish.html", {'form':form, 'is_group':is_group, 'meal':meal, 'chefs':chefs})
 
 @login_required
 def add_existing_dish_to_meal(request, slug):
@@ -439,7 +446,7 @@ def add_existing_dish_to_meal(request, slug):
     
     
     dishes = Dish.objects.filter(group= meal.group).exclude(meals__id__contains = meal.id)
-    print(dishes)
+    
 
     if request.method == "POST":
         if 'create-dish' in request.POST:
@@ -456,7 +463,12 @@ def add_existing_dish_to_meal(request, slug):
     else:
         print("Nothing")
 
-    return render(request, "meals/add-existing-dish.html", {'meal':meal, 'dishes':dishes})
+    if dishes:
+
+        return render(request, "meals/add-existing-dish.html", {'meal':meal, 'dishes':dishes})
+
+    else:
+        return redirect('add-dish-to-meal', meal.slug)
 
 @login_required
 def add_music(request, slug):
@@ -608,6 +620,8 @@ def invite_guest(request,slug):
             guest.save()
             group.members.add(guest)
             group.save()
+            meal.guests.add(guest)
+            meal.save()
             
             
             return redirect('meal-detail-guest', slug=meal.slug, guest=guest.slug)

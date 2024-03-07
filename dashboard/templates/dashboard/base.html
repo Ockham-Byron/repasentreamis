@@ -89,9 +89,21 @@
 <script>
 $(document).ready(function(){
   $('.dropdown-submenu a.second-level').on("click", function(e){
-    $(this).next('ul').toggle();
-    e.stopPropagation();
+   
+    //$(this).next('ul').toggle();
+    //e.stopPropagation();
+    //e.preventDefault(); 
+
     e.preventDefault();
+  var toClose = $(".dropdown-submenu ul").not($(this).parents("ul"));
+  toClose.slideUp();
+  toClose.parent().removeClass("open");
+  if(!$(this).parent().next().is(":visible")) {
+    var toOpen = $(this).parent().next()
+    toOpen.slideDown();
+    toOpen.parent().not(".open").addClass("open");
+  }  
+  e.stopPropagation();
   });
 });
 </script>   

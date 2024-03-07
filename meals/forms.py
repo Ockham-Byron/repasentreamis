@@ -107,8 +107,9 @@ class AddDishForm(forms.ModelForm):
 
     def __init__(self, group, *args, **kwargs):
         super(AddDishForm, self).__init__(*args, **kwargs)
-        
-        self.fields['chef'].queryset=group.members.all()
+        members = group.members.all()
+        chefs = members.exclude(is_guest=True)
+        self.fields['chef'].queryset=chefs
 
 class AddMealForm(forms.ModelForm):
     dishes = forms.ModelMultipleChoiceField(

@@ -90,6 +90,7 @@ class Meal(models.Model):
     updated_at=models.DateTimeField(auto_now=True)
     slug = models.SlugField(max_length=255, unique= True, default=None, null=True)
     group = models.ForeignKey(CustomGroup, on_delete=models.CASCADE, related_name="meals")
+    guests = models.ManyToManyField(User, blank=True, related_name="guest_meals")
 
     def __str__(self):
         return str(self.created_at)

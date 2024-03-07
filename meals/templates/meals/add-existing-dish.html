@@ -11,14 +11,13 @@
     {% csrf_token %}
     <p class="title">{% trans 'Add Dish ' %} {% trans 'at the Meal of ' %} {{meal.eaten_at|date:"d M Y"}}</p>
     <button class="btn btn-darkest-color" type="submit" name="create-dish">{% trans 'Add New Dish ?' %}</button>
-       
+    
+    
     <p class="my-2 ">{% trans 'Or Add existing Dish:' %}</p>
     <div class="d-flex justify-content-around flex-wrap">
       {% comment %} <select class="p-2 flex-fill me-2" name="dish"> {% endcomment %}
         
         {% for dish in dishes %}
-            
-            
             <div class="choice-container">
               <p class="text-center pt-sm-2">{{ dish.name }}</p>
               <input class="mt-2" type="checkbox" value="{{dish.id}}" name="dish" />
@@ -33,11 +32,13 @@
         {% endfor %}
         
       </div>
+      
       {% comment %} </select> {% endcomment %}
       
    
       <div class="d-flex flex-column align-items-center">
         <button class="submit btn btn-brand-color w-sm-25" type="submit" name="add-dish"><i class="fa-solid fa-bowl-food"></i>{% trans 'Add to Meal' %}</button>
+     
         <a href="{% url 'all-meals' %}" class="mid-color">{% trans 'Cancel' %}</a>
       </div>
   </form>

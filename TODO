@@ -1,16 +1,29 @@
 ☐ traduire
 
+Menu responsive:
+    ☐ positionner vers le bas les options
 
-Dish:
-    ☐ Qui a cuisiné : invité seulement du repas
+Meal:
+    ☐ si suppresion, supprimer guests ?
 
 Messages:
     ☐ add logic
 
 Mode invité:
     ☐ après la mise en ligne, envoyer un mail pour changer de password
+
+pwa:
+    ☐ deployer
+    ☐ faire le tuto
     
 Archive:
+  ✔ Qui a cuisiné : invité seulement du repas @done(24-03-07 10:49) @project(Dish)
+  ✔ Qui a cuisiné: améliorer UI @done(24-03-07 10:01) @project(Dish)
+  ✔ add list of guests @done(24-03-07 10:49) @project(Meal)
+  ✔ si supprimer meal, supprimer anecdote @done(24-03-07 10:49) @project(Meal)
+  ✔ Meal avec guest, ajouter "mode guest @done(24-03-07 10:30) @project(Meal)
+  ✔ ajouter "sortir du mode guest" @done(24-03-07 10:30) @project(Meal)
+  ✔ revoir ajouter un plat au repas si pas de plat existant @done(24-03-07 10:47) @project(Meal)
   ✔ gérer le toggle des add buttons @done(24-03-04 15:14)
   ✔ couleur text footer @done(24-03-04 15:14)
   ✔ form style @done(24-03-04 15:14) @project(Login/Register)

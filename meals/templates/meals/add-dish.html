@@ -1,5 +1,5 @@
 {% extends "dashboard/base.html" %}
-{% load avatar i18n static %}
+{% load avatar i18n static avatar %}
 {% block title %}{% trans 'Add Dish' %}{% endblock title %}
 {% block content %}
 
@@ -21,7 +21,7 @@
           </button>
       </div>
     {% endif %}
-    
+
     <p class="title">
     {% if dish %}
       {% trans 'Edit' %} {{dish.name}}
@@ -32,44 +32,61 @@
     {% trans 'at the Meal of ' %} {{meal.eaten_at|date:"d M Y"}}
     {% endif%}
     </p>
-    
-    
-    
+
+
+
     <input
       type="file"
       id="fileElem"
       multiple
       accept="image/*"
       name="picture"
-      style="display:none" 
+      style="display:none"
       />
       <div class="avatar-wrapper text-center mx-auto">
-      
+
         <a href="#" id="fileSelect" class="avatar-upload">
-          
+
           <img id="add-image" class="avatar-upload d-none" src="{% static 'assets/img/illustrations/in_thought.svg' %}" style="cursor: pointer;"/>
           <div class="avatar-overlay"><i class="fa fa-camera-retro icon"></i></div>
         </a>
-      
-      
+
+
       </div>
       <div id="fileList" class="mt-3 color-light">
         <p></p>
       </div>
 
-    
 
 
-        
+
+
         {{form.name}}
 
         <p class="mb-0">{% trans "Who cooked ?" %}</p>
-        {{form.chef}}
+        <div class="d-flex justify-content-between flex-wrap mt-3">
+        {% for chef in chefs %}
+            <div class="choice-container user-choice-container">
+              
+              <input class="mt-2" type="checkbox" value="{{chef.id}}" name="chef" />
+              <label for="dessert-1">
+            
+                {% if chef.profile_pic %}
+                <img src="{{ chef.profile_pic.url }}" alt="profile_pic">
+              {% else %}
+                {{ chef|avatar }}
+              {% endif %} 
+              </label>
+              <p class="text-center">{{ chef.pseudo }}</p>
+            </div>
+        {% endfor %}
+        </div>
+        {% comment %} {{form.chef}} {% endcomment %}
 
         {% if no_meal %}
           <p class="mb-0">{% trans "At which meal did you eat this dish ? " %}</p>
           <div class="form-group mb-3">
-        
+
         <select class="p-2" name="meal">
         {% for meal in group.meals.all %}
             <option value="{{ meal.id }}">{{ meal.eaten_at|date:"d M Y" }}</option>
@@ -77,9 +94,9 @@
         </select>
     </div>
         {% endif %}
-        
-      
-      
+
+
+
       <button class="submit" type="submit ">{% trans 'Submit' %}</button>
       <div class="text-center d-flex flex-column">
         <a href="{% url 'all-dishes' %}" class="mid-color">{% trans 'Cancel' %}</a>
@@ -112,7 +129,7 @@
 
 
 
- 
+
 {% endblock content %}
 
 {% block extrajs %}
@@ -156,7 +173,7 @@ function handleFiles() {
         URL.revokeObjectURL(img.src);
       };
       }
-      
+
       //if add profile pic
       const newImg = document.getElementById("add-image");
       const avatar = document.getElementsByClassName("avatar")[1];
@@ -167,7 +184,7 @@ function handleFiles() {
       newImg.className = "mx-auto avatar-upload rounded-circle";
       newImg.classList.remove("d-none");
       avatar.classList.add("d-none");
-      
+
       }
     }
   }
