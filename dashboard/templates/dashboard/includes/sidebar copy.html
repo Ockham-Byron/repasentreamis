@@ -26,34 +26,34 @@
       </div>
       <!-- User menu - End -->
       <div id="accordian" class="order-2 order-md-3 flex-shrink-1 flex-sm-grow-0 flex-grow-1">
-      <ul class="mobile-drop nav nav-pills flex-sm-column flex-row flex-nowrap flex-shrink-1 flex-sm-grow-0 flex-grow-1 mb-sm-auto mb-0 justify-content-center align-items-center align-items-sm-start order-2" id="menu">
+      <ul class="nav nav-pills flex-sm-column flex-row flex-nowrap flex-shrink-1 flex-sm-grow-0 flex-grow-1 mb-sm-auto mb-0 justify-content-center align-items-center align-items-sm-start order-2" id="menu">
          
          
-        <!-- Groups -->
-          <li class="subnav">
-              <a href="#" class="nav-link lightest-color second-level">
+
+          <li class="dropdown">
+              <a href="#" class="nav-link dropdown-toggle px-sm-0 px-2 lightest-color" id="dropdown" data-bs-toggle="dropdown" aria-expanded="false">
                   <i class="fa-solid fa-user-group"></i><span class="ms-1 d-none d-sm-inline">{% trans 'Groups' %}</span>
               </a>
-              <ul class="drop-menu subnav-content" >
-                  <li><a class="dropdown-item lightest-color" href="{% url 'all-groups' %}">{% trans 'My groups' %}</a></li>
+              <ul >
                   <li><a class="dropdown-item lightest-color" href="{% url 'add-group' %}"><i class="fa-solid fa-plus pe-1"></i>{% trans 'Add group' %}</a></li>
+                  <li><a class="dropdown-item lightest-color" href="{% url 'all-groups' %}">{% trans 'My groups' %}</a></li>
               </ul>
           </li>
-        <!-- Meals -->
-          <li class="subnav">
-            <a href="#" class="nav-link lightest-color" >
+
+          <li class="dropdown">
+            <a href="#" class="nav-link dropdown-toggle px-sm-0 px-2 lightest-color" id="dropdown" data-bs-toggle="dropdown" aria-expanded="false">
               <i class="fa-solid fa-utensils"></i><span class="ms-1 d-none d-sm-inline">{% trans 'Meals' %}</span>
             </a>
-            <ul class="subnav-content">
+            <ul>
             {% if groups.count == 1%}
                     {% for group in groups%}
                         <li><a class="dropdown-item lightest-color" href="{% url 'group-meals' group.slug %}">{% trans 'Meals' %}</a></li>
                     {% endfor %}
                 {% else %}
-                    <li><a class="dropdown-item lightest-color ps-2" href="{% url 'all-meals' %}">{% trans 'All Meals' %}</a></li>
-                    <li class="subnav2">
+                    <li><a class="dropdown-item lightest-color" href="{% url 'all-meals' %}">{% trans 'All Meals' %}</a></li>
+                    <li class="dropdown-submenu">
                       <a class="second-level lightest-color ps-3 " tabindex="-1" href="#">{% trans 'Meals with' %}<i class="ps-2 fas fa-angle-right"></i></a>
-                      <ul class="subnav-content2">
+                      <ul class="dropdown-menu dropdown-menu-dark ps-2">
                         {% for group in groups %}
                         <li><a tabindex="-1" class="lightest-color" href="{% url 'group-meals' group.slug %}"><small>{{group.name}}</small></a></li>
                         <hr class="dropdown-divider">
@@ -61,25 +61,25 @@
                       </ul>
                     </li>
               {% endif %}
-                <li><a class="dropdown-item lightest-color ps-2" href="{% url 'add-meal' %}"><i class="fa-solid fa-plus pe-1"></i>{% trans 'Add Meal' %}</a></li>
+                <li><a class="dropdown-item lightest-color" href="{% url 'add-meal' %}"><i class="fa-solid fa-plus pe-1"></i>{% trans 'Add Meal' %}</a></li>
                 
             </ul>
         </li>
-          <!-- Dishes -->
-           <li class="subnav">
-              <a href="#" class="nav-link  lightest-color" >
+
+           <li class="dropdown">
+              <a href="#" class="nav-link dropdown-toggle px-sm-0 px-2 lightest-color" id="dropdown" data-bs-toggle="dropdown" aria-expanded="false">
                 <i class="fa-solid fa-bowl-food"></i><span class="ms-1 d-none d-sm-inline">{% trans 'Dishes' %}</span>
               </a>
-              <ul class="subnav-content">
+              <ul>
                 {% if groups.count == 1%}
                     {% for group in groups%}
                         <li><a class="dropdown-item lightest-color" href="{% url 'group-dishes' group.slug %}">{% trans 'Dishes' %}</a></li>
                     {% endfor %}
                 {% else %}
-                    <li><a class="dropdown-item lightest-color ps-2" href="{% url 'all-dishes' %}">{% trans 'All Dishes' %}</a></li>
+                    <li><a class="dropdown-item lightest-color" href="{% url 'all-dishes' %}">{% trans 'All Dishes' %}</a></li>
                     <li class="dropdown-submenu">
                       <a class="second-level lightest-color ps-3 " tabindex="-1" href="#">{% trans 'Dishes of' %}<i class="ps-2 fas fa-angle-right"></i></a>
-                      <ul class="subnav-content2">
+                      <ul >
                         {% for group in groups %}
                         <li><a tabindex="-1" class="lightest-color" href="{% url 'group-dishes' group.slug %}"><small>{{group.name}}</small></a></li>
                         <hr class="dropdown-divider">
@@ -87,16 +87,16 @@
                       </ul>
                     </li>
               {% endif %}
-                  <li><a class="dropdown-item lightest-color ps-2" href="{% url 'add-dish' %}"><i class="fa-solid fa-plus pe-1"></i>{% trans 'Add Dish' %}</a></li>
+                  <li><a class="dropdown-item lightest-color" href="{% url 'add-dish' %}"><i class="fa-solid fa-plus pe-1"></i>{% trans 'Add Dish' %}</a></li>
                   
               </ul>
           </li>
           <!-- Atmosphere -->
-          <li class="subnav">
-              <a href="#" class="nav-link  lightest-color" >
+          <li class="dropdown">
+              <a href="#" class="nav-link dropdown-toggle px-sm-0 px-2 lightest-color" id="dropdown" data-bs-toggle="dropdown" aria-expanded="false">
                 <i class="fa-solid fa-blender"></i><span class="ms-1 d-none d-sm-inline">{% trans 'Atmosphere' %}</span>
               </a>
-              <ul class="subnav-content">
+              <ul >
                 {% if groups.count == 1%}
                     {% for group in groups%}
                         <li><a class="dropdown-item lightest-color" href="{% url 'group-anecdotes' group.slug %}">{% trans 'Anecdotes' %}</a></li>
@@ -105,9 +105,9 @@
                 {% else %}
                     <li class="dropdown-submenu">
                       <a class="second-level lightest-color ps-2" tabindex="-1" href="#">{% trans 'Anecdotes' %}<i class="ps-2 fas fa-angle-right"></i></a>
-                      <ul class="subnav-content2">
+                      <ul>
                         {% for group in groups %}
-                        <li><a tabindex="-1" class="lightest-color ps-2" href="{% url 'group-anecdotes' group.slug %}"><small>{% trans 'Anecdotes with ' %} {{group.name}}</small></a></li>
+                        <li><a tabindex="-1" class="lightest-color" href="{% url 'group-anecdotes' group.slug %}"><small>{% trans 'Anecdotes with ' %} {{group.name}}</small></a></li>
                         <hr class="dropdown-divider">
                         {% endfor %}
                       </ul>
@@ -115,9 +115,9 @@
                     <hr class="dropdown-divider">
                     <li class="dropdown-submenu">
                       <a class="second-level lightest-color ps-2" tabindex="-1" href="#">{% trans 'Music' %}<i class="ps-2 fas fa-angle-right"></i></a>
-                      <ul class="subnav-content2">
+                      <ul>
                         {% for group in groups %}
-                        <li><a tabindex="-1" class="lightest-color ps-2" href="{% url 'group-musics' group.slug %}"><small>{% trans 'Music with ' %} {{group.name}}</small></a></li>
+                        <li><a tabindex="-1" class="lightest-color" href="{% url 'group-musics' group.slug %}"><small>{% trans 'Music with ' %} {{group.name}}</small></a></li>
                         <hr class="dropdown-divider">
                         {% endfor %}
                       </ul>

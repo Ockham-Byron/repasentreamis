@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-03-04 15:19+0100\n"
+"POT-Creation-Date: 2024-03-08 07:10+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,6 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
 #: core/settings.py:130
 msgid "English"
 msgstr ""
@@ -25,107 +26,125 @@ msgstr ""
 msgid "French"
 msgstr ""
 
-#: core/settings.py:132
-msgid "Spanish"
-msgstr ""
-
 #: dashboard/templates/dashboard/dashboard.html:6
 msgid "Dashboard"
 msgstr ""
 
+#: ⁨dashboard/templates/dashboard/includes/sidebar copy.html⁩:18
 #: dashboard/templates/dashboard/includes/sidebar.html:18
 msgid "Profile"
 msgstr ""
 
+#: ⁨dashboard/templates/dashboard/includes/sidebar copy.html⁩:24
 #: dashboard/templates/dashboard/includes/sidebar.html:24
 #: users/templates/users/includes/header.html:33
 msgid "Sign out"
 msgstr ""
 
-#: dashboard/templates/dashboard/includes/sidebar.html:34
+#: ⁨dashboard/templates/dashboard/includes/sidebar copy.html⁩:35
+#: dashboard/templates/dashboard/includes/sidebar.html:35
 #: groups/templates/groups/member_groups.html:8
 msgid "Groups"
 msgstr ""
 
-#: dashboard/templates/dashboard/includes/sidebar.html:37
+#: ⁨dashboard/templates/dashboard/includes/sidebar copy.html⁩:38
+#: dashboard/templates/dashboard/includes/sidebar.html:39
 msgid "Add group"
 msgstr ""
 
+#: ⁨dashboard/templates/dashboard/includes/sidebar copy.html⁩:39
 #: dashboard/templates/dashboard/includes/sidebar.html:38
 msgid "My groups"
 msgstr ""
 
-#: dashboard/templates/dashboard/includes/sidebar.html:44
-#: dashboard/templates/dashboard/includes/sidebar.html:49
+#: ⁨dashboard/templates/dashboard/includes/sidebar copy.html⁩:45
+#: ⁨dashboard/templates/dashboard/includes/sidebar copy.html⁩:50
+#: dashboard/templates/dashboard/includes/sidebar.html:45
+#: dashboard/templates/dashboard/includes/sidebar.html:50
 #: meals/templates/meals/all-meals.html:4
 #: meals/templates/meals/dish-detail.html:101
 msgid "Meals"
 msgstr ""
 
-#: dashboard/templates/dashboard/includes/sidebar.html:52
+#: ⁨dashboard/templates/dashboard/includes/sidebar copy.html⁩:53
+#: dashboard/templates/dashboard/includes/sidebar.html:53
 #: meals/templates/meals/all-meals.html:13
 msgid "All Meals"
 msgstr ""
 
-#: dashboard/templates/dashboard/includes/sidebar.html:54
+#: ⁨dashboard/templates/dashboard/includes/sidebar copy.html⁩:55
+#: dashboard/templates/dashboard/includes/sidebar.html:55
 #: meals/templates/meals/all-meals.html:11
 msgid "Meals with"
 msgstr ""
 
-#: dashboard/templates/dashboard/includes/sidebar.html:63
+#: ⁨dashboard/templates/dashboard/includes/sidebar copy.html⁩:64
+#: dashboard/templates/dashboard/includes/sidebar.html:64
 #: groups/templates/groups/group_detail.html:241
 #: meals/templates/meals/add-meal.html:3 meals/templates/meals/add-meal.html:17
 #: meals/templates/meals/all-meals.html:140
 msgid "Add Meal"
 msgstr ""
 
-#: dashboard/templates/dashboard/includes/sidebar.html:70
-#: dashboard/templates/dashboard/includes/sidebar.html:75
+#: ⁨dashboard/templates/dashboard/includes/sidebar copy.html⁩:71
+#: ⁨dashboard/templates/dashboard/includes/sidebar copy.html⁩:76
+#: dashboard/templates/dashboard/includes/sidebar.html:71
+#: dashboard/templates/dashboard/includes/sidebar.html:76
 #: meals/templates/meals/all-meals.html:39
-#: meals/templates/meals/meal-detail-with-guest.html:36
+#: meals/templates/meals/meal-detail-with-guest.html:34
 msgid "Dishes"
 msgstr ""
 
-#: dashboard/templates/dashboard/includes/sidebar.html:78
+#: ⁨dashboard/templates/dashboard/includes/sidebar copy.html⁩:79
+#: dashboard/templates/dashboard/includes/sidebar.html:79
 #: meals/templates/meals/all-dishes.html:9
 msgid "All Dishes"
 msgstr ""
 
-#: dashboard/templates/dashboard/includes/sidebar.html:80
+#: ⁨dashboard/templates/dashboard/includes/sidebar copy.html⁩:81
+#: dashboard/templates/dashboard/includes/sidebar.html:81
 #: meals/templates/meals/all-dishes.html:7
 msgid "Dishes of"
 msgstr ""
 
-#: dashboard/templates/dashboard/includes/sidebar.html:89
+#: ⁨dashboard/templates/dashboard/includes/sidebar copy.html⁩:90
+#: dashboard/templates/dashboard/includes/sidebar.html:90
 #: meals/templates/meals/add-dish.html:3
 #: meals/templates/meals/add-existing-dish.html:3
 #: meals/templates/meals/all-dishes.html:86
 msgid "Add Dish"
 msgstr ""
 
-#: dashboard/templates/dashboard/includes/sidebar.html:96
+#: ⁨dashboard/templates/dashboard/includes/sidebar copy.html⁩:97
+#: dashboard/templates/dashboard/includes/sidebar.html:97
 msgid "Atmosphere"
 msgstr ""
 
-#: dashboard/templates/dashboard/includes/sidebar.html:101
-#: dashboard/templates/dashboard/includes/sidebar.html:106
+#: ⁨dashboard/templates/dashboard/includes/sidebar copy.html⁩:102
+#: ⁨dashboard/templates/dashboard/includes/sidebar copy.html⁩:107
+#: dashboard/templates/dashboard/includes/sidebar.html:102
+#: dashboard/templates/dashboard/includes/sidebar.html:107
 #: meals/templates/meals/all-meals.html:76
-#: meals/templates/meals/meal-detail-with-guest.html:73
+#: meals/templates/meals/meal-detail-with-guest.html:71
 msgid "Anecdotes"
 msgstr ""
 
-#: dashboard/templates/dashboard/includes/sidebar.html:102
-#: dashboard/templates/dashboard/includes/sidebar.html:116
+#: ⁨dashboard/templates/dashboard/includes/sidebar copy.html⁩:103
+#: ⁨dashboard/templates/dashboard/includes/sidebar copy.html⁩:117
+#: dashboard/templates/dashboard/includes/sidebar.html:103
+#: dashboard/templates/dashboard/includes/sidebar.html:117
 #: meals/templates/meals/all-meals.html:61
-#: meals/templates/meals/meal-detail-with-guest.html:58
+#: meals/templates/meals/meal-detail-with-guest.html:56
 msgid "Music"
 msgstr ""
 
-#: dashboard/templates/dashboard/includes/sidebar.html:109
+#: ⁨dashboard/templates/dashboard/includes/sidebar copy.html⁩:110
+#: dashboard/templates/dashboard/includes/sidebar.html:110
 msgid "Anecdotes with "
 msgstr ""
 
-#: dashboard/templates/dashboard/includes/sidebar.html:119
+#: ⁨dashboard/templates/dashboard/includes/sidebar copy.html⁩:120
+#: dashboard/templates/dashboard/includes/sidebar.html:120
 msgid "Music with "
 msgstr ""
 
@@ -146,13 +165,13 @@ msgid "Create Group"
 msgstr ""
 
 #: groups/templates/groups/add_group.html:37
-msgid "Upload Picture of the Circle"
+msgid "Upload Picture of the Group"
 msgstr ""
 
 #: groups/templates/groups/add_group.html:44
 #: meals/templates/meals/add-anecdote.html:34
 #: meals/templates/meals/add-comment.html:36
-#: meals/templates/meals/add-dish.html:83
+#: meals/templates/meals/add-dish.html:101
 #: meals/templates/meals/add-meal.html:72
 #: meals/templates/meals/add-music.html:34
 #: users/templates/users/choose_avatar.html:25
@@ -167,9 +186,9 @@ msgstr ""
 #: meals/templates/meals/add-anecdote.html:53
 #: meals/templates/meals/add-comment.html:38
 #: meals/templates/meals/add-comment.html:55
-#: meals/templates/meals/add-dish.html:85
-#: meals/templates/meals/add-dish.html:102
-#: meals/templates/meals/add-existing-dish.html:43
+#: meals/templates/meals/add-dish.html:103
+#: meals/templates/meals/add-dish.html:120
+#: meals/templates/meals/add-existing-dish.html:44
 #: meals/templates/meals/add-meal.html:74
 #: meals/templates/meals/add-meal.html:91
 #: meals/templates/meals/add-music.html:36
@@ -270,11 +289,11 @@ msgid "Name of the Group"
 msgstr ""
 
 #: groups/templates/groups/update_group.html:15
-msgid "Upload New Picture of the Circle"
+msgid "Upload New Picture of the Group"
 msgstr ""
 
 #: groups/templates/groups/update_group.html:45
-msgid "Admin of the Circle"
+msgid "Admin of the Group"
 msgstr ""
 
 #: groups/templates/groups/update_group.html:52
@@ -294,24 +313,24 @@ msgstr ""
 msgid "Name of the Dish"
 msgstr ""
 
-#: meals/forms.py:144
+#: meals/forms.py:145
 msgid "Comment"
 msgstr ""
 
-#: meals/forms.py:153
+#: meals/forms.py:154
 msgid "Title"
 msgstr ""
 
-#: meals/forms.py:156
+#: meals/forms.py:157
 msgid "Artist"
 msgstr ""
 
-#: meals/forms.py:166 meals/templates/meals/all-meals.html:92
-#: meals/templates/meals/meal-detail-with-guest.html:89
+#: meals/forms.py:167 meals/templates/meals/all-meals.html:92
+#: meals/templates/meals/meal-detail-with-guest.html:87
 msgid "Anecdote"
 msgstr ""
 
-#: meals/forms.py:176 users/forms.py:27
+#: meals/forms.py:177 users/forms.py:27
 msgid "Username"
 msgstr ""
 
@@ -339,7 +358,7 @@ msgstr ""
 
 #: meals/templates/meals/add-anecdote.html:52
 #: meals/templates/meals/add-comment.html:54
-#: meals/templates/meals/add-dish.html:101
+#: meals/templates/meals/add-dish.html:119
 #: meals/templates/meals/add-meal.html:90
 #: meals/templates/meals/add-music.html:52
 #: users/templates/users/profile_update.html:113
@@ -379,7 +398,7 @@ msgstr ""
 #: meals/templates/meals/all-anecdotes.html:26
 #: meals/templates/meals/all-meals.html:98
 #: meals/templates/meals/all-musics.html:27
-#: meals/templates/meals/meal-detail-with-guest.html:95
+#: meals/templates/meals/meal-detail-with-guest.html:93
 msgid "Edit"
 msgstr ""
 
@@ -397,19 +416,19 @@ msgstr ""
 msgid "Who cooked ?"
 msgstr ""
 
-#: meals/templates/meals/add-dish.html:70
+#: meals/templates/meals/add-dish.html:88
 msgid "At which meal did you eat this dish ? "
 msgstr ""
 
-#: meals/templates/meals/add-dish.html:87
+#: meals/templates/meals/add-dish.html:105
 msgid "Delete Dish"
 msgstr ""
 
-#: meals/templates/meals/add-dish.html:95
+#: meals/templates/meals/add-dish.html:113
 msgid "Delete Dish ?"
 msgstr ""
 
-#: meals/templates/meals/add-dish.html:98
+#: meals/templates/meals/add-dish.html:116
 msgid "Big big choice here, you're sure to send this dish to the trash ? "
 msgstr ""
 
@@ -417,7 +436,7 @@ msgstr ""
 msgid "Add New Dish ?"
 msgstr ""
 
-#: meals/templates/meals/add-existing-dish.html:15
+#: meals/templates/meals/add-existing-dish.html:16
 msgid "Or Add existing Dish:"
 msgstr ""
 
@@ -507,7 +526,7 @@ msgid "Edit Dish"
 msgstr ""
 
 #: meals/templates/meals/all-meals.html:99
-#: meals/templates/meals/meal-detail-with-guest.html:96
+#: meals/templates/meals/meal-detail-with-guest.html:94
 msgid "Close"
 msgstr ""
 
@@ -574,12 +593,12 @@ msgstr ""
 msgid "Invite"
 msgstr ""
 
-#: meals/templates/meals/meal-detail-with-guest.html:11
-msgid "Meal shared with "
+#: meals/templates/meals/meal-detail-with-guest.html:13
+msgid "Guest Mode"
 msgstr ""
 
-#: meals/templates/meals/meal-detail-with-guest.html:15
-msgid "Guest Mode"
+#: meals/templates/meals/meal-detail-with-guest.html:112
+msgid "Exit of guest mode"
 msgstr ""
 
 #: meals/urls.py:8

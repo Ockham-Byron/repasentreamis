@@ -39,24 +39,159 @@ img#sidebar-logo {
   width:40px;
 }
 
-.dropdown-submenu .dropdown-menu {
+/* .dropdown-submenu .dropdown-menu {
   top: 0;
   left: 100%;
   margin-top: -1px;
-}
+} */
 
 @media  screen and (max-width:767px) {
   #sidebar {
     height: 55px;
   }
 
-  .dropdown-submenu .dropdown-menu {
+  /* .dropdown-submenu .dropdown-menu {
     top: 10;
     left: 0;
     margin-top: 80px;
+  } */
+
+}
+
+#accordian {
+  width: 250px;
+}
+i {
+  margin-right: 10px;
+}
+
+#accordian li {
+  list-style-type: none;
+}
+
+#accordian ul ul li a {
+  color: white;
+  text-decoration: none;
+  font-size: 12px;
+  line-height: 27px;
+  display: block;
+  
+  transition: all 0.15s;
+  position: relative;
+}
+
+#accordian ul ul li a:hover {
+  color:var(--joy-color);
+  border-left: 5px solid var(--joy-color);
+}
+
+
+
+#accordian li.active>ul {
+  display: block;
+}
+
+#accordian ul ul ul {
+  margin-left: 10px;
+  padding-left:10px;
+  
+}
+
+@media only screen and (min-width: 768px) {
+
+  #accordian ul ul {
+    display: none;
   }
 
 }
+
+@media only screen and (max-width: 767px) {
+ 
+ /* #accordian ul ul.active {
+  display: block;
+  position:absolute;
+    left:0;
+    top:47px;
+    padding:20px;
+    background-color: var(--darkest-color);
+    border-left:5px solid var(--joy-color);
+    border-right: 5px solid var(--joy-color);
+ }
+#accordian > ul {
+  position:relative !important;
+  max-width:300px;
+}
+
+  #accordian > ul > li:hover, #accordian > ul > li.active   {
+    
+    border-left:5px solid var(--joy-color);
+    border-right: 5px solid var(--joy-color);
+  }
+  
+#accordian > ul > li > ul > li {
+  display: table-cell !important;
+}  */
+
+/* .mobile-drop {
+  position: relative;
+}
+
+.mobile-drop .drop-menu {
+  top: 0;
+  left: 100%;
+  margin-top: -1px;
+} */
+
+li.subnav:hover {
+  background-color: var(--joy-color);
+  color:var(--darkest-color) !important;
+}
+
+.subnav-content {
+  display: none;
+  position: absolute;
+  left: 0;
+  background-color: var(--darkest-color);
+  width: 100%;
+  z-index: 1;
+  padding:20px;
+}
+
+.subnav-content li {
+  display: table-cell !important;
+  
+}
+
+.subnav-content a {
+  padding-left:5px !important;
+}
+
+/* .subnav-content2 {
+  display: none;
+  position: absolute;
+  left: 0;
+  background-color: var(--darkest-color);
+  width: 100%;
+  z-index: 1;
+} */
+
+li.subnav:hover .subnav-content{
+  display: flex !important;
+  justify-content: space-evenly;
+}
+
+.subnav-content2  {
+  display:flex;
+  flex-direction: column !important;
+  text-align: left !important;
+  margin-left: 0 !important;
+  padding-left: 0!important;
+  
+}
+
+
+}
+
 
 
 /* Recipe Card */

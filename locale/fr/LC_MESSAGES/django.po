@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-03-04 15:19+0100\n"
+"POT-Creation-Date: 2024-03-08 07:10+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,6 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
+
 #: core/settings.py:130
 msgid "English"
 msgstr "Anglais"
@@ -25,107 +26,125 @@ msgstr "Anglais"
 msgid "French"
 msgstr "Français"
 
-#: core/settings.py:132
-msgid "Spanish"
-msgstr "Espagnol"
-
 #: dashboard/templates/dashboard/dashboard.html:6
 msgid "Dashboard"
 msgstr "Tableau de bord"
 
+#: ⁨dashboard/templates/dashboard/includes/sidebar copy.html⁩:18
 #: dashboard/templates/dashboard/includes/sidebar.html:18
 msgid "Profile"
 msgstr "Profil"
 
+#: ⁨dashboard/templates/dashboard/includes/sidebar copy.html⁩:24
 #: dashboard/templates/dashboard/includes/sidebar.html:24
 #: users/templates/users/includes/header.html:33
 msgid "Sign out"
 msgstr "Se déconnecter"
 
-#: dashboard/templates/dashboard/includes/sidebar.html:34
+#: ⁨dashboard/templates/dashboard/includes/sidebar copy.html⁩:35
+#: dashboard/templates/dashboard/includes/sidebar.html:35
 #: groups/templates/groups/member_groups.html:8
 msgid "Groups"
 msgstr "Groupes"
 
-#: dashboard/templates/dashboard/includes/sidebar.html:37
+#: ⁨dashboard/templates/dashboard/includes/sidebar copy.html⁩:38
+#: dashboard/templates/dashboard/includes/sidebar.html:39
 msgid "Add group"
 msgstr "Ajouter un groupe"
 
+#: ⁨dashboard/templates/dashboard/includes/sidebar copy.html⁩:39
 #: dashboard/templates/dashboard/includes/sidebar.html:38
 msgid "My groups"
 msgstr "Mes groupes"
 
-#: dashboard/templates/dashboard/includes/sidebar.html:44
-#: dashboard/templates/dashboard/includes/sidebar.html:49
+#: ⁨dashboard/templates/dashboard/includes/sidebar copy.html⁩:45
+#: ⁨dashboard/templates/dashboard/includes/sidebar copy.html⁩:50
+#: dashboard/templates/dashboard/includes/sidebar.html:45
+#: dashboard/templates/dashboard/includes/sidebar.html:50
 #: meals/templates/meals/all-meals.html:4
 #: meals/templates/meals/dish-detail.html:101
 msgid "Meals"
 msgstr "Repas"
 
-#: dashboard/templates/dashboard/includes/sidebar.html:52
+#: ⁨dashboard/templates/dashboard/includes/sidebar copy.html⁩:53
+#: dashboard/templates/dashboard/includes/sidebar.html:53
 #: meals/templates/meals/all-meals.html:13
 msgid "All Meals"
 msgstr "Tous les repas"
 
-#: dashboard/templates/dashboard/includes/sidebar.html:54
+#: ⁨dashboard/templates/dashboard/includes/sidebar copy.html⁩:55
+#: dashboard/templates/dashboard/includes/sidebar.html:55
 #: meals/templates/meals/all-meals.html:11
 msgid "Meals with"
 msgstr "Repas avec"
 
-#: dashboard/templates/dashboard/includes/sidebar.html:63
+#: ⁨dashboard/templates/dashboard/includes/sidebar copy.html⁩:64
+#: dashboard/templates/dashboard/includes/sidebar.html:64
 #: groups/templates/groups/group_detail.html:241
 #: meals/templates/meals/add-meal.html:3 meals/templates/meals/add-meal.html:17
 #: meals/templates/meals/all-meals.html:140
 msgid "Add Meal"
 msgstr "Ajouter un repas"
 
-#: dashboard/templates/dashboard/includes/sidebar.html:70
-#: dashboard/templates/dashboard/includes/sidebar.html:75
+#: ⁨dashboard/templates/dashboard/includes/sidebar copy.html⁩:71
+#: ⁨dashboard/templates/dashboard/includes/sidebar copy.html⁩:76
+#: dashboard/templates/dashboard/includes/sidebar.html:71
+#: dashboard/templates/dashboard/includes/sidebar.html:76
 #: meals/templates/meals/all-meals.html:39
-#: meals/templates/meals/meal-detail-with-guest.html:36
+#: meals/templates/meals/meal-detail-with-guest.html:34
 msgid "Dishes"
 msgstr "Plats"
 
-#: dashboard/templates/dashboard/includes/sidebar.html:78
+#: ⁨dashboard/templates/dashboard/includes/sidebar copy.html⁩:79
+#: dashboard/templates/dashboard/includes/sidebar.html:79
 #: meals/templates/meals/all-dishes.html:9
 msgid "All Dishes"
 msgstr "Tous les plats"
 
-#: dashboard/templates/dashboard/includes/sidebar.html:80
+#: ⁨dashboard/templates/dashboard/includes/sidebar copy.html⁩:81
+#: dashboard/templates/dashboard/includes/sidebar.html:81
 #: meals/templates/meals/all-dishes.html:7
 msgid "Dishes of"
 msgstr "Les plats de"
 
-#: dashboard/templates/dashboard/includes/sidebar.html:89
+#: ⁨dashboard/templates/dashboard/includes/sidebar copy.html⁩:90
+#: dashboard/templates/dashboard/includes/sidebar.html:90
 #: meals/templates/meals/add-dish.html:3
 #: meals/templates/meals/add-existing-dish.html:3
 #: meals/templates/meals/all-dishes.html:86
 msgid "Add Dish"
 msgstr "Ajouter un plat"
 
-#: dashboard/templates/dashboard/includes/sidebar.html:96
+#: ⁨dashboard/templates/dashboard/includes/sidebar copy.html⁩:97
+#: dashboard/templates/dashboard/includes/sidebar.html:97
 msgid "Atmosphere"
 msgstr "Atmosphère"
 
-#: dashboard/templates/dashboard/includes/sidebar.html:101
-#: dashboard/templates/dashboard/includes/sidebar.html:106
+#: ⁨dashboard/templates/dashboard/includes/sidebar copy.html⁩:102
+#: ⁨dashboard/templates/dashboard/includes/sidebar copy.html⁩:107
+#: dashboard/templates/dashboard/includes/sidebar.html:102
+#: dashboard/templates/dashboard/includes/sidebar.html:107
 #: meals/templates/meals/all-meals.html:76
-#: meals/templates/meals/meal-detail-with-guest.html:73
+#: meals/templates/meals/meal-detail-with-guest.html:71
 msgid "Anecdotes"
 msgstr "Anecdotes"
 
-#: dashboard/templates/dashboard/includes/sidebar.html:102
-#: dashboard/templates/dashboard/includes/sidebar.html:116
+#: ⁨dashboard/templates/dashboard/includes/sidebar copy.html⁩:103
+#: ⁨dashboard/templates/dashboard/includes/sidebar copy.html⁩:117
+#: dashboard/templates/dashboard/includes/sidebar.html:103
+#: dashboard/templates/dashboard/includes/sidebar.html:117
 #: meals/templates/meals/all-meals.html:61
-#: meals/templates/meals/meal-detail-with-guest.html:58
+#: meals/templates/meals/meal-detail-with-guest.html:56
 msgid "Music"
 msgstr "Musiques"
 
-#: dashboard/templates/dashboard/includes/sidebar.html:109
+#: ⁨dashboard/templates/dashboard/includes/sidebar copy.html⁩:110
+#: dashboard/templates/dashboard/includes/sidebar.html:110
 msgid "Anecdotes with "
 msgstr "Anecdotes avec "
 
-#: dashboard/templates/dashboard/includes/sidebar.html:119
+#: ⁨dashboard/templates/dashboard/includes/sidebar copy.html⁩:120
+#: dashboard/templates/dashboard/includes/sidebar.html:120
 msgid "Music with "
 msgstr "Musique avec "
 
@@ -152,7 +171,7 @@ msgstr "Téléverser une image du groupe"
 #: groups/templates/groups/add_group.html:44
 #: meals/templates/meals/add-anecdote.html:34
 #: meals/templates/meals/add-comment.html:36
-#: meals/templates/meals/add-dish.html:83
+#: meals/templates/meals/add-dish.html:101
 #: meals/templates/meals/add-meal.html:72
 #: meals/templates/meals/add-music.html:34
 #: users/templates/users/choose_avatar.html:25
@@ -167,9 +186,9 @@ msgstr "Envoyer"
 #: meals/templates/meals/add-anecdote.html:53
 #: meals/templates/meals/add-comment.html:38
 #: meals/templates/meals/add-comment.html:55
-#: meals/templates/meals/add-dish.html:85
-#: meals/templates/meals/add-dish.html:102
-#: meals/templates/meals/add-existing-dish.html:43
+#: meals/templates/meals/add-dish.html:103
+#: meals/templates/meals/add-dish.html:120
+#: meals/templates/meals/add-existing-dish.html:44
 #: meals/templates/meals/add-meal.html:74
 #: meals/templates/meals/add-meal.html:91
 #: meals/templates/meals/add-music.html:36
@@ -254,7 +273,9 @@ msgstr "Mes groupes"
 
 #: groups/templates/groups/member_groups.html:25
 msgid "Everything begins with a group to share good food and good moments !"
-msgstr "Tout commence avec un groupe avec lequel partager de bons plats et de bons moments !"
+msgstr ""
+"Tout commence avec un groupe avec lequel partager de bons plats et de bons "
+"moments !"
 
 #: groups/templates/groups/member_groups.html:35
 msgid "Create a Group "
@@ -271,7 +292,7 @@ msgstr "Nom du groupe"
 
 #: groups/templates/groups/update_group.html:15
 msgid "Upload New Picture of the Group"
-msgstr "Téléverser une nouvelle image du groupe" 
+msgstr "Téléverser une nouvelle image du groupe"
 
 #: groups/templates/groups/update_group.html:45
 msgid "Admin of the Group"
@@ -294,24 +315,24 @@ msgstr "Magnifique !"
 msgid "Name of the Dish"
 msgstr "Nom du plat"
 
-#: meals/forms.py:144
+#: meals/forms.py:145
 msgid "Comment"
 msgstr "Commentaire"
 
-#: meals/forms.py:153
+#: meals/forms.py:154
 msgid "Title"
 msgstr "Titre"
 
-#: meals/forms.py:156
+#: meals/forms.py:157
 msgid "Artist"
 msgstr "Artiste"
 
-#: meals/forms.py:166 meals/templates/meals/all-meals.html:92
-#: meals/templates/meals/meal-detail-with-guest.html:89
+#: meals/forms.py:167 meals/templates/meals/all-meals.html:92
+#: meals/templates/meals/meal-detail-with-guest.html:87
 msgid "Anecdote"
 msgstr "Anecdote"
 
-#: meals/forms.py:176 users/forms.py:27
+#: meals/forms.py:177 users/forms.py:27
 msgid "Username"
 msgstr "Pseudo"
 
@@ -339,7 +360,7 @@ msgstr "Vous perdrez tous ces souvenirs, mais bon, pas de pression..."
 
 #: meals/templates/meals/add-anecdote.html:52
 #: meals/templates/meals/add-comment.html:54
-#: meals/templates/meals/add-dish.html:101
+#: meals/templates/meals/add-dish.html:119
 #: meals/templates/meals/add-meal.html:90
 #: meals/templates/meals/add-music.html:52
 #: users/templates/users/profile_update.html:113
@@ -379,7 +400,7 @@ msgstr "Votre avis était intéressant, vous savez..."
 #: meals/templates/meals/all-anecdotes.html:26
 #: meals/templates/meals/all-meals.html:98
 #: meals/templates/meals/all-musics.html:27
-#: meals/templates/meals/meal-detail-with-guest.html:95
+#: meals/templates/meals/meal-detail-with-guest.html:93
 msgid "Edit"
 msgstr "Modifier"
 
@@ -397,27 +418,28 @@ msgstr "au repas du "
 msgid "Who cooked ?"
 msgstr "Qui a cuisiné ?"
 
-#: meals/templates/meals/add-dish.html:70
+#: meals/templates/meals/add-dish.html:88
 msgid "At which meal did you eat this dish ? "
 msgstr "Lors de quel repas avez-vous dégusté ce plat ?"
 
-#: meals/templates/meals/add-dish.html:87
+#: meals/templates/meals/add-dish.html:105
 msgid "Delete Dish"
 msgstr "Supprimer le plat"
 
-#: meals/templates/meals/add-dish.html:95
+#: meals/templates/meals/add-dish.html:113
 msgid "Delete Dish ?"
 msgstr "Supprimer le plat ?"
 
-#: meals/templates/meals/add-dish.html:98
+#: meals/templates/meals/add-dish.html:116
 msgid "Big big choice here, you're sure to send this dish to the trash ? "
-msgstr "Grosse décision là, voulez-vous vraiment jeter ce plat à la poubelle ? "
+msgstr ""
+"Grosse décision là, voulez-vous vraiment jeter ce plat à la poubelle ? "
 
 #: meals/templates/meals/add-existing-dish.html:13
 msgid "Add New Dish ?"
 msgstr "Ajouter un nouveau plat ?"
 
-#: meals/templates/meals/add-existing-dish.html:15
+#: meals/templates/meals/add-existing-dish.html:16
 msgid "Or Add existing Dish:"
 msgstr "Ou ajouter un plat existant:"
 
@@ -476,7 +498,9 @@ msgstr "Supprimer ce morceau ?"
 
 #: meals/templates/meals/add-music.html:49
 msgid "You will lose all the memories of this song, but hey, no pression..."
-msgstr "Vous allez perdre tous les souvenirs liés à ce morceau, mais bon, pas de pression..."
+msgstr ""
+"Vous allez perdre tous les souvenirs liés à ce morceau, mais bon, pas de "
+"pression..."
 
 #: meals/templates/meals/all-anecdotes.html:5
 msgid "Anecdotes of"
@@ -507,7 +531,7 @@ msgid "Edit Dish"
 msgstr "Modifier le repas"
 
 #: meals/templates/meals/all-meals.html:99
-#: meals/templates/meals/meal-detail-with-guest.html:96
+#: meals/templates/meals/meal-detail-with-guest.html:94
 msgid "Close"
 msgstr "Fermer"
 
@@ -574,13 +598,13 @@ msgstr "Convier un invité à commenter"
 msgid "Invite"
 msgstr "Inviter"
 
-#: meals/templates/meals/meal-detail-with-guest.html:11
-msgid "Meal shared with "
-msgstr "Repas partagé avec "
-
-#: meals/templates/meals/meal-detail-with-guest.html:15
+#: meals/templates/meals/meal-detail-with-guest.html:13
 msgid "Guest Mode"
 msgstr "Mode invité"
+
+#: meals/templates/meals/meal-detail-with-guest.html:112
+msgid "Exit of guest mode"
+msgstr ""
 
 #: meals/urls.py:8
 msgid "all-meals"
@@ -720,7 +744,9 @@ msgstr "Votre compte a été supprimé avec succès."
 
 #: pages/templates/pages/bye.html:12
 msgid "If there is anything we could have done differently, please write us !"
-msgstr "S'il y a quoi que ce soit que nous aurion pu faire différemment, merci de nous écrire !"
+msgstr ""
+"S'il y a quoi que ce soit que nous aurion pu faire différemment, merci de "
+"nous écrire !"
 
 #: pages/templates/pages/bye.html:13
 msgid "Write a message"
@@ -758,8 +784,10 @@ msgstr ""
 msgid ""
 "A user with that email already exists. If you have lost your password, "
 "please go to Login and Forgot password."
-msgstr "Un utilisateur avec ce mail existe déjà. Si vous avez oublié votre mot de passe, "
-"merci d'aller de vous rendre sur l'espace de connexion et cliquer sur Oubli du mot de passe."
+msgstr ""
+"Un utilisateur avec ce mail existe déjà. Si vous avez oublié votre mot de "
+"passe, merci d'aller de vous rendre sur l'espace de connexion et cliquer sur "
+"Oubli du mot de passe."
 
 #: users/forms.py:25 users/forms.py:49 users/forms.py:72 users/forms.py:124
 #: users/templates/users/profile.html:47
@@ -780,8 +808,9 @@ msgstr "Confirmation du mot de passe"
 msgid ""
 "This isn't the password registered with %(email)s. If you don't remember "
 "your password, please click on 'Forgot Password' ."
-msgstr "Ceci n'est pas un mot de passe enregistré avec %(email)s. Si vous avez oublié "
-"votre mot de passe, merci de cliquer sur Oubli du mot de passe."
+msgstr ""
+"Ceci n'est pas un mot de passe enregistré avec %(email)s. Si vous avez "
+"oublié votre mot de passe, merci de cliquer sur Oubli du mot de passe."
 
 #: users/forms.py:62
 #, python-format
@@ -844,8 +873,8 @@ msgid ""
 "You're receiving this email because you requested a password reset for your "
 "user account at"
 msgstr ""
-"Vous recevez ce courriel car vous avez demandé une réinitialisation du mot de passe "
-"pour votre compte chez"
+"Vous recevez ce courriel car vous avez demandé une réinitialisation du mot "
+"de passe pour votre compte chez"
 
 #: users/templates/users/authentication/emails/create_account_email.html:8
 msgid "We don't have any account registered with this email address."
@@ -863,7 +892,9 @@ msgstr "Créer un compte"
 #: users/templates/users/authentication/emails/password_reset_email.html:11
 #: users/templates/users/authentication/emails/verify_email_message.html:11
 msgid "Or you can copy the link below to your browser"
-msgstr "Ou vous pouvez copier le lien ci-dessous dans la barre d'adresse de votre navigaeur"
+msgstr ""
+"Ou vous pouvez copier le lien ci-dessous dans la barre d'adresse de votre "
+"navigaeur"
 
 #: users/templates/users/authentication/emails/password_reset_email.html:9
 #: users/templates/users/authentication/password_reset_confirm.html:58
@@ -879,8 +910,8 @@ msgid ""
 "You created an account on ...., you need to verify your email. Please click "
 "on the button below to verify your email."
 msgstr ""
-"Vous avez créé un compte ..... Pour vérifier votre courriel, merci de cliquer "
-"sur le bouton ci-dessous."
+"Vous avez créé un compte ..... Pour vérifier votre courriel, merci de "
+"cliquer sur le bouton ci-dessous."
 
 #: users/templates/users/authentication/login.html:11
 msgid "Welcome back"
@@ -937,8 +968,9 @@ msgstr "Réinitialiser le passeport"
 msgid ""
 "Please enter your email address below and we will send you an email with a "
 "link to reset your password."
-msgstr "Merci de préciser votre courriel ci-dessous et nous vous enverrons un mail avec "
-"un lien pour réinitialiser votre mot de passe."
+msgstr ""
+"Merci de préciser votre courriel ci-dessous et nous vous enverrons un mail "
+"avec un lien pour réinitialiser votre mot de passe."
 
 #: users/templates/users/authentication/password_reset.html:45
 msgid "Send Email"
@@ -986,7 +1018,8 @@ msgstr "Un mail a été envoyé"
 msgid ""
 "Please check your mailbox and follow the instructions to reset your password."
 msgstr ""
-"Merci de vérifier votre boîte mail et de suivre les instructions pour réinitialiser votre passeport."
+"Merci de vérifier votre boîte mail et de suivre les instructions pour "
+"réinitialiser votre passeport."
 
 #: users/templates/users/authentication/register.html:11
 msgid "Get Started"
@@ -1028,7 +1061,9 @@ msgstr "Vérifiez votre adresse mail"
 
 #: users/templates/users/authentication/verify_email.html:11
 msgid "To unlock all the features of the app, we need to verify your email:"
-msgstr "Pour débloquer toutes les fonctions de l'application, nous avons besoin de vérifier votre adresse courriel."
+msgstr ""
+"Pour débloquer toutes les fonctions de l'application, nous avons besoin de "
+"vérifier votre adresse courriel."
 
 #: users/templates/users/authentication/verify_email.html:16
 msgid "Verify now"
@@ -1049,11 +1084,14 @@ msgstr "Vous avez vérifié votre adresse courriel avec succès !"
 
 #: users/templates/users/authentication/verify_email_done.html:10
 msgid "An email has been sent with instructions to verify your email address"
-msgstr "Un email a été envoyé avec des instructions pour vérifier votre adresse courriel"
+msgstr ""
+"Un email a été envoyé avec des instructions pour vérifier votre adresse "
+"courriel"
 
 #: users/templates/users/authentication/verify_email_done.html:12
 msgid "Please check your mailbox and follow the instructions."
-msgstr "Merci de vous rendre sur votre boîte mail et de de suivre les instructions."
+msgstr ""
+"Merci de vous rendre sur votre boîte mail et de de suivre les instructions."
 
 #: users/templates/users/authentication/verify_email_done.html:13
 msgid "No thanks, I prefer going to my dashboard"
@@ -1089,9 +1127,9 @@ msgid ""
 msgstr ""
 "Imaginez-vous en train de savourer un délicieux plat avec vos proches, "
 "entouré de rires et de discussions animées. TastyMoments capture ces "
-"instants précieux en un clin d'œil. Plus qu'une simple application, c'est votre "
-"compagnon idéal pour immortaliser chaque bouchée, chaque éclat de rire et "
-"chaque mélodie qui accompagne vos repas."
+"instants précieux en un clin d'œil. Plus qu'une simple application, c'est "
+"votre compagnon idéal pour immortaliser chaque bouchée, chaque éclat de rire "
+"et chaque mélodie qui accompagne vos repas."
 
 #: users/templates/users/home.html:13 users/templates/users/home.html:15
 msgid "Enter"
@@ -1111,9 +1149,9 @@ msgid ""
 "family. Whether it's a Sunday brunch or a festive dinner, every moment "
 "deserves to be preserved."
 msgstr ""
-"Gardez une trace de tous les plats délicieux que vous avez partagés avec vos amis "
-"et votre famille. Qu'il s'agisse d'un brunch dominical ou d'un dîner de fête, chaque moment "
-"mérite d'être préservé."
+"Gardez une trace de tous les plats délicieux que vous avez partagés avec vos "
+"amis et votre famille. Qu'il s'agisse d'un brunch dominical ou d'un dîner de "
+"fête, chaque moment mérite d'être préservé."
 
 #: users/templates/users/home.html:38
 msgid "Blend flavors and memories"
@@ -1125,9 +1163,9 @@ msgid ""
 "accompany them. Create unique and personal moments that you'll cherish "
 "forever."
 msgstr ""
-"Associez les plats que vous aimez à la musique, aux anecdotes et aux émotions "
-"qui les accompagnent. Créez des moments uniques et personnels que vous chérirez "
-"pour toujours."
+"Associez les plats que vous aimez à la musique, aux anecdotes et aux "
+"émotions qui les accompagnent. Créez des moments uniques et personnels que "
+"vous chérirez pour toujours."
 
 #: users/templates/users/home.html:47
 msgid "Rate dishes"
@@ -1139,9 +1177,9 @@ msgid ""
 "can evaluate and share your opinions on the dishes you've tasted, while "
 "discovering recommendations from your friends."
 msgstr ""
-"Ne laissez aucun plat exceptionnel passer inaperçu. Avec notre fonction de notation, vous "
-"pouvez évaluer et partager vos avis sur les plats que vous avez dégustés, "
-"tout en découvrant les recommandations de vos amis."
+"Ne laissez aucun plat exceptionnel passer inaperçu. Avec notre fonction de "
+"notation, vous pouvez évaluer et partager vos avis sur les plats que vous "
+"avez dégustés, tout en découvrant les recommandations de vos amis."
 
 #: users/templates/users/includes/footer.html:11
 msgid "Legal Information"
@@ -1213,7 +1251,9 @@ msgstr "Changer la couleur de votre avatar ?"
 
 #: users/templates/users/profile_update.html:76
 msgid "Keep your email updated because it's your connection id"
-msgstr "Conservez votre adresse courriel à jour car il s'afit de votre identifiant de connection"
+msgstr ""
+"Conservez votre adresse courriel à jour car il s'afit de votre identifiant "
+"de connection"
 
 #: users/templates/users/profile_update.html:81
 msgid "Change password"
@@ -1262,3 +1302,9 @@ msgstr "Votre profil a été correctement actualisé "
 #: users/views.py:373
 msgid "Your profile has been successfully created "
 msgstr "Votre profil a été correctement créé"
+
+#~ msgid "Spanish"
+#~ msgstr "Espagnol"
+
+#~ msgid "Meal shared with "
+#~ msgstr "Repas partagé avec "
