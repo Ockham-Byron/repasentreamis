@@ -604,11 +604,11 @@ msgstr "Mode invité"
 
 #: meals/templates/meals/meal-detail-with-guest.html:112
 msgid "Exit of guest mode"
-msgstr ""
+msgstr "Sortir du mode invité"
 
 #: meals/urls.py:8
 msgid "all-meals"
-msgstr ""
+msgstr "tous-les-repas"
 
 #: meals/urls.py:9
 msgid "group-meals/<slug>"
