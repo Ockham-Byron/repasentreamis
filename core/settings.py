@@ -49,7 +49,11 @@ INSTALLED_APPS = [
     'users',
     'dashboard',
     'pages',
-    'recettes',
+    'meals',
+    'groups',
+
+    #plugins
+    'bootstrap_datepicker_plus',
     
     
 ]
@@ -78,6 +82,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'dashboard.context_processors.get_groups',
             ],
         },
     },
@@ -124,7 +129,7 @@ LANGUAGE_CODE = 'en'
 LANGUAGES = [
     ('en', _('English')),
     ('fr', _('French')),
-    ('es', _('Spanish')),
+    # ('es', _('Spanish')),
 ]
 
 TIME_ZONE = 'UTC'

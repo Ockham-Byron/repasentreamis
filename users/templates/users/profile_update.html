@@ -20,7 +20,14 @@
           </button>
       </div>
     {% endif %}
-    <p class="title">{% trans 'Update Profile' %}</p>
+
+    <p class="title">
+      {% if user.is_guest == True  %}
+        {% trans 'Create Account' %}
+      {% else %}
+        {% trans 'Update Profile' %}
+      {% endif %}
+      </p>
     
     <input
       type="file"
@@ -31,14 +38,14 @@
       style="display:none" 
       />
       <div class="avatar-wrapper text-center mx-auto">
-      {% if request.user.profile_pic %}
+      {% if user.profile_pic %}
         <a href="#" id="fileSelect">
           <img id="change-image" class="avatar-upload" src="{{ user.profile_pic.url }} " style="cursor: pointer;"/>
           <div class="avatar-overlay"><i class="fa fa-camera-retro icon"></i></div>
         </a>
       {% else %}
         <a href="#" id="fileSelect" class="avatar-upload">
-          {{ request.user|avatar }}
+          {{ user|avatar }}
           <img id="add-image" class="avatar-upload d-none" src="{% static 'assets/img/illustrations/in_thought.svg' %}" style="cursor: pointer;"/>
           <div class="avatar-overlay"><i class="fa fa-camera-retro icon"></i></div>
         </a>
@@ -50,10 +57,12 @@
       </div>
 
       <div >
-        {% if request.user.profile_pic%}
+        {% if user.profile_pic%}
           <a type="button" class="mid-color" data-bs-toggle="modal" data-bs-target="#deletePicModal">{% trans 'Delete your profile picture ?' %}</a>
         {% else %}
-          <a href="{% url 'change-avatar' request.user.slug %}" class="mid-color">{% trans 'Change your avatar color ?' %}</a>
+          {% if user.is_guest == False %}
+          <a href="{% url 'change-avatar' user.slug %}" class="mid-color">{% trans 'Change your avatar color ?' %}</a>
+          {% endif %}
         {% endif %}
       </div>
 
@@ -63,15 +72,22 @@
           {{form.last_name}}  
         </div>  
         {{form.pseudo}}
+        <p>{% trans 'Email' %} :</p>
+        <p class="mid-color"><i class="fa-solid fa-triangle-exclamation"></i> {% trans "Keep your email updated because it's your connection id" %}</p>
         {{form.email}}
         {{form.bio}}
+
+      {% if user.is_guest == False %}
       <a class="mid-color" href={% url "password-reset"  %} >{% trans 'Change password' %}</a>
+      {% endif %}
       
       <button class="submit" type="submit ">{% trans 'Submit' %}</button>
       <div class="text-center">
         <a href="{% url 'profile' user.slug %}" class="mid-color">{% trans 'Cancel' %}</a>
+        {% if user.is_guest == False %}
         <hr class="dashed">
         <a href="{% url 'profile' user.slug %}" type="button" class="joy-color" data-bs-toggle="modal" data-bs-target="#deleteAccountModal"><i class="fa-solid fa-trash pe-2"></i>{% trans 'Delete Account' %}</a>
+        {% endif %}
       </div>
   </form>
 </div>

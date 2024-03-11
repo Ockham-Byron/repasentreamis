@@ -2,13 +2,13 @@
 <div id="sidebar" class="col-12 col-sm-3 col-xl-2 px-sm-2 px-0 bg-dark d-flex sticky-top">
   <div  class="d-flex flex-sm-column flex-row flex-grow-1 align-items-center align-items-sm-start px-3 py-2 text-white order-1">
       <a href="/" class="d-flex align-items-center pb-sm-3 mb-md-0 me-md-auto text-white text-decoration-none">
-          <img id="sidebar-logo" src="{% static 'assets/img/logo.png' %}" />
+          <img id="sidebar-logo" src="{% static 'assets/img/logo-blanc.png' %}" />
       </a>
       <!-- User menu - Start -->
       <div class="dropdown py-sm-4  ms-auto ms-sm-0 flex-shrink-1 order-3 order-md-2">
           <a href="#" class="d-flex align-items-center text-white text-decoration-none dropdown-toggle" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
               {% if request.user.profile_pic %}
-                <span class="user-img"><img class="rounded-circle" src="{{ request.user.profile_pic.url }} "width="45" alt="profile_pic"></span>
+                <span class="user-img"><img class="rounded-circle" src="{{ request.user.profile_pic.url }} "width="45" height="45" alt="profile_pic"></span>
               {% else %}
                   <span class="user-img">{{ request.user|avatar }}</span> 
               {% endif %} 
@@ -16,7 +16,7 @@
           </a>
           <ul class="dropdown-menu dropdown-menu-dark text-small shadow" aria-labelledby="dropdownUser1">
               <li><a class="dropdown-item" href="{% url 'profile' request.user.slug %}">{% trans 'Profile' %}</a></li>
-              <li><a class="dropdown-item" href="#">{% trans 'Notifications' %}</a></li>
+              
               <li>
                   <hr class="dropdown-divider">
               </li>
@@ -25,31 +25,104 @@
           </ul>
       </div>
       <!-- User menu - End -->
-      <ul class="nav nav-pills flex-sm-column flex-row flex-nowrap flex-shrink-1 flex-sm-grow-0 flex-grow-1 mb-sm-auto mb-0 justify-content-center align-items-center align-items-sm-start order-2 order-md-3" id="menu">
+      <div id="accordian" class="order-2 order-md-3 flex-shrink-1 flex-sm-grow-0 flex-grow-1">
+      <ul class="mobile-drop nav nav-pills flex-sm-column flex-row flex-nowrap flex-shrink-1 flex-sm-grow-0 flex-grow-1 mb-sm-auto mb-0 justify-content-center align-items-center align-items-sm-start order-2" id="menu">
          
-          <li>
-              <a href="{% url 'dashboard' %}" data-bs-toggle="collapse" class="nav-link px-sm-0 px-2 lightest-color">
-                  <i class="fa-solid fa-gauge"></i><span class="ms-1 d-none d-sm-inline">{% trans 'Dashboard' %}</span> </a>
+         
+        <!-- Groups -->
+          <li class="subnav">
+              <a href="#" class="nav-link lightest-color second-level">
+                  <i class="fa-solid fa-user-group"></i><span class="ms-1 d-none d-sm-inline">{% trans 'Groups' %}</span>
+              </a>
+              <ul class="drop-menu subnav-content" >
+                  <li><a class="dropdown-item lightest-color" href="{% url 'all-groups' %}">{% trans 'My groups' %}</a></li>
+                  <li><a class="dropdown-item lightest-color" href="{% url 'add-group' %}"><i class="fa-solid fa-plus pe-1"></i>{% trans 'Add group' %}</a></li>
+              </ul>
           </li>
-
-          <li class="dropdown">
-            <a href="#" class="nav-link dropdown-toggle px-sm-0 px-2 lightest-color" id="dropdown" data-bs-toggle="dropdown" aria-expanded="false">
+        <!-- Meals -->
+          <li class="subnav">
+            <a href="#" class="nav-link lightest-color" >
               <i class="fa-solid fa-utensils"></i><span class="ms-1 d-none d-sm-inline">{% trans 'Meals' %}</span>
             </a>
-            <ul class="dropdown-menu dropdown-menu-dark text-small shadow" aria-labelledby="dropdown">
-              <li><a class="dropdown-item lightest-color" href="{% url 'all-menus' %}">{% trans 'All Meals' %}</a></li>
-                <li><a class="dropdown-item lightest-color" href="{% url 'add-menu' %}"><i class="fa-solid fa-plus pe-1"></i>{% trans 'Add Meal' %}</a></li>
+            <ul class="subnav-content">
+            {% if groups.count == 1%}
+                    {% for group in groups%}
+                        <li><a class="dropdown-item lightest-color" href="{% url 'group-meals' group.slug %}">{% trans 'Meals' %}</a></li>
+                    {% endfor %}
+                {% else %}
+                    <li><a class="dropdown-item lightest-color ps-2" href="{% url 'all-meals' %}">{% trans 'All Meals' %}</a></li>
+                    <li class="subnav2">
+                      <a class="second-level lightest-color ps-3 " tabindex="-1" href="#">{% trans 'Meals with' %}<i class="ps-2 fas fa-angle-right"></i></a>
+                      <ul class="subnav-content2">
+                        {% for group in groups %}
+                        <li><a tabindex="-1" class="lightest-color" href="{% url 'group-meals' group.slug %}"><small>{{group.name}}</small></a></li>
+                        <hr class="dropdown-divider">
+                        {% endfor %}
+                      </ul>
+                    </li>
+              {% endif %}
+                <li><a class="dropdown-item lightest-color ps-2" href="{% url 'add-meal' %}"><i class="fa-solid fa-plus pe-1"></i>{% trans 'Add Meal' %}</a></li>
                 
             </ul>
         </li>
-
-           <li class="dropdown">
-              <a href="#" class="nav-link dropdown-toggle px-sm-0 px-2 lightest-color" id="dropdown" data-bs-toggle="dropdown" aria-expanded="false">
+          <!-- Dishes -->
+           <li class="subnav">
+              <a href="#" class="nav-link  lightest-color" >
                 <i class="fa-solid fa-bowl-food"></i><span class="ms-1 d-none d-sm-inline">{% trans 'Dishes' %}</span>
               </a>
-              <ul class="dropdown-menu dropdown-menu-dark text-small shadow" aria-labelledby="dropdown">
-                <li><a class="dropdown-item lightest-color" href="{% url 'all-recipes' %}">{% trans 'All Dishes' %}</a></li>
-                  <li><a class="dropdown-item lightest-color" href="{% url 'add-recipe' %}"><i class="fa-solid fa-plus pe-1"></i>{% trans 'Add Dish' %}</a></li>
+              <ul class="subnav-content">
+                {% if groups.count == 1%}
+                    {% for group in groups%}
+                        <li><a class="dropdown-item lightest-color" href="{% url 'group-dishes' group.slug %}">{% trans 'Dishes' %}</a></li>
+                    {% endfor %}
+                {% else %}
+                    <li><a class="dropdown-item lightest-color ps-2" href="{% url 'all-dishes' %}">{% trans 'All Dishes' %}</a></li>
+                    <li class="dropdown-submenu">
+                      <a class="second-level lightest-color ps-3 " tabindex="-1" href="#">{% trans 'Dishes of' %}<i class="ps-2 fas fa-angle-right"></i></a>
+                      <ul class="subnav-content2">
+                        {% for group in groups %}
+                        <li><a tabindex="-1" class="lightest-color" href="{% url 'group-dishes' group.slug %}"><small>{{group.name}}</small></a></li>
+                        <hr class="dropdown-divider">
+                        {% endfor %}
+                      </ul>
+                    </li>
+              {% endif %}
+                  <li><a class="dropdown-item lightest-color ps-2" href="{% url 'add-dish' %}"><i class="fa-solid fa-plus pe-1"></i>{% trans 'Add Dish' %}</a></li>
+                  
+              </ul>
+          </li>
+          <!-- Atmosphere -->
+          <li class="subnav">
+              <a href="#" class="nav-link  lightest-color" >
+                <i class="fa-solid fa-blender"></i><span class="ms-1 d-none d-sm-inline">{% trans 'Atmosphere' %}</span>
+              </a>
+              <ul class="subnav-content">
+                {% if groups.count == 1%}
+                    {% for group in groups%}
+                        <li><a class="dropdown-item lightest-color" href="{% url 'group-anecdotes' group.slug %}">{% trans 'Anecdotes' %}</a></li>
+                        <li><a class="dropdown-item lightest-color" href="{% url 'group-musics' group.slug %}">{% trans 'Music' %}</a></li>
+                    {% endfor %}
+                {% else %}
+                    <li class="dropdown-submenu">
+                      <a class="second-level lightest-color ps-2" tabindex="-1" href="#">{% trans 'Anecdotes' %}<i class="ps-2 fas fa-angle-right"></i></a>
+                      <ul class="subnav-content2">
+                        {% for group in groups %}
+                        <li><a tabindex="-1" class="lightest-color ps-2" href="{% url 'group-anecdotes' group.slug %}"><small>{% trans 'Anecdotes with ' %} {{group.name}}</small></a></li>
+                        <hr class="dropdown-divider">
+                        {% endfor %}
+                      </ul>
+                    </li>
+                    <hr class="dropdown-divider">
+                    <li class="dropdown-submenu">
+                      <a class="second-level lightest-color ps-2" tabindex="-1" href="#">{% trans 'Music' %}<i class="ps-2 fas fa-angle-right"></i></a>
+                      <ul class="subnav-content2">
+                        {% for group in groups %}
+                        <li><a tabindex="-1" class="lightest-color ps-2" href="{% url 'group-musics' group.slug %}"><small>{% trans 'Music with ' %} {{group.name}}</small></a></li>
+                        <hr class="dropdown-divider">
+                        {% endfor %}
+                      </ul>
+                    </li>
+                {% endif %}
                   
               </ul>
           </li>
@@ -59,9 +132,10 @@
          
       </ul>
       
+      </div>
       <div class="order-4 display-sm-none">
       
-      </div>
+      </div> 
   </div>
 </div>
         

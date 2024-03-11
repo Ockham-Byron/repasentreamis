@@ -1,21 +1,66 @@
-Général:
 ☐ traduire
-☐ add login required
 
-Dish:
-    ☐ edit
-    ☐ suppress
+Menu responsive:
+    ☐ positionner vers le bas les options
+
+Meal:
+    ☐ si suppresion, supprimer guests ?
 
 Messages:
     ☐ add logic
 
 Mode invité:
-    ☐ add logic
+    ☐ après la mise en ligne, envoyer un mail pour changer de password
 
-Anecdote:
-    ☐ créer
-    ☐ éditer
-    ☐ supprimer
-    ☐ lire en pop up
-
-
+pwa:
+    ☐ deployer
+    ☐ faire le tuto
+    
+Archive:
+  ✔ Qui a cuisiné : invité seulement du repas @done(24-03-07 10:49) @project(Dish)
+  ✔ Qui a cuisiné: améliorer UI @done(24-03-07 10:01) @project(Dish)
+  ✔ add list of guests @done(24-03-07 10:49) @project(Meal)
+  ✔ si supprimer meal, supprimer anecdote @done(24-03-07 10:49) @project(Meal)
+  ✔ Meal avec guest, ajouter "mode guest @done(24-03-07 10:30) @project(Meal)
+  ✔ ajouter "sortir du mode guest" @done(24-03-07 10:30) @project(Meal)
+  ✔ revoir ajouter un plat au repas si pas de plat existant @done(24-03-07 10:47) @project(Meal)
+  ✔ gérer le toggle des add buttons @done(24-03-04 15:14)
+  ✔ couleur text footer @done(24-03-04 15:14)
+  ✔ form style @done(24-03-04 15:14) @project(Login/Register)
+  ✔ gérer plusieurs groupes @done(24-03-04 15:14) @project(Dish)
+  ✔ gérer plusieurs groupes @done(24-03-04 15:14) @project(Meals)
+  ✔ après avoir commenté un plat ramener au repas @done(24-03-01 11:27) @project(Mode invité)
+  ✔ ajouter la logique commenter ou éditer en mode guest @done(24-03-04 15:14) @project(Mode invité)
+  ✔ edit photo @done(24-02-22 17:57) @project(Group)
+  ✔ add logic @done(24-02-28 16:01) @project(Mode invité)
+  ✔ permettre de s'enregister à partir du profil @done(24-02-28 16:01) @project(Mode invité)
+  ✔ changer les membres dans groupe @done(24-02-28 15:21) @project(Mode invité)
+  ✔ edit form:ajouter placeholders @done(24-02-22 17:35) @project(Profile)
+  ✔ supprimer dashboard et aller à meals @done(24-02-22 17:36) @project(Dashboard)
+  ✔ add login required @done(24-02-22 11:26)
+  ✔ changer couleur des boutons @done(24-02-22 12:35)
+  ✔ add dish to existing dishes @done(24-02-19 10:58) @project(Dish)
+  ✔ voir tous les plats existants @done(24-02-22 11:06) @project(Meal)
+  ✔ supprimer du formulaire les plats déjà associés au repas @done(24-02-22 11:06) @project(Meal)
+  ✔ trier les repas par date @done(24-02-22 11:26) @project(Meal)
+  ✔ plusieurs groups pour anecdotes @done(24-02-22 11:26) @project(Dashboard)
+  ✔ plusieurs groups pour musics @done(24-02-22 11:26) @project(Dashboard)
+  ✔ floating button @done(24-02-16 10:50) @project(All-dishes)
+  ✔ liste des anectodes @done(24-02-13 16:12) @project(Anecdote)
+  ✔ éditer @done(24-02-16 17:50) @project(Music)
+  ✔ supprimer @done(24-02-16 17:55) @project(Music)
+  ✔ liste des musiques @done(24-02-16 17:50) @project(Music)
+  ✔ sidebar : group en context processor @done(24-02-16 16:25) @project(Dashboard)
+  ✔ layout @done(24-02-16 10:54) @project(Homepage)
+  ✔ edit @done(24-02-12 16:01) @project(Dish)
+  ✔ suppress @done(24-02-12 16:15) @project(Dish)
+  ✔ add comment or edit comment si déjà commenté @done(24-02-13 12:06) @project(All-dishes)
+  ✔ layout @done(24-02-13 12:07) @project(Dish detail)
+  ✔ edit @done(24-02-13 12:08) @project(Comment)
+  ✔ delete @done(24-02-13 12:08) @project(Comment)
+  ✔ créer @done(24-02-13 12:16) @project(Anecdote)
+  ✔ éditer @done(24-02-13 13:03) @project(Anecdote)
+  ✔ supprimer @done(24-02-13 13:03) @project(Anecdote)
+  ✔ warning delete @done(24-02-13 13:03) @project(Anecdote)
+  ✔ lire en pop up @done(24-02-13 12:45) @project(Anecdote)
+  ✔ créer @done(24-02-13 13:04) @project(Music)

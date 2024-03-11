@@ -21,9 +21,9 @@
                 <!-- Navbar Right Side -->
                 <div class="navbar-nav ms-auto text-center pe-3">
                     {% if user.is_authenticated %}
-                        <a class="nav-item nav-link" href="{% url 'dashboard' %}">
+                        <a class="nav-item nav-link" href="{% url 'all-meals' %}">
                             {% if request.user.profile_pic %}
-                                <span class="user-img"><img class="rounded-circle" src="{{ request.user.profile_pic.url }} "width="45" alt="profile_pic"></span>
+                                <span class="user-img"><img class="rounded-circle" src="{{ request.user.profile_pic.url }} "width="40" height="40" alt="profile_pic"></span>
                             {% else %}
                                 <span class="user-img">{{ request.user|avatar }}</span> 
                             {% endif %} 

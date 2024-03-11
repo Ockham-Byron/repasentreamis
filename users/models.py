@@ -42,12 +42,13 @@ class CustomUser(AbstractUser):
     profile_pic = models.ImageField(blank=True, null=True, upload_to=path_and_rename)
     is_rgpd = models.BooleanField(default=False)
     email_is_verified = models.BooleanField(default=False)
+    is_guest = models.BooleanField(default=False)
     slug = models.SlugField(max_length=255, unique= True, default=None, null=True)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
     def __str__(self):
-        return self.username
+        return self.pseudo
 
     
     def save(self, *args, **kwargs):

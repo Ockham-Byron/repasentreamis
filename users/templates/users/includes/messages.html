@@ -8,19 +8,26 @@
       <div class="modal-content">
         <div class="modal-header">
           <strong class="mr-auto">
-        {% if message.tags == 'error' %}
+        
+        {% if message.level == DEFAULT_MESSAGE_LEVELS.ERROR %}<!-- Error -->
           <i class="fas fa-times mr-2"></i>
-        {% elif message.tags == 'warning' %}
+        {% endif %}
+        {% if message.level == DEFAULT_MESSAGE_LEVELS.WARNING %} <!-- Warning -->
           <i class="fas fa-exclamation mr-2"></i>
-        {% elif message.tags == 'info' %}
+        {% endif %}
+        {% if message.level == DEFAULT_MESSAGE_LEVELS.INFO %} <!-- Info -->
           <i class="fas fa-info mr-2"></i>
-        {% elif message.tags == 'success' %}
+        {% endif %}
+        {% if message.level == DEFAULT_MESSAGE_LEVELS.SUCCESS %} <!-- Success -->
           <i class="fas fa-check mr-2"></i>
         {% endif %}
-        {{message.tags|capfirst}}
+        
+        
       </strong>
           {% if message.extra_tags %}
-          <h6 class="modal-title">{{message.extra_tags}}</h6>
+          <h6 class="modal-title {{message.tags}}">{{message.extra_tags}}</h6>
+          {% else %}
+          {{message.tags|capfirst}}
           {% endif %}
           <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
         </div>

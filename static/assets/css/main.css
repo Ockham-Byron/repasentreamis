@@ -2,13 +2,13 @@
 
 /* Colors */   
 :root {
-    --brand-color: #832232;
-    --darkest-color: #313e50;
-    --dark-color: #4c061d;
-    --mid-color:  #f3752b;
-    --light-color:#f8b042 ;
+    --brand-color: #a8c900;
+    --darkest-color: #0b1a48;
+    --dark-color: #502247;
+    --mid-color:  #c94036;
+    --light-color:#eee0c8 ;
     --joy-color: #f6ce4b;
-    --lightest-color: #f0eae0;
+    --lightest-color: #fffbdb;
       }
 
 
@@ -37,6 +37,7 @@
 
 body {
   font-family: 'Poppins';
+  background-color: var(--lightest-color);
 }
 
 .container-fluid {
@@ -73,7 +74,7 @@ a, a:hover{
   text-align: justify !important;
 }
 
-.brand-color, a.mid-color:hover {
+.brand-color, a.mid-color:hover, a.dark-color:hover {
   color: var(--brand-color);
 }
 
@@ -83,11 +84,13 @@ a, a:hover{
   color: var(--dark-color);
 }
 
+
+
 .darkest-color {
   color: var(--darkest-color);
 }
 
-.joy-color, a.lightest-color:hover {
+.joy-color, a.lightest-color:hover, a.lightest-color:focus {
   color: var(--joy-color);
 }
 
@@ -115,7 +118,22 @@ a, a:hover{
 
 /* || Backgrounds colors */
 
-.bg-darkest{
+.bg-brand-color {
+  background-color: var(--brand-color);
+}
+
+.bg-joy-color {
+  background-color: var(--joy-color);
+}
+
+.bg-dark-color {
+  background-color: var(--dark-color);
+}
+
+.bg-mid-color {
+  background-color: var(--mid-color);
+}
+.bg-darkest-color{
   background-color: var(--darkest-color);
 }
 /* || Header and Main Navigation */
@@ -249,39 +267,77 @@ color:var(--light-color) !important;
 
 /* || Buttons */
 
+.btn {
+  border-radius:10px !important;
+}
+
 .btn-wide {
   width: 90%;
   padding:8px 20px;
+  border-radius:10px;
 }
 
 .btn-brand-color {
   background-color: var(--brand-color);
+  color:white;
 }
 
 .btn-brand-color:hover {
-  color:black;
-  background-color: var(--mid-color);
+  color:white;
+  background-color: var(--dark-color);
 }
 
 .btn-mid-color {
   background-color: var(--mid-color);
+  color:white;
 }
 
 .btn-mid-color:hover {
+  color:white;
+  background-color: var(--dark-color);
+}
+
+.btn-joy-color {
   color:black;
+  background-color: var(--joy-color);
+}
+
+.btn-joy-color:hover {
   background-color: var(--brand-color);
 }
 
 .btn-outlined {
   border:1px solid;
+  border-radius:0.375rem;
 }
 
-.outline-mid-color {
+.btn-darkest-color {
+  background-color: var(--darkest-color);
+  color:white;
+}
+
+.btn-darkest-color:hover{
+  background-color: var(--brand-color);
+  color:white;
+}
+
+a.outline-mid-color {
   border-color:var(--mid-color);
+  color:var(--darkest-color) !important;
 }
 
 .outline-mid-color:hover{
   border-color:var(--darkest-color);
+}
+
+.outline-brand-color {
+  border-color:var(--brand-color);
+  color:var(--brand-color) !important;
+}
+
+.outline-brand-color:hover{
+  border-color:var(--dark-color);
+  color: var(--dark-color) !important;
 }
 
 .btn-modal {
@@ -300,8 +356,6 @@ color:var(--light-color) !important;
   width:fit-content;
   text-decoration: none !important;
   border: none;
-  background: var(--dark-color);
-  color: var(--darkest-color);
   border-radius: 20px;
   cursor: pointer;
 }
@@ -319,9 +373,7 @@ color:var(--light-color) !important;
 
 
 
-.btn-edit:hover {
-  background: var(--joy-color);
-}
+
 
 .btn-edit:hover i.btn-edit-icon{
   animation: spin 1s linear infinite;
@@ -406,6 +458,7 @@ color:var(--light-color) !important;
     max-width:400px;
     box-shadow: 0 10px 7px -5px rgba(0, 0, 0, 0.4);
     border-radius:30px 30px 30px 30px;
+    
   }
 
   .profile-subcard-wrapper {
@@ -440,7 +493,7 @@ color:var(--light-color) !important;
 .profile-card {
   position: relative;
   width: 100%;
-  
+  margin-top: -20px;
 }
 .profile-card header {
   position: relative;
@@ -564,3 +617,74 @@ footer {
   background-color: var(--joy-color);
   
 }
+
+/* || Homepage */
+
+
+
+@media only screen and (min-width: 768px) {
+  .showcase-left {
+    max-width:50%;
+    margin-bottom:0;
+  }
+
+  .showcase-right img {
+    max-width:600px !important;
+  }
+
+  #features {
+    margin-top:150px;
+    height:300px;
+  }
+
+  .features-item{
+    margin-top:-80px;
+  }
+}
+
+#features {
+  border-radius : 0 0 20px 20px;
+}
+
+.showcase-left {
+  margin-bottom: 20px;
+}
+
+.showcase-right img {
+  max-width:100%;
+  border-radius: 50px;
+}
+
+.features-item {
+  width:300px;
+  height:300px;
+  background-color: white;
+  border-radius:20px;
+  padding:15px;
+  margin-bottom:20px;
+
+}
+
+.features-item:nth-child(1) {
+  margin-top: -80px;;
+}
+
+.features-item .icon-box {
+  width:50px;
+  height: 50px;
+  color:white;
+  border-radius:20px;
+}
+
+div.features-bar {
+  width:40px;
+  height:5px;
+}
+
+.features-item p {
+  font-size: 14px;
+  text-align:justify;
+}
+
+
+

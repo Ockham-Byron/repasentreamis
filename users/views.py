@@ -16,6 +16,7 @@ from django.contrib.auth.views import PasswordContextMixin
 from django.views.generic.edit import FormView
 from .forms import *
 
+
 from django.template.loader import render_to_string
 from django.contrib.sites.shortcuts import get_current_site
 from django.utils.http import urlsafe_base64_encode, urlsafe_base64_decode
@@ -104,7 +105,7 @@ def home_view(request):
 def login_view(request):
     # Logged in user can't register a new account
     if request.user.is_authenticated:
-        return redirect("dashboard")
+        return redirect("all-meals")
     
     login_form = UserLoginForm(request.POST)
     
@@ -171,6 +172,9 @@ def register_view(request):
     }
 
     return render(request, 'users/authentication/register.html', context=context)
+
+
+                                     
 
 @login_required
 def custom_logout(request):
@@ -354,3 +358,28 @@ def delete_account(request):
     request.user.profile_pic.delete()
     request.user.delete()
     return redirect(to="bye")
+
+@login_required
+def register_view_from_guest(request, slug):
+
+    user = get_object_or_404(User, slug=slug)
+    
+    if request.method == 'POST':
+        form = UserUpdateForm(request.POST, request.FILES, instance=user)
+        if form.is_valid():
+            user = form.save(commit=False)
+            user.is_guest = False
+            user.save()
+            messages.success(request, _('Your profile has been successfully created '))
+            logout(request)
+            return redirect(to='login')
+        else:
+            for error in list(form.errors.values()):
+                print(request, error)
+            
+    
+    else:
+        form = UserUpdateForm(instance=user)
+        
+
+    return render(request, 'users/profile_update.html', {'form':form, 'user':user})
