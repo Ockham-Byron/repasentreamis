@@ -15,5 +15,5 @@ WORKDIR /code
 EXPOSE 8000
 
 # runs the production server
-ENTRYPOINT ["python", "tasty_moments.manage.py"]
+ENTRYPOINT ["python", "tasty_moments/manage.py"]
 CMD ["runserver", "0.0.0.0:8000"]
